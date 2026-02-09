@@ -33,7 +33,7 @@ OUT_DIR = Path(args.out_dir)
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # ================= CONFIG =================
-JSONL_PATH = Path("candidate-pool-latest.jsonl")
+JSONL_PATH = Path("data/candidate-pool-latest.jsonl")
 TOP_K = 50
 YEAR_GAP = 10 
 TEMP_MODEL = "decay"
@@ -45,7 +45,7 @@ WEIGHTS = {
     "zeta": 0.10, #bc
     "delta": 0.2 #time
 }
-MSC_FILE = Path("/home/yunisusan/zbmath/mscHarvester/msc_codes.jsonl")
+MSC_FILE = Path("data/msc_codes.jsonl")
 msc_lookup = {}
 with open(MSC_FILE, "r", encoding="utf-8") as f:
     for line in f:
@@ -154,8 +154,6 @@ def tfidf_rank(query, pool, top_k):
         {"paper": pid,"rank": i + 1,"score": float(score)}
         for i, (pid, score) in enumerate(ranked[:top_k]) ]
 
-# def tokenize(texts):
-#     return texts.split()
 def tokenize(paper, mode="text"):
     parts = []
     if paper.get("title"):
