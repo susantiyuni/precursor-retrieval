@@ -2,8 +2,6 @@
 
 We introduce _historically_-grounded **precursor retrieval** task, a scholarly information retrieval task aimed at identifying influential prior scientific work beyond explicit citation links. This repository contains code for running a precursor retrieval pipeline and (optionally) generating your own query–candidate pools using the zbMATH Open Knowledge Graph. 
 
-P.S. The complete readme will be updated after anonymous period concludes.
-
 -----
 
 ### Dependencies
