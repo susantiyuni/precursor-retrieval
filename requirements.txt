@@ -1,0 +1,8 @@
+numpy
+scikit-learn
+sentence-transformers
+rank-bm25
+networkx
+torch
+colbert-ai
+SPARQLWrapper
