@@ -103,7 +103,7 @@ for q in query_papers:
     print(f" → Retrieved {len(candidates)} candidates")
 
 # ---------------- EXPORT JSONL ----------------
-jsonl_path = Path("candidate-pool-2.jsonl")
+jsonl_path = Path("candidate-pool-orig.jsonl")
 with jsonl_path.open("w", encoding="utf-8") as f:
     for qid, data in candidate_pool.items():
         f.write(json.dumps(data, ensure_ascii=False) + "\n")
