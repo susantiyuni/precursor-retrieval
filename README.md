@@ -23,7 +23,7 @@ Make sure the JSONL file exists at the specified path. Run the full precursor re
 ```
 python src/run-all-precursor.py --out_dir output-0902 
 ```
-This will run both the proposed approach and all baselines as specified in the paper. The results will be saved in the specified output directory.
+This will run both the proposed approach and all baselines as specified in the paper. The results will be saved in the specified output directory. As reference, our output is shared in the output folder.
 
 ### zbMATH Open KG Setting and Installation
 
@@ -33,6 +33,6 @@ Please refer to the complete installation and setup guide here:
 _(complete readme to be updated after anonymous period concludes)_
 
 This includes:
-- Downloading zbMATH Open KG data
-- Setting up the RDF triple store
+- Downloading zbMATH Open KG data via OAI-PMH.
+- Setting up the RDF triple store (with Virtuoso or Apache Fuseki)
 - Configuring the SPARQL endpoint
