@@ -8,7 +8,7 @@ from datetime import datetime
 import numpy as np
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--out_dir", default="run-2201-2/", help="Output directory")
+parser.add_argument("--out_dir", default="output/", help="Output directory")
 args = parser.parse_args()
 
 # ================= CONFIG =================
@@ -16,24 +16,15 @@ OUT_DIR = Path(args.out_dir)
 RELEVANCE_PATH = Path("candidate-pool-latest.jsonl")
 
 METHOD_FILES = [
-    "run_tfidf.jsonl",
     "run_bm25.jsonl",
-    "run_bm25m.jsonl",
-    "run_msf.jsonl",
     "run_citation.jsonl",
     "run_ppr.jsonl",
     "run_colbert.jsonl",
     "run_dualenc.jsonl",
-    "run_tmgnr_all.jsonl",
-    "run_tmgnr_hybrid.jsonl",
-    "run_tmgnr_metadata.jsonl",
-    "run_tmgnr_text.jsonl",
     "run_tmgnrx_base.jsonl",
     "run_tmgnrx_citation.jsonl",
     "run_tmgnrx_explicit.jsonl",
     "run_tmgnrx_all.jsonl",
-    "run_tmgnrx_bm25.jsonl",
-    "run_tmgnrx_allbm25.jsonl",
 ]
 
 TOP_K_NDCG = 50
