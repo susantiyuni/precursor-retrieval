@@ -1,6 +1,6 @@
 ## Historically-Grounded Retrieval of Scholarly Research Beyond Citations
 
-We introduce _historically_-grounded **precursor retrieval** task, a scholarly information retrieval task aimed at identifying influential prior scientific work beyond explicit citation links. This repository contains code for running a precursor retrieval pipeline and (optionally) generating your own query–candidate pools using the zbMATH Open Knowledge Graph. 
+We introduce _historically_-grounded **precursor retrieval** task, a scholarly information retrieval task aimed at identifying influential prior scientific work beyond explicit citation links. This repository contains code for running the precursor retrieval pipeline for all methods in the paper and (optionally) generating your own query–candidate pools using the zbMATH Open Knowledge Graph. 
 
 -----
 
