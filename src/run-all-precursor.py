@@ -36,7 +36,23 @@ OUT_DIR.mkdir(parents=True, exist_ok=True)
 JSONL_PATH = Path("data/candidate-pool-latest.jsonl")
 TOP_K = 50
 YEAR_GAP = 10 
-TEMP_MODEL = "decay"
+TEMP_MODEL = "decay" #gaussian, laplace
+
+ABLATION_MODES = {
+    "base",          
+    "explicit",      # sim + metadata
+    "citation",      # sim + citation signals
+    "all",            
+}
+
+EMBEDDING_MODES = {
+    "text",         
+    "metadata",   
+    "graph",     
+    "hybrid",    
+    "all"       
+}
+
 WEIGHTS = {
     "alpha": 0.40, # semantic
     "beta": 0.15, # msc hierarchy
@@ -45,6 +61,7 @@ WEIGHTS = {
     "zeta": 0.10, #bc
     "delta": 0.2 #time
 }
+
 MSC_FILE = Path("data/msc_codes.jsonl")
 msc_lookup = {}
 with open(MSC_FILE, "r", encoding="utf-8") as f:
@@ -106,101 +123,6 @@ def embed(text: str, MODEL: SentenceTransformer) -> np.ndarray:
 def time_filtered_pool(query, candidates):
     cutoff = query["year"] - YEAR_GAP
     return [c for c in candidates if c.get("year") and c["year"] <= cutoff]
-
-def citation_rank(query, pool, top_k):
-    """
-    Return top_k candidates ranked by:
-      1. Whether cited in query (1/0)
-      2. Bibliographic coupling score
-      3. Year (older first)
-    Only return paper id, rank, citation flag, and bc_score
-    """
-    query_refs = set(query.get("references", []))
-    scored = []
-    for c in pool:
-        paper_id = c["paper"]
-        cite_score = 1 if paper_id in query_refs else 0
-        bc_score = len(query_refs & set(c.get("references", [])))
-        # scored.append((paper_id, cite_score, float(bc_score), c.get("year", 9999)))
-        scored.append((paper_id, cite_score, float(bc_score)))
-    # scored.sort(key=lambda x: (-x[1], -x[2], x[3])) # Sort by citation -> bibliographic coupling -> older year
-    scored.sort(key=lambda x: (-x[1], -x[2]))
-    topk_output = [
-        {"paper": pid,"rank": i + 1,"cite_score": int(cite_score),"bc_score": bc_score}
-        for i, (pid, cite_score, bc_score) in enumerate(scored[:top_k])]
-        # for i, (pid, cite_score, bc_score, _) in enumerate(scored[:top_k])]
-    return topk_output
-
-def assert_citation_sanity(query, pool):
-    query_refs = set(query.get("references", []))
-    zeros = sum(
-        1 for c in pool
-        if len(query_refs & set(c.get("references", []))) == 0 )
-    assert zeros > 0, "LEAKAGE: citation pool has no zero-overlap candidates."
-
-# ---------- TF-IDF + BM25 baseline ----------
-def tfidf_rank(query, pool, top_k):
-    pool = [c for c in pool if c.get("title")]
-    if not pool:
-        return []
-    titles = [c["title"] for c in pool]
-    paper_ids = [c["paper"] for c in pool]
-    vectorizer = TfidfVectorizer(stop_words="english")
-    X = vectorizer.fit_transform(titles)
-    q_vec = vectorizer.transform([query["title"]])
-    sims = cosine_similarity(q_vec, X).flatten()
-    ranked = sorted(zip(paper_ids, sims), key=lambda x: -x[1])
-    return [
-        {"paper": pid,"rank": i + 1,"score": float(score)}
-        for i, (pid, score) in enumerate(ranked[:top_k]) ]
-
-def tokenize(paper, mode="text"):
-    parts = []
-    if paper.get("title"):
-        parts.append(paper["title"])
-    if mode in ("text", "all") and paper.get("review"):
-        parts.append(paper["review"])
-    if mode in ("metadata", "all"):
-        if paper.get("keywords"):
-            parts.append(" ".join({norm_kw(k) for k in paper["keywords"]}))
-        if paper.get("mscs"):
-            parts.append(" ".join(msc_prefixes(paper["mscs"])))
-        if paper.get("msc_codes"):
-            parts.append(" ".join(msc_prefixes(paper["msc_codes"])))
-    if mode not in ("text", "metadata", "all"):
-        raise ValueError("mode must be one of: text, metadata, all")
-    return " ".join(parts).split()
-
-def bm25_rank(query, pool, top_k, mode="all"):
-    tokenized_docs = [tokenize(c, mode=mode) for c in pool]
-    paper_ids = [c["paper"] for c in pool]
-    bm25 = BM25Okapi(tokenized_docs)
-    scores = bm25.get_scores(tokenize(query, mode=mode))
-    ranked = sorted(zip(paper_ids, scores), key=lambda x: -x[1])
-    return [{"paper": pid, "rank": i + 1, "score": float(score)}
-            for i, (pid, score) in enumerate(ranked[:top_k])]
-
-# ================= PROPOSED METHOD =================
-
-def temporal_hist_modeling(year_q, year_c, mode=TEMP_MODEL, mu=12, sigma=6, tau=25):
-    """
-    Summary
-    Function	Peak	Symmetric	Decay type	Use case
-    Gaussian	Yes	Yes	Quadratic	Prefer a specific year
-    Laplace	Yes	Yes	Linear	Prefer a specific year (wider)
-    exp(-dt/τ)	No	No	Exponential	Freshness / recency
-    """
-    dt = year_q - year_c
-    if dt <= 0:
-        return 0.0
-    if mode == "gaussian":
-        return math.exp(-((dt - mu) ** 2) / (2 * sigma ** 2))
-    elif mode == "laplace":
-        return math.exp(-abs(dt - mu) / sigma)
-    elif mode == "decay":
-        return math.exp(-dt / tau)
-    else:
-        raise ValueError("mode must be one of: gaussian, laplace, decay")
 
 def build_kw_idf(all_candidates):
     kw_counter = Counter()
@@ -267,23 +189,84 @@ def keyword_similarity(kw_q, kw_c, kw_idf):
     kw_score = kw_score / (sum(kw_idf.values()) + 1e-9)
     return kw_score
 
-# ================= heuristic metadata ranker =================
-def msf_rank(query, pool, kw_idf, top_k):
+# ---------- Citation baseline ----------
+def citation_rank(query, pool, top_k):
+    """
+    Return top_k candidates ranked by:
+      1. Whether cited in query (1/0)
+      2. Bibliographic coupling score
+      3. Year (older first)
+    Only return paper id, rank, citation flag, and bc_score
+    """
+    query_refs = set(query.get("references", []))
     scored = []
     for c in pool:
         paper_id = c["paper"]
-        S_msc = msc_similarity(query.get("mscs", []), c.get("msc_codes", []))
-        S_kw  = keyword_similarity(query.get("keywords", []), c.get("keywords", []), kw_idf)
-        S_time = temporal_hist_modeling(query["year"], c["year"], mode=TEMP_MODEL)
-        # score = WEIGHTS["alpha"] * S_sem + WEIGHTS["beta"] * S_msc + WEIGHTS["gamma"] * S_kw + WEIGHTS["delta"] * S_time
-        score = WEIGHTS["beta"] * S_msc + WEIGHTS["gamma"] * S_kw + WEIGHTS["delta"] * S_time
-        scored.append((paper_id, float(score)))
-    scored.sort(key=lambda x: -x[1])
+        cite_score = 1 if paper_id in query_refs else 0
+        bc_score = len(query_refs & set(c.get("references", [])))
+        # scored.append((paper_id, cite_score, float(bc_score), c.get("year", 9999)))
+        scored.append((paper_id, cite_score, float(bc_score)))
+    # scored.sort(key=lambda x: (-x[1], -x[2], x[3])) # Sort by citation -> bibliographic coupling -> older year
+    scored.sort(key=lambda x: (-x[1], -x[2]))
     topk_output = [
-        {"paper": pid, "rank": i + 1, "score": score}
-        for i, (pid, score) in enumerate(scored[:top_k])
-    ]
+        {"paper": pid,"rank": i + 1,"cite_score": int(cite_score),"bc_score": bc_score}
+        for i, (pid, cite_score, bc_score) in enumerate(scored[:top_k])]
+        # for i, (pid, cite_score, bc_score, _) in enumerate(scored[:top_k])]
     return topk_output
+
+def assert_citation_sanity(query, pool):
+    query_refs = set(query.get("references", []))
+    zeros = sum(
+        1 for c in pool
+        if len(query_refs & set(c.get("references", []))) == 0 )
+    assert zeros > 0, "LEAKAGE: citation pool has no zero-overlap candidates."
+
+# ---------- BM25 baseline ----------
+def tokenize(paper, mode="text"):
+    parts = []
+    if paper.get("title"):
+        parts.append(paper["title"])
+    if mode in ("text", "all") and paper.get("review"):
+        parts.append(paper["review"])
+    if mode in ("metadata", "all"):
+        if paper.get("keywords"):
+            parts.append(" ".join({norm_kw(k) for k in paper["keywords"]}))
+        if paper.get("mscs"):
+            parts.append(" ".join(msc_prefixes(paper["mscs"])))
+        if paper.get("msc_codes"):
+            parts.append(" ".join(msc_prefixes(paper["msc_codes"])))
+    if mode not in ("text", "metadata", "all"):
+        raise ValueError("mode must be one of: text, metadata, all")
+    return " ".join(parts).split()
+
+def bm25_rank(query, pool, top_k, mode="all"):
+    tokenized_docs = [tokenize(c, mode=mode) for c in pool]
+    paper_ids = [c["paper"] for c in pool]
+    bm25 = BM25Okapi(tokenized_docs)
+    scores = bm25.get_scores(tokenize(query, mode=mode))
+    ranked = sorted(zip(paper_ids, scores), key=lambda x: -x[1])
+    return [{"paper": pid, "rank": i + 1, "score": float(score)}
+            for i, (pid, score) in enumerate(ranked[:top_k])]
+
+def temporal_hist_modeling(year_q, year_c, mode=TEMP_MODEL, mu=12, sigma=6, tau=25):
+    """
+    Summary
+    Function	Peak	Symmetric	Decay type	Use case
+    Gaussian	Yes	Yes	Quadratic	Prefer a specific year
+    Laplace	Yes	Yes	Linear	Prefer a specific year (wider)
+    exp(-dt/τ)	No	No	Exponential	Freshness / recency
+    """
+    dt = year_q - year_c
+    if dt <= 0:
+        return 0.0
+    if mode == "gaussian":
+        return math.exp(-((dt - mu) ** 2) / (2 * sigma ** 2))
+    elif mode == "laplace":
+        return math.exp(-abs(dt - mu) / sigma)
+    elif mode == "decay":
+        return math.exp(-dt / tau)
+    else:
+        raise ValueError("mode must be one of: gaussian, laplace, decay")
 
 def get_msc(msc):
     msc_info = msc_lookup.get(msc)
@@ -447,23 +430,6 @@ def dual_encoder_rank(query, pool, top_k):
         {"paper": pid, "rank": i + 1, "score": float(score)}
         for i, (pid, score) in enumerate(ranked[:top_k]) ]
 
-def tmgnr_rank(query, pool, top_k, mode="metadata"): # emb ablation + temporal
-    assert mode in EMBEDDING_MODES
-    q_emb = paper_embedding(query, mode=mode)
-    ranked = []
-    for c in pool:
-        paper_id = c["paper"]
-        c_emb = paper_embedding(c, mode=mode)
-        sim = float(np.dot(q_emb, c_emb))
-        time_weight = temporal_hist_modeling(query["year"], c["year"], mode=TEMP_MODEL)
-        if time_weight == 0.0:
-            continue
-        score = sim * (WEIGHTS["delta"] * time_weight + (1 - WEIGHTS["delta"]))
-        ranked.append((paper_id, score))
-    ranked.sort(key=lambda x: -x[1])
-    return [{"paper": pid, "rank": i + 1, "score": float(score)}
-        for i, (pid, score) in enumerate(ranked[:top_k])]
-
 def tmgnrx_rank(query, pool, kw_idf, top_k, mode="all"): #graph emb + temporal + ablation features
     assert mode in ABLATION_MODES
     q_emb = paper_embedding(query, mode="graph")
@@ -510,14 +476,6 @@ def tmgnrx_rank(query, pool, kw_idf, top_k, mode="all"): #graph emb + temporal +
         {"paper": pid, "rank": i + 1, "score": float(score)}
         for i, (pid, score) in enumerate(ranked[:top_k])]
 
-def rrf_fuse(rankings, k=60):
-    scores = defaultdict(float)
-    for ranklist in rankings:
-        for i, pid in enumerate(ranklist):
-            scores[pid] += 1/(k+i+1)
-    return sorted(scores.items(), key=lambda x: -x[1])
-
-
 def save_run(path, data):
     with path.open("w", encoding="utf-8") as f:
         for row in data:
@@ -542,40 +500,16 @@ def build_candidate_pool(query, candidates):
     random.shuffle(pool)
     return pool
 
-ABLATION_MODES = {
-    "base",          # sim only
-    "bm25",
-    "explicit",      # sim + msc + keyword
-    "citation",      # sim + citation signals
-    "all",            # sim + explicit + citation
-    "allbm25"       
-}
-EMBEDDING_MODES = {
-    "text",         
-    "metadata",   
-    "graph",     
-    "hybrid",    
-    "all"       
-}
 RANKERS = {
-    # "citation": lambda q, p, k, _, G: citation_rank(q, p, k),
-    # # "tfidf": lambda q, p, k, _, G: tfidf_rank(q, p, k),
-    # "bm25": lambda q, p, k, _, G: bm25_rank(q, p, k, mode="text"),
-    # # "bm25_metadata": lambda q, p, k, _, G: bm25_rank(q, p, k, mode="metadata"),
-    # "msf": lambda q, p, k, kw, G: msf_rank(q, p, kw, k),
-    # "dualenc": lambda q, p, k, _, G: dual_encoder_rank(q, p, k),
-    # "ppr": lambda q, p, k, _, G: ppr_rank(q, p, k, G),
-    # "colbert": lambda q, p, k, _, G: colbert_rank(q, p, k),
-    # "tmgnr_text": lambda q, p, k, _, G: tmgnr_rank(q, p, k, mode="text"),
-    # "tmgnr_metadata": lambda q, p, k, _, G: tmgnr_rank(q, p, k, mode="metadata"),
-    # "tmgnr_all": lambda q, p, k, _, G: tmgnr_rank(q, p, k, mode="all"),
-    # "tmgnr_hybrid": lambda q, p, k, _, G: tmgnr_rank(q, p, k, mode="hybrid"),
-    # "tmgnrx_base": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="base"),
-    # "tmgnrx_explicit": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="explicit"),
-    "tmgnrx_bm25": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="bm25"),
-    # "tmgnrx_citation": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="citation"),
-    # "tmgnrx_all": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="all")
-    "tmgnrx_allbm25": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="allbm25")
+    "citation": lambda q, p, k, _, G: citation_rank(q, p, k),
+    "bm25": lambda q, p, k, _, G: bm25_rank(q, p, k, mode="text"),
+    "dualenc": lambda q, p, k, _, G: dual_encoder_rank(q, p, k),
+    "ppr": lambda q, p, k, _, G: ppr_rank(q, p, k, G),
+    "colbert": lambda q, p, k, _, G: colbert_rank(q, p, k),
+    "tmgnrx_base": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="base"),
+    "tmgnrx_explicit": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="explicit"),
+    "tmgnrx_citation": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="citation"),
+    "tmgnrx_all": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="all")
 }
 
 runs = {name: [] for name in RANKERS}
