@@ -21,7 +21,7 @@ JSONL_PATH = Path("data/candidate-pool-latest.jsonl")
 ```
 Make sure the JSONL file exists at the specified path. Run the full precursor retrieval pipeline with:
 ```
-python src/run-all-precursor.py --out_dir output-0902 
+./run_all_precursor.sh 
 ```
 This will run both the proposed approach and all baselines as specified in the paper. The results will be saved in the specified output directory. As reference, our output is shared in the output folder.
 
