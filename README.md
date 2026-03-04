@@ -36,3 +36,6 @@ This includes:
 - Downloading zbMATH Open KG data via OAI-PMH.
 - Setting up the RDF triple store (with Virtuoso or Apache Fuseki)
 - Configuring the SPARQL endpoint
+
+
+**(complete readme to be updated after anonymous period concludes)**
