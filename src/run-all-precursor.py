@@ -27,6 +27,7 @@ random.seed(SEED)
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--out_dir", default="run-01/", help="Output directory")
+parser.add_argument("--temp", default="decay", help="Output directory")
 args = parser.parse_args()
 
 OUT_DIR = Path(args.out_dir) 
@@ -36,7 +37,8 @@ OUT_DIR.mkdir(parents=True, exist_ok=True)
 JSONL_PATH = Path("data/candidate-pool.jsonl")
 TOP_K = 50
 YEAR_GAP = 10 
-TEMP_MODEL = "decay" #gaussian, laplace
+# TEMP_MODEL = "gamma" #gaussian, laplace, decay, beta, gamma, lognormal
+TEMP_MODEL = args.temp
 
 ABLATION_MODES = {
     "base",          
@@ -248,13 +250,34 @@ def bm25_rank(query, pool, top_k, mode="all"):
     return [{"paper": pid, "rank": i + 1, "score": float(score)}
             for i, (pid, score) in enumerate(ranked[:top_k])]
 
-def temporal_hist_modeling(year_q, year_c, mode=TEMP_MODEL, mu=12, sigma=6, tau=25):
+# def temporal_hist_modeling(year_q, year_c, mode=TEMP_MODEL, mu=12, sigma=6, tau=25):
+#     """
+#     Summary
+#     Function	Peak	Symmetric	Decay type	Use case
+#     Gaussian	Yes	Yes	Quadratic	Prefer a specific year
+#     Laplace	Yes	Yes	Linear	Prefer a specific year (wider)
+#     exp(-dt/τ)	No	No	Exponential	Freshness / recency
+#     """
+#     dt = year_q - year_c
+#     if dt <= 0:
+#         return 0.0
+#     if mode == "gaussian":
+#         return math.exp(-((dt - mu) ** 2) / (2 * sigma ** 2))
+#     elif mode == "laplace":
+#         return math.exp(-abs(dt - mu) / sigma)
+#     elif mode == "decay":
+#         return math.exp(-dt / tau)
+#     else:
+#         raise ValueError("mode must be one of: gaussian, laplace, decay")
+
+def temporal_hist_modeling(year_q, year_c, mode="decay", mu=12, sigma=6, tau=25, alpha=2, beta=5, max_dt=50):
     """
     Summary
-    Function	Peak	Symmetric	Decay type	Use case
-    Gaussian	Yes	Yes	Quadratic	Prefer a specific year
-    Laplace	Yes	Yes	Linear	Prefer a specific year (wider)
-    exp(-dt/τ)	No	No	Exponential	Freshness / recency
+    Function        Peak   Symmetric   Decay type         Use case
+    Gaussian        Yes    Yes         Quadratic          Prefer a specific year
+    Laplace         Yes    Yes         Linear             Prefer a specific year (wider)
+    exp(-dt/τ)      No     No          Exponential        Freshness / recency
+    Beta            Yes    No          Rise + decay       Delay-before-influence modeling
     """
     dt = year_q - year_c
     if dt <= 0:
@@ -265,9 +288,17 @@ def temporal_hist_modeling(year_q, year_c, mode=TEMP_MODEL, mu=12, sigma=6, tau=
         return math.exp(-abs(dt - mu) / sigma)
     elif mode == "decay":
         return math.exp(-dt / tau)
+    elif mode == "beta":
+        # Normalize dt to [0,1]
+        x = min(dt / max_dt, 1.0)
+        return beta_pdf(x, alpha, beta)
+    elif mode == "gamma":
+        return gamma_pdf(dt)
+    elif mode == "lognormal":
+        return lognormal(dt)
     else:
-        raise ValueError("mode must be one of: gaussian, laplace, decay")
-
+        raise ValueError("mode must be one of: gaussian, laplace, decay, beta")
+        
 def get_msc(msc):
     msc_info = msc_lookup.get(msc)
     label = msc_info.get("short_title") if msc_info and msc_info.get("short_title") else msc
