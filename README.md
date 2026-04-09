@@ -23,7 +23,15 @@ Make sure the JSONL file exists at the specified path. Run the full precursor re
 ```
 ./run_all_precursor.sh 
 ```
-This will run both the proposed approach and all baselines as specified in the paper. The results will be saved in the specified directory. As reference, our output is shared in the [`output`](./output/) folder.
+This will run both the proposed approach and all baselines as specified in the paper. The results will be saved in the specified directory. As reference, our output is shared in the [`output`](./output/) folder. 
+
+To compute metric scores for all outputs, first update the output folder in [`run_metrics.sh`](run_metrics.sh), then execute:
+
+```
+./run_metrics.sh 
+```
+
+This will generate detailed evaluation metrics (e.g., nDCG, Recall) for the reports. 
 
 ### zbMATH Open KG Setting and Installation
 
