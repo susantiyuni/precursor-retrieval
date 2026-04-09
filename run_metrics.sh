@@ -9,4 +9,4 @@ set -e
 # chmod +x run_metrics.sh
 
 # Run the Python script
-python src/metrics.py --out_dir output-0902
+python src/metrics.py --out_dir output-gamma
