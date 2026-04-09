@@ -31,7 +31,7 @@ To compute metric scores for all outputs, first update the output folder in [`ru
 ./run_metrics.sh 
 ```
 
-This will generate detailed evaluation metrics (e.g., nDCG, Recall) for the reports. 
+This will generate detailed evaluation metrics (e.g., nDCG, Recall) and save the reports in the output folder, with filenames starting with `eval_`.
 
 ### zbMATH Open KG Setting and Installation
 
