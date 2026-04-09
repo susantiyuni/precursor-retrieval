@@ -26,7 +26,7 @@ np.random.seed(SEED)
 random.seed(SEED)
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--out_dir", default="run-2102-1/", help="Output directory")
+parser.add_argument("--out_dir", default="run-01/", help="Output directory")
 args = parser.parse_args()
 
 OUT_DIR = Path(args.out_dir) 
