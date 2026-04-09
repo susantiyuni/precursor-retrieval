@@ -13,7 +13,7 @@ args = parser.parse_args()
 
 # ================= CONFIG =================
 OUT_DIR = Path(args.out_dir)
-RELEVANCE_PATH = Path("candidate-pool-latest.jsonl")
+RELEVANCE_PATH = Path("candidate-pool.jsonl")
 
 METHOD_FILES = [
     "run_bm25.jsonl",
