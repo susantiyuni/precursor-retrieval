@@ -33,7 +33,7 @@ OUT_DIR = Path(args.out_dir)
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # ================= CONFIG =================
-JSONL_PATH = Path("data/candidate-pool-latest.jsonl")
+JSONL_PATH = Path("data/candidate-pool.jsonl")
 TOP_K = 50
 YEAR_GAP = 10 
 TEMP_MODEL = "decay" #gaussian, laplace
