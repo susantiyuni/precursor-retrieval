@@ -17,7 +17,7 @@ Some dependencies (e.g., PyTorch, ColBERT) may require additional system setup o
 Update the candidate pool location in the [`src/run-all-precursor.py`](./src/run-all-precursor.py):
 
 ```
-JSONL_PATH = Path("data/candidate-pool-latest.jsonl") 
+JSONL_PATH = Path("data/candidate-pool.jsonl") 
 ```
 Make sure the JSONL file exists at the specified path. Run the full precursor retrieval pipeline with:
 ```
