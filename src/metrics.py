@@ -25,6 +25,31 @@ METHOD_FILES = [
     "run_tmgnrx_citation.jsonl",
     "run_tmgnrx_explicit.jsonl",
     "run_tmgnrx_all.jsonl",
+
+    "run_tmgnrx_base_beta.jsonl",
+    "run_tmgnrx_citation_beta.jsonl",
+    "run_tmgnrx_explicit_beta.jsonl",
+    "run_tmgnrx_all_beta.jsonl",
+
+    "run_tmgnrx_base_decay.jsonl",
+    "run_tmgnrx_citation_decay.jsonl",
+    "run_tmgnrx_explicit_decay.jsonl",
+    "run_tmgnrx_all_decay.jsonl",
+
+    "run_tmgnrx_base_gaussian.jsonl",
+    "run_tmgnrx_citation_gaussian.jsonl",
+    "run_tmgnrx_explicit_gaussian.jsonl",
+    "run_tmgnrx_all_gaussian.jsonl",
+
+    "run_tmgnrx_base_laplace.jsonl",
+    "run_tmgnrx_citation_laplace.jsonl",
+    "run_tmgnrx_explicit_laplace.jsonl",
+    "run_tmgnrx_all_laplace.jsonl",
+
+    "run_tmgnrx_base_lognormal.jsonl",
+    "run_tmgnrx_citation_lognormal.jsonl",
+    "run_tmgnrx_explicit_lognormal.jsonl",
+    "run_tmgnrx_all_lognormal.jsonl",
 ]
 
 TOP_K_NDCG = 50
