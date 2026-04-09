@@ -47,6 +47,15 @@ ABLATION_MODES = {
     "all",            
 }
 
+TEMP_MODES = {
+    "decay",          
+    "beta",      # sim + metadata
+    "gamma",      # sim + citation signals
+    "gaussian",  
+    "lognormal",
+    "laplace",         
+}
+
 EMBEDDING_MODES = {
     "text",         
     "metadata",   
@@ -241,7 +250,7 @@ def tokenize(paper, mode="text"):
         raise ValueError("mode must be one of: text, metadata, all")
     return " ".join(parts).split()
 
-def bm25_rank(query, pool, top_k, mode="all"):
+def bm25_rank(query, pool, top_k, mode="text"):
     tokenized_docs = [tokenize(c, mode=mode) for c in pool]
     paper_ids = [c["paper"] for c in pool]
     bm25 = BM25Okapi(tokenized_docs)
@@ -269,6 +278,25 @@ def bm25_rank(query, pool, top_k, mode="all"):
 #         return math.exp(-dt / tau)
 #     else:
 #         raise ValueError("mode must be one of: gaussian, laplace, decay")
+
+def beta_pdf(x, alpha, beta):
+    """Compute Beta PDF manually (no scipy dependency)."""
+    if x <= 0 or x >= 1:
+        return 0.0
+    B = math.gamma(alpha) * math.gamma(beta) / math.gamma(alpha + beta)
+    return (x ** (alpha - 1) * (1 - x) ** (beta - 1)) / B
+
+def gamma_pdf(dt, k=2, theta=5):
+    if dt <= 0:
+        return 0.0
+    return (dt ** (k - 1) * math.exp(-dt / theta)) / \
+           (math.gamma(k) * theta ** k)
+
+def lognormal(dt, mu=2.5, sigma=0.5):
+    if dt <= 0:
+        return 0.0
+    return (1 / (dt * sigma * math.sqrt(2 * math.pi))) * \
+           math.exp(-((math.log(dt) - mu) ** 2) / (2 * sigma ** 2))
 
 def temporal_hist_modeling(year_q, year_c, mode="decay", mu=12, sigma=6, tau=25, alpha=2, beta=5, max_dt=50):
     """
@@ -298,7 +326,7 @@ def temporal_hist_modeling(year_q, year_c, mode="decay", mu=12, sigma=6, tau=25,
         return lognormal(dt)
     else:
         raise ValueError("mode must be one of: gaussian, laplace, decay, beta")
-        
+    
 def get_msc(msc):
     msc_info = msc_lookup.get(msc)
     label = msc_info.get("short_title") if msc_info and msc_info.get("short_title") else msc
@@ -425,10 +453,10 @@ def ppr_rank(query, pool, top_k, G):
     for c in pool:
         pid = f"p:{c['paper']}"
         score = pr.get(pid, 0.0)
-        time_weight = temporal_hist_modeling(query["year"], c["year"], mode=TEMP_MODEL)
-        if time_weight == 0.0:
-            continue
-        score = score * (WEIGHTS["delta"] * time_weight + (1 - WEIGHTS["delta"]))
+        # time_weight = temporal_hist_modeling(query["year"], c["year"], mode=TEMP_MODEL)
+        # if time_weight == 0.0:
+        #     continue
+        # score = score * (WEIGHTS["delta"] * time_weight + (1 - WEIGHTS["delta"]))
         ranked.append((c["paper"], score))
     ranked.sort(key=lambda x: -x[1])
     return [
@@ -461,8 +489,9 @@ def dual_encoder_rank(query, pool, top_k):
         {"paper": pid, "rank": i + 1, "score": float(score)}
         for i, (pid, score) in enumerate(ranked[:top_k]) ]
 
-def tmgnrx_rank(query, pool, kw_idf, top_k, mode="all"): #graph emb + temporal + ablation features
+def tmgnrx_rank(query, pool, kw_idf, top_k, mode="all", TEMP_MODEL="decay"): #graph emb + temporal + ablation features
     assert mode in ABLATION_MODES
+    assert TEMP_MODEL in TEMP_MODES
     q_emb = paper_embedding(query, mode="graph")
     query_refs = set(query.get("references", []))
     # compute BM25 scores once
@@ -470,6 +499,9 @@ def tmgnrx_rank(query, pool, kw_idf, top_k, mode="all"): #graph emb + temporal +
     paper_ids = [c["paper"] for c in pool]
     bm25 = BM25Okapi(tokenized_docs)
     bm25_scores = bm25.get_scores(tokenize(query, mode="metadata"))
+    max_score = max(bm25_scores) #normalization
+    if max_score > 0:
+        bm25_scores = [s / max_score for s in bm25_scores]  # scale to [0,1]
     ranked = []
     for c in pool:
         paper_id = c["paper"]
@@ -515,15 +547,15 @@ def save_run(path, data):
 def output_path(name):
     return OUT_DIR / f"run_{name}.jsonl"
 
-def build_candidate_pool(query, candidates):
+def build_candidate_pool(query, candidates, pool_un=150, pool_ci=50):
     uncited = sorted(
         (c for c in candidates if c.get("is_cited") == 0),
         key=lambda c: c.get("llm_score", 0),
-        reverse=True)[:90]
+        reverse=True)[:pool_un]
     cited = sorted(
         (c for c in candidates if c.get("is_cited") == 1),
         key=lambda c: c.get("llm_score", 0),
-        reverse=True)[:10]
+        reverse=True)[:pool_ci]
     cited = time_filtered_pool(query, cited)
     random.shuffle(uncited)
     random.shuffle(cited)
@@ -535,12 +567,42 @@ RANKERS = {
     "citation": lambda q, p, k, _, G: citation_rank(q, p, k),
     "bm25": lambda q, p, k, _, G: bm25_rank(q, p, k, mode="text"),
     "dualenc": lambda q, p, k, _, G: dual_encoder_rank(q, p, k),
-    "ppr": lambda q, p, k, _, G: ppr_rank(q, p, k, G),
+    "ppr": lambda q, p, k, _, G: ppr_rank(q, p, k, G), 
     "colbert": lambda q, p, k, _, G: colbert_rank(q, p, k),
-    "tmgnrx_base": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="base"),
-    "tmgnrx_explicit": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="explicit"),
-    "tmgnrx_citation": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="citation"),
-    "tmgnrx_all": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="all")
+    "tmgnrx_base": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="base", TEMP_MODEL=TEMP_MODEL),
+    "tmgnrx_explicit": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="explicit", TEMP_MODEL=TEMP_MODEL),
+    "tmgnrx_citation": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="citation", TEMP_MODEL=TEMP_MODEL),
+    "tmgnrx_all": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="all", TEMP_MODEL=TEMP_MODEL),
+
+    # "tmgnrx_base_gamma": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="base", TEMP_MODEL="gamma"),
+    # "tmgnrx_explicit_gamma": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="explicit", TEMP_MODEL="gamma"),
+    # "tmgnrx_citation_gamma": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="citation", TEMP_MODEL="gamma"),
+    # "tmgnrx_all_gamma": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="all", TEMP_MODEL="gamma"),
+
+    # "tmgnrx_base_beta": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="base", TEMP_MODEL="beta"),
+    # "tmgnrx_explicit_beta": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="explicit", TEMP_MODEL="beta"),
+    # "tmgnrx_citation_beta": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="citation", TEMP_MODEL="beta"),
+    # "tmgnrx_all_beta": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="all", TEMP_MODEL="beta"),
+
+    # "tmgnrx_base_decay": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="base", TEMP_MODEL="decay"),
+    # "tmgnrx_explicit_decay": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="explicit", TEMP_MODEL="decay"),
+    # "tmgnrx_citation_decay": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="citation", TEMP_MODEL="decay"),
+    # "tmgnrx_all_decay": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="all", TEMP_MODEL="decay"),
+
+    # "tmgnrx_base_laplace": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="base", TEMP_MODEL="laplace"),
+    # "tmgnrx_explicit_laplace": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="explicit", TEMP_MODEL="laplace"),
+    # "tmgnrx_citation_laplace": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="citation", TEMP_MODEL="laplace"),
+    # "tmgnrx_all_laplace": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="all", TEMP_MODEL="laplace"),
+
+    # "tmgnrx_base_gaussian": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="base", TEMP_MODEL="gaussian"),
+    # "tmgnrx_explicit_gaussian": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="explicit", TEMP_MODEL="gaussian"),
+    # "tmgnrx_citation_gaussian": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="citation", TEMP_MODEL="gaussian"),
+    # "tmgnrx_all_gaussian": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="all", TEMP_MODEL="gaussian"),
+
+    # "tmgnrx_base_lognormal": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="base", TEMP_MODEL="lognormal"),
+    # "tmgnrx_explicit_lognormal": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="explicit", TEMP_MODEL="lognormal"),
+    # "tmgnrx_citation_lognormal": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="citation", TEMP_MODEL="lognormal"),
+    # "tmgnrx_all_lognormal": lambda q, p, k, kw, G: tmgnrx_rank(q, p, kw, k, mode="all", TEMP_MODEL="lognormal"),
 }
 
 runs = {name: [] for name in RANKERS}
