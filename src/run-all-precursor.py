@@ -494,21 +494,21 @@ def tmgnrx_rank(query, pool, kw_idf, top_k, mode="all", TEMP_MODEL="decay"): #gr
     assert TEMP_MODEL in TEMP_MODES
     q_emb = paper_embedding(query, mode="graph")
     query_refs = set(query.get("references", []))
-    # compute BM25 scores once
-    tokenized_docs = [tokenize(c, mode="metadata") for c in pool]
+    # # compute BM25 scores once
+    # tokenized_docs = [tokenize(c, mode="metadata") for c in pool]
     paper_ids = [c["paper"] for c in pool]
-    bm25 = BM25Okapi(tokenized_docs)
-    bm25_scores = bm25.get_scores(tokenize(query, mode="metadata"))
-    max_score = max(bm25_scores) #normalization
-    if max_score > 0:
-        bm25_scores = [s / max_score for s in bm25_scores]  # scale to [0,1]
+    # bm25 = BM25Okapi(tokenized_docs)
+    # bm25_scores = bm25.get_scores(tokenize(query, mode="metadata"))
+    # max_score = max(bm25_scores) #normalization
+    # if max_score > 0:
+    #     bm25_scores = [s / max_score for s in bm25_scores]  # scale to [0,1]
     ranked = []
     for c in pool:
         paper_id = c["paper"]
         c_emb = paper_embedding(c, mode="graph")
         sim = float(np.dot(q_emb, c_emb))
         # 1. BM25 score
-        S_bm25 = bm25_scores[i]
+        # S_bm25 = bm25_scores[i]
         # 2. explicit signals
         S_msc = msc_similarity(query.get("mscs", []), c.get("msc_codes", []))
         S_kw  = keyword_similarity(query.get("keywords", []),c.get("keywords", []), kw_idf)
@@ -526,8 +526,8 @@ def tmgnrx_rank(query, pool, kw_idf, top_k, mode="all", TEMP_MODEL="decay"): #gr
             score += (
                 WEIGHTS["eta"]   * cite_score +
                 WEIGHTS["zeta"]  * bc_score)
-        if mode in {"bm25", "allbm25"}:
-            score += (WEIGHTS["beta"]  * S_bm25)
+        # if mode in {"bm25", "allbm25"}:
+        #     score += (WEIGHTS["beta"]  * S_bm25)
         # temporal weighting (kept identical across ablations)
         time_weight = temporal_hist_modeling(query["year"], c["year"], mode=TEMP_MODEL)
         if time_weight == 0.0:
