@@ -14,16 +14,18 @@ u.set_seed(SEED)
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--out_dir", default="runs_ltr01/", help="output directory")
-parser.add_argument("--feat_dir", default="data/sparql_feats.jsonl", help="sparql feats file")
+parser.add_argument("--inputf", default="data/sparql_feats.jsonl", help="sparql feats file")
+parser.add_argument("--feat", default="data/sparql_feats.jsonl", help="sparql feats file")
 parser.add_argument("--model", default="lgbm", help="ranking model")
 parser.add_argument("--ablation", default="all", help="ablation")
 args = parser.parse_args()
 
 OUT_DIR = Path(args.out_dir) 
 OUT_DIR.mkdir(parents=True, exist_ok=True)
-DATA_PATH = Path("data/candidate-pool.jsonl")
+# DATA_PATH = Path("data/candidate-pool.jsonl")
+DATA_PATH = Path(args.inputf) 
 # FEATURE_PATH = Path("data/sparql_feats.jsonl")
-FEATURE_PATH = Path(args.feat_dir) 
+FEATURE_PATH = Path(args.feat) 
 RANKING_MODEL = args.model
 ABLATION = args.ablation #all, all+minus_citation, all+minus_metadata...
 global_path = OUT_DIR / f"run_ltr_{ABLATION}.jsonl"
