@@ -282,14 +282,10 @@ for i, entry in enumerate(entries):
 
     logger.info("Building kw-idf...")
     kw_idf = u.build_kw_idf(pool)
-    G = None
-    # logger.info("Building local graph...")    
-    # G = build_local_graph(query, pool)
-
     # ---- RANKERS ----
     for name, rank_fn in RANKERS.items():
         logger.info(f"== {name.upper()} Rank ==")
-        ranked = rank_fn(query, pool, TOP_K, kw_idf, G)
+        ranked = rank_fn(query, pool, TOP_K, kw_idf, None)
         runs[name].append({
             "query_paper": query,
             "ranked_candidates": ranked,
