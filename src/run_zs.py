@@ -19,14 +19,20 @@ u.set_seed(SEED)
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--out_dir", default="run-zs01/", help="Output directory")
+parser.add_argument("--inputf", default="data/candidate-pool.jsonl", help="input file")
+parser.add_argument("--feat", default="data/sparql_feats.jsonl", help="sparql feats file")
 parser.add_argument("--temp", default=None, help="Output directory")
 # parser.add_argument("--funcmode", default='tm', help="Output directory")
 args = parser.parse_args()
 
 OUT_DIR = Path(args.out_dir) 
 OUT_DIR.mkdir(parents=True, exist_ok=True)
-DATA_PATH = Path("data/candidate-pool.jsonl")
-FEATURE_PATH = Path("data/sparql_feats.jsonl")
+# DATA_PATH = Path("data/candidate-pool.jsonl")
+# FEATURE_PATH = Path("data/sparql_feats.jsonl")
+# DATA_PATH = Path("data/candidate-pool.jsonl")
+DATA_PATH = Path(args.inputf) 
+# FEATURE_PATH = Path("data/sparql_feats.jsonl")
+FEATURE_PATH = Path(args.feat) 
 TOP_K = 50
 YEAR_GAP = 10 
 TEMP_MODEL = args.temp #gaussian, laplace, decay, beta, gamma, lognormal
