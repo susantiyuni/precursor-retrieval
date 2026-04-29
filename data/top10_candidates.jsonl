@@ -1,0 +1,750 @@
+{
+  "query_title": "Derivatives of normal functions in reverse mathematics",
+  "candidate_titles": [
+    "Computable aspects of the Bachmann-Howard principle",
+    "Herbrand analyses",
+    "\\(\\Pi_2^1\\)-logic. I: Dilators",
+    "\\(\\Pi_1^1\\)-comprehension as a well-ordering principle",
+    "The Veblen functions for computability theorists",
+    "Introduction to \\(\\Pi^1_2\\)-logic",
+    "\\(\\Sigma^1_1\\) and \\(\\Pi^1_1\\) transfinite induction",
+    "Equivalence of bar recursors in the theory of functionals of finite type",
+    "A categorical construction of Bachmann-Howard fixed points",
+    "Derivatives of normal functions and \\(\\omega \\)-models",
+    "Proof-theoretic investigations on Kruskal's theorem",
+    "A termination proof for epsilon substitution using partial derivations",
+    "Subsystems of second order arithmetic",
+    "On the relation between choice and comprehension principles in second order arithmetic",
+    "A note on ordinal exponentiation and derivatives of normal functions",
+    "Systems of predicative analysis",
+    "Arithmetic transfinite induction and recursive well-orderings",
+    "The proof-theoretic analysis of \\(\\Sigma_{1}^{1}\\) transfinite dependent choice",
+    "Herbrand's theorem and proof-theory",
+    "Theories and ordinals in proof theory"
+  ]
+}
+{
+  "query_title": "Arithmetical completeness theorems for monotonic modal logics",
+  "candidate_titles": [
+    "The finite inseparability of the first-order theory of diagonalisable algebras",
+    "The first axiomatization of relevant logic",
+    "Arithmetical interpretations and Kripke frames of predicate modal logic of provability",
+    "Redundancies in the Hilbert-Bernays derivability conditions for Gödel's second incompleteness theorem",
+    "Things that can and things that cannot be done in PRA",
+    "The logic of provability",
+    "Rosser provability and normal modal logics",
+    "Provability interpretations of modal logic",
+    "Fragments of arithmetic",
+    "On the formulas of Peano arithmetic which are provably closed under modus ponens",
+    "Arithmetical soundness and completeness for \\(\\Sigma_{2}\\) numerations",
+    "Modal logic. An introduction",
+    "Feasible operations on proofs: the logic of proofs for bounded arithmetic",
+    "On Rosser's provability predicate",
+    "The pure logic of necessitation",
+    "The logic of provability",
+    "Rosser sentences",
+    "A unification-theoretic method for investigating the \\(k\\)-provability problem",
+    "Generic generalized Rosser fixed points",
+    "Derivability conditions on Rosser's provability predicates"
+  ]
+}
+{
+  "query_title": "Local collection and end-extensions of models of compositional truth",
+  "candidate_titles": [
+    "Fragments of arithmetic",
+    "Axiomatic theories of truth",
+    "Models of Peano arithmetic",
+    "The minimal e-degree problem in fragments of Peano arithmetic",
+    "Deflationary truth and pathologies",
+    "Toward model theory through recursive saturation",
+    "Model theory of the regularity and reflection schemes",
+    "Metamathematics of first-order arithmetic",
+    "Bounded induction and satisfaction classes",
+    "Arithmetizing uniform \\(NC\\)",
+    "Comparing inductive and circular definitions: Parameters, complexity and games",
+    "Sub-arithmetical ultrapowers: A survey",
+    "Full satisfaction classes and recursive saturation",
+    "More on induction in the language with a satisfaction class",
+    "Deciding inseparability and conservative extensions in the description logic",
+    "Nonstandard definability",
+    "Construction of satisfaction classes for nonstandard models",
+    "Truth and feasible reducibility",
+    "On \\(\\Sigma _ 1\\) and \\(\\Pi _ 1\\) sentences and degrees of interpretability",
+    "\\(\\omega\\)-consistency and reflection"
+  ]
+}
+{
+  "query_title": "Hereditary interval algebras and cardinal characteristics of the continuum",
+  "candidate_titles": [
+    "Evasion and prediction -- the Specker phenomenon and Gross spaces",
+    "Meager-nowhere dense games. I: \\(n\\)-tactics",
+    "Algebras that are hereditarily interval.",
+    "Pseudo treealgebras",
+    "Four and more",
+    "On subalgebras of Boolean interval algebras",
+    "Analytic gaps",
+    "\\(\\omega_1\\) and \\(-\\omega_1\\) may be the only minimal uncountable linear orders",
+    "Set theory.",
+    "Sweet \\& sour and other flavours of ccc forcing notions",
+    "Combinatorial cardinal characteristics of the continuum",
+    "Pseudo-trees and Boolean algebras",
+    "Remarks on superatomic Boolean algebras",
+    "Compact spaces, elementary submodels, and the countable chain condition",
+    "OCA and automorphisms of \\({\\mathfrak P}(\\omega)/\\text{fin}\\)",
+    "Trees and linearly ordered sets",
+    "Set theory. An introduction to independence proofs. 2nd print",
+    "Nowhere dense set mappings on the generalized linear continua",
+    "Handbook of Boolean algebras. Volumes 1-3. Ed. with the cooperation of Robert Bonnet",
+    "On cardinal invariants and metrizability of topological inverse semigroups"
+  ]
+}
+{
+  "query_title": "Martin's maximum\\(^{++}\\) implies Woodin's axiom \\((*)\\)",
+  "candidate_titles": [
+    "Bounded Martin's maximum with an asterisk",
+    "Martin's maximum, saturated ideals, and nonregular ultrafilters. I",
+    "The core model for almost linear iterations",
+    "Weak measure extension axioms",
+    "\\(\\omega_1\\) and \\(-\\omega_1\\) may be the only minimal uncountable linear orders",
+    "The extender algebra and vagaries of \\(\\Sigma^2_1\\) absoluteness",
+    "Forcing over models of determinacy",
+    "A stationary-tower-free proof of the derived model theorem",
+    "Mutually stationary sequences of sets and the non-saturation of the non-stationary ideal on \\(P_x(\\lambda)\\)",
+    "A \\(\\Pi_ 2^ 1\\) singleton incompatible with \\(0^ \\#\\)",
+    "Universally Baire sets of reals",
+    "OCA and automorphisms of \\({\\mathfrak P}(\\omega)/\\text{fin}\\)",
+    "Regularity properties of definable sets of reals",
+    "Cardinal transfer properties in extender models",
+    "Remarks on superatomic Boolean algebras",
+    "The pointwise view of determinacy: arboreal forcings, measurability, and weak measurability",
+    "The higher infinite. Large cardinals in set theory from their beginnings.",
+    "Sweet \\& sour and other flavours of ccc forcing notions",
+    "Measurable cardinals and the continuum hypothesis",
+    "PFA implies \\(\\text{AD}^{L(\\mathbb{R})}\\)"
+  ]
+}
+{
+  "query_title": "Aspects of topological approaches for data science",
+  "candidate_titles": [
+    "Computing multidimensional persistence",
+    "Local homology transfer and stratification learning",
+    "Intersecting Sperner families and their convex hulls",
+    "1-skeleta, Betti numbers, and equivariant cohomology",
+    "Ripser: efficient computation of Vietoris-Rips persistence barcodes",
+    "Two-graphs and trees",
+    "Random hypergraphs and topological gelation criterion for crosslinked polymer systems",
+    "Posets, clique graphs and their homotopy type",
+    "Graph isomorphism problem",
+    "Complexes of discrete Morse functions",
+    "Almost all webs are not rank-perfect",
+    "Minimizing the jump number for partially ordered sets: A graph-theoretic approach",
+    "Decomposition of pointwise finite-dimensional persistence modules.",
+    "Topology and data",
+    "Computing persistent homology",
+    "Approximating matchings in parallel",
+    "Recognizing intersection graphs of linear uniform hypergraphs",
+    "Classification of the maximal cliques of size \\(\\geq q+4\\) in the quadratic forms graph in odd characteristic",
+    "The embedded homology of hypergraphs and applications",
+    "Using unavoidable set of trees to generalize Kruskal's theorem"
+  ]
+}
+{
+  "query_title": "Nonvanishing Betti numbers of edge ideals of weakly chordal graphs",
+  "candidate_titles": [
+    "Sequentially Cohen-Macaulay edge ideals",
+    "A problem on the exponent of primitive digraphs",
+    "Algorithmic graph theory and perfect graphs",
+    "Matchings, coverings, and Castelnuovo-Mumford regularity",
+    "The projective dimension of the edge ideal of a very well-covered graph",
+    "Inherited \\(LU\\)-factorizations of matrices",
+    "Isospectral flows preserving some centrosymmetric structures",
+    "Edge ideals: algebraic and combinatorial properties",
+    "On Stanley-Reisner rings",
+    "Generating bicliques of a graph in lexicographic order",
+    "Threshold graphs and related topics",
+    "Switching classes of directed graphs and H-equivalent matrices",
+    "A characterization of the dependence of the Riemannian metric on the curvature tensor by Young symmetrizers",
+    "Positive semidefinite matrices with a given sparsity pattern",
+    "Optimizing weakly triangulated graphs",
+    "Top homology of hypergraph matching complexes, \\(p\\)-cycle complexes and Quillen complexes of symmetric groups.",
+    "Characteristic-independence of Betti numbers of graph ideals",
+    "Bi-embeddings of the projective space PG(3, 2)",
+    "Max-algebra: The linear algebra of combinatorics?",
+    "On powers of circular arc graphs and proper circular arc graphs"
+  ]
+}
+{
+  "query_title": "Vertex-minimal planar graphs with a prescribed automorphism group",
+  "candidate_titles": [
+    "Normal minimal Cayley digraphs of abelian groups",
+    "On \\((v,k,\\lambda{})\\) graphs and designs with trivial automorphism group",
+    "Herstellung von Graphen mit vorgegebener abstrakter Gruppe.",
+    "The classification of minimal graphs with given abelian automorphism group",
+    "On the minimum order of graphs with given group",
+    "\\(W_ v\\) cycles in plane graphs",
+    "Separating double rays in locally finite planar graphs",
+    "The least number of edges for graphs having dihedral automorphism group",
+    "Edge-disjoint paths in planar graphs",
+    "A lower bound to the complexity of Euclidean and rectilinear matching algorithms",
+    "Small cycle double covers of 4-connected planar graphs",
+    "Smallest graphs with given generalized quaternion automorphism group",
+    "Vertex minimal planar cyclic graphs",
+    "Symmetric cubic graphs of small girth",
+    "Regular maps from Cayley graphs. I: Balanced Cayley maps",
+    "Vertex-minimal graphs with dihedral symmetry. II",
+    "The least number of edges for graphs having symmetric automorphism group",
+    "On the minimum order of graphs with given automorphism group",
+    "Graphs with given automorphism group and few edge orbits",
+    "Extremal problems for graphs with dihedral automorphism group"
+  ]
+}
+{
+  "query_title": "On minimum generalized degree distance index of cyclic graphs",
+  "candidate_titles": [
+    "A characterization of minimizable metrics in the multifacility location problem",
+    "Generalized degree distance of strong product of graphs",
+    "Unicyclic and bicyclic graphs having minimum degree distance",
+    "A distance-regular graph with bipartite geodetically closed subgraphs.",
+    "Drawing plane graphs nicely",
+    "On separation and adjacency problems for perfectly matchable subgraph polytopes of a graph",
+    "Some extremal properties of the degree distance of a graph",
+    "Minimum generalized degree distance of \\(n\\)-vertex tricyclic graphs",
+    "Maximum genus, girth and connectivity",
+    "A problem on the exponent of primitive digraphs",
+    "The realization graph of a degree sequence with majorization gap 1 is Hamiltonian",
+    "Euclid, Calkin \\& Wilf --- playing with rationals",
+    "A note on degree distance of 4-cyclic graphs",
+    "A note on large graphs of diameter two and given maximum degree",
+    "Bi-embeddings of the projective space PG(3, 2)",
+    "A note on tricyclic graphs with minimum degree distance",
+    "On the spectrum, the growth, and the diameter of a graph",
+    "Compactness results in extremal graph theory",
+    "The Steiner ratio for five points",
+    "Recognizing intersection graphs of linear uniform hypergraphs"
+  ]
+}
+{
+  "query_title": "Hyperfinite graphings and combinatorial optimization",
+  "candidate_titles": [
+    "Generalized edge packings",
+    "Every minor-closed property of sparse graphs is testable",
+    "Isomorphisms and automorphisms of graph coverings",
+    "Recognizing intersection graphs of linear uniform hypergraphs",
+    "Structural properties of positive periodic discrete-time linear systems: Canonical forms",
+    "Sur un nouvel invariant des graphes et un critère de planarité. (On a new graph invariant and a planarity criterion)",
+    "The tight span of an antipodal metric space. I: combinatorial properties",
+    "Efficient testing of large graphs",
+    "Equivalence of permutation polytopes corresponding to strictly supermodular functions",
+    "Compact graphings",
+    "Trees, tight extensions of metric spaces, and the cohomological dimension of certain groups: A note on combinatorial properties of metric spaces",
+    "The Bergman complex of a matroid and phylogenetic trees",
+    "Max-algebra: The linear algebra of combinatorics?",
+    "Articulation sets in linear perfect matrices. I: Forbidden configurations and star cutsets",
+    "Hyperfinite graph limits",
+    "The complexity of generalized clique covering",
+    "Amenability, hyperfiniteness, and isoperimetric inequalities",
+    "Certain free products of graph operator algebras",
+    "Cohen-Macaulay admissible clutters",
+    "Szemerédi's regularity Lemma for matrices and sparse graphs"
+  ]
+}
+{
+  "query_title": "An Erdős-Kac law for local solubility in families of varieties",
+  "candidate_titles": [
+    "Introduction to analytic and probabilistic number theory",
+    "Manin's conjecture for a singular sextic del Pezzo surface",
+    "Capacity theory and arithmetic intersection theory",
+    "The Gaussian law of errors in the theory of additive number theoretic functions.",
+    "Non-ramified Brauer group of homogeneous spaces with finite stabilisers",
+    "Pseudo-split fibers and arithmetic surjectivity",
+    "Existence of rational points on smooth projective varieties",
+    "A local-global principle for densities",
+    "Counting curves on the plane blown up in three collinear points",
+    "Sums of twisted GL(2) \\(L\\)-functions over function fields.",
+    "Pair correlation of zeros, primes in short intervals and exponential sums over primes",
+    "Intrinsic heights of stable varieties and abelian varieties",
+    "Probabilistic number theory. II: Central limit theorems",
+    "Asymptotic value distribution of additive functions defined on the symmetric group",
+    "The probability theory of additive arithmetic functions",
+    "Zero-cycles on self-product of modular curves",
+    "The generic irreducibility of the numerator of the zeta function in a family of curves with large monodromy",
+    "A moduli approach to quadratic \\(\\mathbb{Q}\\)-curves realizing projective mod \\(p\\) Galois representations",
+    "Sieving and the Erdős-Kac theorem",
+    "Singular matrices and a uniform bound for congruence groups of \\(SL_ n(\\mathbb{Z})\\)"
+  ]
+}
+{
+  "query_title": "On arithmetic progressions in finite fields",
+  "candidate_titles": [
+    "Variations of the primitive normal basis theorem",
+    "Long binary narrow-sense BCH codes are normal",
+    "A Hardy field extension of Szemerédi's theorem",
+    "The primitive normal basis theorem -- without a computer",
+    "Four consecutive primitive elements in a finite field",
+    "Character sums and intersection cohomology complexes associated to the space of square matrices",
+    "\\(\\mathbb Z_8\\)-cyclic codes and quadratic residue codes",
+    "On the length of arithmetic progressions in linear combinations of \\(S\\)-units",
+    "Character sum constructions of constrained error-correcting codes",
+    "A p-adic limit formula for Gauss sums",
+    "On the groups of units of finite commutative chain rings.",
+    "Normal bases and primitive elements over finite fields",
+    "On Weil's proof of the bound for Kloosterman sums.",
+    "Topics in Galois fields",
+    "Gauss sum of index 4. II: Non-cyclic case",
+    "On the distribution of powers in finite fields",
+    "Primitive normal bases for finite fields",
+    "Pairs of primitive roots",
+    "Kloosterman sum identities over \\(\\mathbb F_{2^{m}}\\).",
+    "Elliptic Gauss sums and applications to point counting"
+  ]
+}
+{
+  "query_title": "From Pólya fields to Pólya groups (II) non-Galois number fields",
+  "candidate_titles": [
+    "Class group relations from Burnside ring idempotents",
+    "The narrow class groups of the \\(\\mathbb Z_{17}\\)- and \\(\\mathbb Z_{19}\\)-extensions over the rational field",
+    "From Pólya fields to Pólya groups. I: Galois extensions",
+    "Dihedral CM fields with class number one",
+    "The canonical fractional Galois ideal at \\(s = 0\\)",
+    "Estimating the 2-rank of cubic fields by Selmer groups of elliptic curves",
+    "On the history of the study of ideal class groups",
+    "Abelianization of the second nonabelian Galois cohomology",
+    "Global restrictions on ramification in number fields",
+    "Computation of integral bases in certain \\(S_ n\\) extensions of \\({\\mathbb{Q}}\\)",
+    "About the embedding of a number field in a Pólya field",
+    "A Golod-Shafarevich equality and \\(p\\)-tower groups",
+    "Note on the class-number of the maximal real subfield of a cyclotomic field",
+    "Hilbert-Speiser number fields for a prime \\(p\\) inside the \\(p\\)-cyclotomic field",
+    "On the Hasse norm principle for certain generalized dihedral extensions over \\(\\mathbb{Q}\\)",
+    "Integer valued polynomials over a number field",
+    "Steinitz classes of extensions with Galois group \\(A_4\\)",
+    "Hida families, \\(p\\)-adic heights, and derivatives",
+    "Jacobi and Kummer's ideal numbers",
+    "On the structure of the \\(K_ 2\\) of the ring of integers in a number field"
+  ]
+}
+{
+  "query_title": "\\(p\\)-converse to a theorem of Gross-Zagier, Kolyvagin and Rubin",
+  "candidate_titles": [
+    "The \\(p\\)-adic Gross-Zagier formula for elliptic curves at supersingular primes",
+    "The Tate-Shafarevich group for elliptic curves with complex multiplication",
+    "Infinite descent on elliptic curves",
+    "Nonvanishing theorems for L-functions of modular forms and their derivatives",
+    "Heegner divisors, \\(L\\)-functions and harmonic weak Maass forms",
+    "On the field of definition for modularity of CM elliptic curves",
+    "The ``main conjectures'' of Iwasawa theory for imaginary quadratic fields",
+    "Determining \\(L\\)-functions by twists.",
+    "Companion forms and Kodaira-Spencer theory",
+    "Mazur's conjecture on higher Heegner points.",
+    "The rationality of Stark-Heegner points over genus fields of real quadratic fields",
+    "Special values of anticyclotomic \\(L\\)-functions.",
+    "Selmer groups and the indivisibility of Heegner points",
+    "A classical Diophantine problem and modular forms of weight \\(3/2\\)",
+    "\\(p\\)-adic Rankin \\(L\\)-series and rational points on CM elliptic curves",
+    "Generalized Heegner cycles and \\(p\\)-adic Rankin \\(L\\)-series. With an appendix by Brian Conrad",
+    "Higher order operations in Deligne cohomology",
+    "A moduli approach to quadratic \\(\\mathbb{Q}\\)-curves realizing projective mod \\(p\\) Galois representations",
+    "Class numbers of quadratic fields, Hasse invariants of elliptic curves, and the supersingular polynomial",
+    "The boundary of the Eisenstein symbol"
+  ]
+}
+{
+  "query_title": "Effect of increasing the ramification on pseudo-deformation rings",
+  "candidate_titles": [
+    "Companion forms over totally real fields. II",
+    "On the conductors of mod \\(\\ell\\) Galois representations coming from modular forms",
+    "Image of pseudo-representations and coefficients of modular forms modulo \\(p\\)",
+    "On a variation of Mazur's deformation functor",
+    "Structure of Hecke algebras of modular forms modulo \\(p\\)",
+    "On Gouvêa's conjecture on controlling the conductor",
+    "Pseudodeformations",
+    "A local-to-global principle for deformations of Galois representations.",
+    "The Fontaine-Mazur conjecture for \\(\\text{GL}_2\\)",
+    "On the density of modular points in universal deformation spaces",
+    "On modular representations of \\(\\text{Gal}(\\overline{\\mathbb Q}/\\mathbb Q)\\) arising from modular forms",
+    "Explicit universal deformations of even Galois representations",
+    "The generic fiber of the universal deformation space associated to a tame Galois representation",
+    "Automorphic realization of residual Galois representations",
+    "Non-optimal levels of a reducible mod \\(\\ell \\) modular representation",
+    "Families of Galois representations - increasing the ramification",
+    "Characterization of characters and pseudo-characters",
+    "Deforming Galois representations",
+    "Galois cohomology",
+    "The prime-to-adjoint principle and unobstructed Galois deformations in the Borel case"
+  ]
+}
+{
+  "query_title": "Cochain level May-Steenrod operations",
+  "candidate_titles": [
+    "Homology of generalized partition posets",
+    "A finitely presented \\(E_{\\infty}\\)-prop. I: Algebraic context",
+    "Lots of Hopf algebras",
+    "On the cohomology of Seifert and graph manifolds",
+    "Coalgebraic tensor product and homology operations",
+    "General homology and cohomology theories. Current state and typical applications",
+    "Bar and cobar constructions. I",
+    "Combinatorial models for real configuration spaces and \\(E_ n\\)-operads",
+    "Homology rings of homotopy associative \\(H\\)-spaces",
+    "Differential graded versus simplicial categories",
+    "Empty components in strong shape theory",
+    "Homotopical approach to strong shape or completion theory",
+    "Higher order operations in Deligne cohomology",
+    "\\(E_{\\infty}\\)-model for a mapping space",
+    "Homotopy nilpotency in \\(p\\)-regular loop spaces",
+    "A property of the degree filtration on polynomial functors",
+    "The homotopy category of pseudofunctors and translation cohomology",
+    "The rank filtration and Robinson's complex",
+    "A general algebraic approach to Steenrod operations",
+    "Infinity structure of Poincaré duality spaces. With an appendix by Dennis Sullivan"
+  ]
+}
+{
+  "query_title": "Loop homotopy of 6-manifolds over 4-manifolds",
+  "candidate_titles": [
+    "An infinite-dimensional torsion-free \\(\\text{FP}_{\\infty}\\) group",
+    "Torsion in homotopy groups",
+    "\\(p\\)-primary homotopy decompositions of looped Stiefel manifolds and their exponents",
+    "The topology of the space of symplectic balls in rational 4-manifolds",
+    "On the homotopy type of CW complexes with the form \\(S^ 2\\cup e^ 4\\cup e^ 6\\)",
+    "Comparing the homotopy types of the components of \\(\\text{Map} (S^4, B\\text{SU}(2))\\)",
+    "The double suspension and exponents of the homotopy groups of spheres",
+    "The loop space homotopy type of simply-connected four-manifolds and their generalizations",
+    "Sur certaines équivalences d'homotopie. (On certain homotopy equivalences)",
+    "Classification of homotopy Wall's manifolds",
+    "Formal and coformal spaces",
+    "The rational homotopy type of a blow-up in the stable case",
+    "On the spaces of self homotopy equivalences for fibre spaces. II",
+    "Loop coproducts in string topology and triviality of higher genus TQFT operations",
+    "Holomorphic curves in loop groups",
+    "Compact Kähler manifolds with elliptic homotopy type",
+    "Homotopy nilpotency in \\(p\\)-regular loop spaces",
+    "The functor \\(A^{\\min}\\) on \\(p\\)-local spaces",
+    "The loop-product spectral sequence",
+    "\\(H\\)-spaces as direct product factors of loop spaces."
+  ]
+}
+{
+  "query_title": "Monoids related to self homotopy equivalences of fibred product",
+  "candidate_titles": [
+    "A measure of the deviation from there being fibrations between a pair of compact manifolds",
+    "A Brown-Gersten spectral sequence for the K-theory of varieties with isolated singularities",
+    "Self-closeness numbers of finite cell complexes",
+    "Spaces of homotopy self-equivalences. A survey",
+    "The normalizer of the Weyl group",
+    "Cohomological results in monoid and category theory via classifying spaces",
+    "Self-homotopy equivalences of product spaces",
+    "Reducibility of self-homotopy equivalences",
+    "Weak factorizations, fractions and homotopies",
+    "The group of self-homotopy equivalences - a survey",
+    "On the spaces of self homotopy equivalences for fibre spaces. II",
+    "Une interprétation géométrique des nombres de Radon-Hurwitz",
+    "Direct images of sheaves of differentials and the Atiyah class",
+    "Nerves, fibers and homotopy groups",
+    "On the group \\(aut_\\sharp(X_{1} \\times \\ldots \\times X_{n})\\)",
+    "On the cohomology of Seifert and graph manifolds",
+    "Certain numbers on the groups of self-homotopy equivalences",
+    "On the groups \\({\\mathcal E}(X\\times Y)\\) and \\({\\mathcal E}^ B_ B(X\\times_ BY)\\)",
+    "Triangulated categories without models",
+    "Self fibre homotopy equivalences of fibred products"
+  ]
+}
+{
+  "query_title": "Towards the \\(K(2)\\)-local homotopy groups of \\(Z\\)",
+  "candidate_titles": [
+    "\\(v_ 1-\\) and \\(v_ 2-\\)periodicity in stable homotopy theory",
+    "Higher dimensional crossed modules of algebras",
+    "On the periodic \\(v_2\\)-self-map of \\(A_1\\)",
+    "Morava K-theory of double loop spaces of spheres",
+    "Differential geometry of gerbes",
+    "On real-oriented Johnson-Wilson cohomology",
+    "Congruences between modular forms given by the divided \\(\\beta \\) family in homotopy theory",
+    "A class of 2-local finite spectra which admit a \\(v_2^1\\)-self-map",
+    "Sur le \\(n\\)-dual du \\(n\\)-ème spectre de Brown-Gitler. (On the \\(n\\)-dual of the \\(n\\)-th Brown-Gitler spectrum)",
+    "On the iterated complex transfer",
+    "A classification of K-local spectra",
+    "The convergence of \\(\\widetilde{\\gamma}_s (b_0h_n- h_1b_{n-1})\\)",
+    "On the existence of a \\(v_2^{32}\\)-self map on \\(M(1,4)\\) at the prime 2",
+    "Computing the first few Betti numbers of semi-algebraic sets in single exponential time",
+    "Topological resolutions in \\(K(2)\\)-local homotopy theory at the prime 2",
+    "Towards the homotopy of the \\(K(2)\\)-local Moore spectrum at \\(p=2\\)",
+    "Cohomology of \\(\\Aut(F_n)\\) in the \\(p\\)-rank two case",
+    "On the cohomology of Seifert and graph manifolds",
+    "\\(v_ n\\)-elements in ring spectra and applications to bordism theory",
+    "A suspension spectral sequence for \\(v_ n\\)-periodic homotopy groups"
+  ]
+}
+{
+  "query_title": "The Omega spectrum for mod 2 \\(KO\\)-theory",
+  "candidate_titles": [
+    "Additive \\(K\\)-theory and crystalline cohomology",
+    "A classification of K-local spectra",
+    "The Hopf rings for \\(KO\\) and \\(KU\\)",
+    "Lectures on the Eilenberg-Moore spectral sequence",
+    "Periodic equivariant real \\(K\\)-theories have rational Tate theory",
+    "A Brown-Gersten spectral sequence for the K-theory of varieties with isolated singularities",
+    "Transfer maps and the cyclotomic trace",
+    "On the iterated complex transfer",
+    "The Hopf ring of Morava K-theory",
+    "On the Hopf ring for \\(ER(n)\\)",
+    "A note on the equivariant Dold-Thom theorem",
+    "\\(E_{\\infty}\\)-spaces and injective \\(\\Gamma\\)-spaces",
+    "On the connection theory of extensions of transitive Lie groupoids",
+    "The maximal codegree of the quaternionic projective spaces",
+    "\\(v_ n\\)-elements in ring spectra and applications to bordism theory",
+    "Principal bundles on the affine line",
+    "On the integral cohomology of wreath products",
+    "Field theory configuration spaces for connective ko-theory",
+    "\\(T\\)-homotopy and refinement of observation. II: Adding new \\(T\\)-homotopy equivalences",
+    "On the Adams-Novikov spectral sequence and products of \\(\\beta\\)-elements"
+  ]
+}
+{
+  "query_title": "Maximal inequalities and some applications",
+  "candidate_titles": [
+    "Upper bounds for the \\(L_ p\\)-norms of martingales",
+    "Necessary conditions for nonlinear functionals of Gaussian processes to satisfy central limit theorems",
+    "The central limit theorem for stochastic integrals with respect to Levy processes",
+    "On sufficient equivalence conditions of Gaussian measures corresponding to homogeneous fields whose spectral densities have real zeros",
+    "A characterization of dimension free concentration in terms of transportation inequalities",
+    "White noise theory of robust nonlinear filtering with correlated state and observation noises",
+    "The minimum maximum of a continuous martingale with given initial and terminal laws",
+    "General theory of Markov processes",
+    "Multivariate hazard rate orders",
+    "Markov processes and nonsymmetric Dirichlet forms without regularity",
+    "Perpetual integrals via random time changes",
+    "Generalization of an inequality of Birnbaum and Marshall, with applications to growth rates for submartingales",
+    "Inequalities for moments of order statistics and characterizations of distributions",
+    "Extrapolation and interpolation of quasi-linear operators on martingales",
+    "Embeddability of infinitely divisible distributions on linear Lie groups",
+    "Inequalities of the Brunn-Minkowski type for Gaussian measures",
+    "Realizable monotonicity for continuous-time Markov processes",
+    "Existence and estimates of moments for Lévy-type processes",
+    "Upper and lower bounds for stochastic processes. Modern methods and classical problems",
+    "Growth and Hölder conditions for the sample paths of Feller processes"
+  ]
+}
+{
+  "query_title": "Local convergence of critical random trees and continuous-state branching processes",
+  "candidate_titles": [
+    "The Sperner property for posets: A probabilistic approach",
+    "Simply generated trees, conditioned Galton-Watson trees, random allocations and condensation",
+    "Branching processes in Lévy processes: The exploration process",
+    "Local limits of large Galton-Watson trees rerooted at a random vertex",
+    "On asymptotics of eigenvectors of large sample covariance matrix",
+    "Distributions of jumps in a continuous-state branching process with immigration",
+    "Random trees, Lévy processes and spatial branching processes",
+    "On the maximum of a branching process",
+    "Continuum random trees and branching processes with immigration",
+    "Local convergence of large critical multi-type Galton-Watson trees and applications to random maps",
+    "Conditioning Galton-Watson trees on large maximal outdegree",
+    "Probabilistic and fractal aspects of Lévy trees",
+    "Some long-range dependence processes arising from fluctuations of particle systems",
+    "The continuum random tree. III",
+    "Measure-valued branching Markov processes",
+    "Asymptotic properties of expansive Galton-Watson trees",
+    "On distribution tails and expectations of maxima in critical branching processes",
+    "Local limits of conditioned Galton-Watson trees: the infinite spine case",
+    "Local limits of conditioned Galton-Watson trees: the condensation case",
+    "Critical multi-type Galton-Watson trees conditioned to be large"
+  ]
+}
+{
+  "query_title": "Derivation of coupled KPZ-Burgers equation from multi-species zero-range processes",
+  "candidate_titles": [
+    "Stochastic integral representation theorem for quantum semimartingales.",
+    "System of interacting particles and nonlinear diffusion reflecting in a domain with sticky boundary",
+    "Energy solutions of KPZ are unique",
+    "Nonlinear fluctuations of weakly asymmetric interacting particle systems",
+    "Large scale dynamics of interacting particles",
+    "Solving the KPZ equation",
+    "The reversible measures of multi-dimensional Ginzburg-Landau type continuum model",
+    "Information reduction via level crossings in a credit risk models",
+    "The Kardar-Parisi-Zhang equation and universality class",
+    "High density limit theorems for nonlinear chemical reactions with diffusion",
+    "Generalized Brownian functionals and the Feynman integral",
+    "Rate of weak convergence of the finite element method for the stochastic heat equation with additive noise",
+    "The Bernoulli sieve revisited",
+    "The \\(1 + 1\\)-dimensional Kardar-Parisi-Zhang equation and its universality class",
+    "Characterization of stationary measures for one-dimensional exclusion processes.",
+    "Diffusion with interactions and collisions between coloured particles and the propagation of chaos",
+    "Fermion martingales",
+    "Equivalence of ensembles for two-species zero-range invariant measures",
+    "Smooth solutions of non-linear stochastic partial differential equations driven by multiplicative noises",
+    "Scaling limits of interacting particle systems"
+  ]
+}
+{
+  "query_title": "Large deviations of subgraph counts for sparse Erdős-Rényi graphs",
+  "candidate_titles": [
+    "Uniform large and moderate deviations for functional empirical processes",
+    "A generalization of Sauer's lemma",
+    "Upper tails for edge eigenvalues of random graphs",
+    "Decomposition of mean-field Gibbs distributions into product measures",
+    "Some asymptotic results for the number of generalized records",
+    "A semigroup approach to Poisson approximation with respect to the point metric",
+    "Asymptotic Feynman-Kac formulae for large symmetrised systems of random walks",
+    "Nonlinear large deviations",
+    "\\(U\\)-statistics in Banach spaces",
+    "Uniform convergence of Vapnik-Chervonenkis classes under ergodic sampling",
+    "Inference for thinned point processes, with application to Cox processes",
+    "Gaussian-width gradient complexity, reverse log-Sobolev inequalities and nonlinear large deviations",
+    "Diameters of random bipartite graphs",
+    "Asymptotic value distribution of additive functions defined on the symmetric group",
+    "Queues with superposition arrival processes in heavy traffic",
+    "Equivalence of functional limit theorems for stationary point processes and their Palm distributions",
+    "An approximate version of Sidorenko's conjecture",
+    "Some limit theorems on the eigenvectors of large dimensional sample covariance matrices",
+    "The large deviation principle for the Erdős-Rényi random graph",
+    "A comparison of homogenization and large deviations, with applications to wavefront propagation"
+  ]
+}
+{
+  "query_title": "Moments of continuous-state branching processes with or without immigration",
+  "candidate_titles": [
+    "Indeterminate moment problems related to birth and death processes with quartic rates",
+    "Compact interface property for symbiotic branching",
+    "A stochastic log-Laplace equation.",
+    "Itô's stochastic calculus: its surprising power for applications",
+    "An \\(\\infty\\)-dimensional inhomogeneous Langevin's equation",
+    "Moment formulas for multitype continuous state and continuous time branching process with immigration",
+    "A limit theorem for the Galton-Watson branching processes with immigration",
+    "Skew convolution semigroups and affine Markov processes",
+    "Measure-valued branching Markov processes",
+    "Distributions of jumps in a continuous-state branching process with immigration",
+    "Stochastic analysis without probability: study of some basic tools",
+    "Stochastic equations, flows and measure-valued processes",
+    "Genealogical processes for Fleming-Viot models with selection and recombination",
+    "Degenerate stochastic differential equations for catalytic branching networks",
+    "On a robust version of the integral representation formula of nonlinear filtering",
+    "On transformations of linear diffusions into continuous state branching",
+    "On sequential estimation for branching processes with immigration.",
+    "Branching processes with immigration and related limit theorems",
+    "On the first passage times for Markov processes with monotone convex transition kernels",
+    "Stochastic equations of non-negative processes with jumps"
+  ]
+}
+{
+  "query_title": "A new algorithm design technique for hard problems",
+  "candidate_titles": [
+    "Average-case complexity",
+    "A survey on the linear ordering problem for weighted or unweighted tournaments",
+    "The evaluation of an alternative sum with applications to the analysis of some data structures",
+    "Average case complete problems",
+    "Computing transformation semigroups",
+    "Pattern minimisation in cutting stock problems",
+    "The Berlekamp-Massey algorithm and linear recurring sequences over a factorial domain",
+    "Complete divisibility problems for slowly utilized oracles",
+    "Inapproximability of edge-disjoint paths and low congestion routing on undirected graphs",
+    "Lambek calculus is NP-complete",
+    "Almost every set in exponential time is P-bi-immune",
+    "Reconstructing polyatomic structures from discrete X-rays: NP-completeness proof for three atoms",
+    "On isomorphisms and density of NP and other complete sets",
+    "Temporal interaction of information and belief",
+    "Generating bicliques of a graph in lexicographic order",
+    "A lower bound to the complexity of Euclidean and rectilinear matching algorithms",
+    "Theory of computational complexity",
+    "Rigid E-unification: NP-completeness and applications to equational matings",
+    "Bi-immune sets for complexity classes",
+    "On implicit systems of differential equations."
+  ]
+}
+{
+  "query_title": "Equivalence of pushdown automata via first-order grammars",
+  "candidate_titles": [
+    "Undecidability of bisimilarity by defender's forcing",
+    "Fast equivalence-checking for normed context-free processes",
+    "Bisimulation equivalence of first-order grammars",
+    "Bisimulation equivalence of first-order grammars is ACKERMANN-complete",
+    "Deciding DPDA equivalence is primitive recursive",
+    "Equivalences of pushdown systems are hard",
+    "Propositional dynamic logic of nonregular programs",
+    "Decidability of bisimulation equivalence for processes generating context-free languages",
+    "On bisimilarity of higher-order pushdown automata: undecidability at order two",
+    "Equations over finite sets of words and equivalence problems in automata theory",
+    "Lyndon traces and shuffle algebras",
+    "Decidability of DPDA language equivalence via first-order grammars",
+    "Deciding semantic finiteness of pushdown processes and first-order grammars w.r.t. bisimulation equivalence",
+    "BPA bisimilarity is EXPTIME-hard",
+    "A polynomial algorithm for deciding bisimilarity of normed context-free processes",
+    "Branching bisimilarity checking for PRS",
+    "Second-order simple grammars",
+    "The bisimulation problem for equational graphs of finite out-degree",
+    "An elementary bisimulation decision procedure for arbitrary context-free processes",
+    "Communication and concurrency"
+  ]
+}
+{
+  "query_title": "Approximating the smallest 2-vertex connected spanning subgraph of a directed graph",
+  "candidate_titles": [
+    "Lower bounds on two-terminal network reliability",
+    "Computers and intractability. A guide to the theory of NP-completeness",
+    "Combinatorial algorithms for data migration to minimize average completion time",
+    "Finding strong bridges and strong articulation points in linear time",
+    "An \\(o(\\log^2 k)\\)-approximation algorithm for the \\(k\\)-vertex connected spanning subgraph problem",
+    "Approximating the minimum equivalent digraph",
+    "Commuting birth-and-death processes",
+    "The diameter of protean graphs",
+    "CONVODE: A REDUCE package for solving differential equations",
+    "Testing 2-vertex connectivity and computing pairs of vertex-disjoint \\(s\\)-\\(t\\) paths in digraphs",
+    "On proportions of pre-involutions in finite classical groups.",
+    "Using unavoidable set of trees to generalize Kruskal's theorem",
+    "A lower bound to the complexity of Euclidean and rectilinear matching algorithms",
+    "Expected parallel time and sequential space complexity of graph and digraph problems",
+    "Improved approximation algorithms for biconnected subgraphs via better lower bounding techniques",
+    "On graphs preserving rectilinear shortest paths in the presence of obstacles",
+    "Inapproximability of edge-disjoint paths and low congestion routing on undirected graphs",
+    "Computing 2-connected components and maximal 2-connected subgraphs in directed graphs: an experimental study",
+    "A linear time \\(\\frac{5}{3}\\)-approximation for the minimum strongly-connected spanning subgraph problem",
+    "Invariant forms, associated bundles and Calabi-Yau metrics"
+  ]
+}
+{
+  "query_title": "On the termination and structural termination problems for counter machines with incrementing errors",
+  "candidate_titles": [
+    "Reversal-bounded nondeterministic multicounter machines and complementation",
+    "More really is different",
+    "Revisiting Ackermann-hardness for lossy counter machines and reset Petri nets",
+    "On the termination problem for counter machines with incrementing errors",
+    "On termination and invariance for faulty channel machines",
+    "While-programs with nondeterministic assignments and the logic ALNA",
+    "On the power of alternation in automata theory",
+    "On the complexities of selected satisfiability and equivalence queries over Boolean formulas and inclusion queries over hulls",
+    "Things that can and things that cannot be done in PRA",
+    "Computability and complexity theory.",
+    "Lossy counter machines decidability cheat sheet",
+    "Unreliable channels are easier to verify than perfect channels",
+    "Computation, hypercomputation, and physical science",
+    "Languages accepted by systolic \\(Y\\)-tree automata: Structural characterizations",
+    "Undecidable problems in unreliable computations.",
+    "Fine hierarchies and m-reducibilities in theoretical computer science",
+    "On explicating the concept `the power of an arithmetical theory'",
+    "Lambek calculus is NP-complete",
+    "Computation: finite and infinite machines",
+    "Space measures for storage modification machines"
+  ]
+}
+{
+  "query_title": "Automatic complexity of Fibonacci and tribonacci words",
+  "candidate_titles": [
+    "Combinatorics of Hall trees and Hall words",
+    "Factorization forests of finite height",
+    "Notes on equational theories of relations",
+    "Fixed point languages of rational transductions",
+    "On the complexity of automatic complexity",
+    "On cube-free \\(\\omega\\)-words generated by binary morphisms",
+    "Lyndon traces and shuffle algebras",
+    "Invertible substitutions on a three-letter alphabet.",
+    "Powers in a class of \\(\\mathcal A\\)-strict standard episturmian words",
+    "Periodic D0L languages",
+    "Repetitions in the Fibonacci infinite word",
+    "Nondeterministic automatic complexity of overlap-free and almost square-free words",
+    "Nonuniform complexity and the randomness of certain complete languages",
+    "Exchange of three intervals and Sturmian sequences",
+    "Equations over finite sets of words and equivalence problems in automata theory",
+    "Semigroups and the self-similar structure of the flipped Tribonacci substitution",
+    "Some properties of the Tribonacci sequence",
+    "Automatic complexity of strings",
+    "The varieties of languages corresponding to the varieties of finite band monoids",
+    "Geometry of the common dynamics of flipped Pisot substitutions"
+  ]
+}
