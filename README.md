@@ -13,16 +13,16 @@ pip install -r requirements.txt
 Some dependencies (e.g., PyTorch, ColBERT) may require additional system setup or GPU support. Install according to your supported system resources and environment.
 
 ### Running Precursor Retrieval
-Make sure the JSONL file exists at the specified path. Run the full precursor retrieval pipeline with:
+Make sure the data JSONL files exist at the specified path. Run the full precursor retrieval pipeline with:
 #### Zero-shot setting
 ```
-./run_zs.sh 
+./run_all_zs.sh 
 ```
 #### LTR setting
 ```
-./run_ltr.sh 
+./run_all_ltr.sh 
 ```
-This will run both the proposed approach and all baselines as specified in the paper. The results will be saved in the specified directory. As reference, our output is shared in the [`output`](./output/) folder. 
+This will run both the proposed approach (with ablations) and all baselines as specified in the paper. The results will be saved in the specified directory. As reference, our output is shared in the [`output`](./output/) folder. 
 
 To compute metric scores for all outputs, first update the output folder in [`run_metrics.sh`](run_metrics.sh), then execute:
 
