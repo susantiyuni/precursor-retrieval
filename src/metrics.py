@@ -1,3 +1,5 @@
+# python src-ltr/metrics.py --out_dir runs_ce/
+
 import json
 import math
 from pathlib import Path
@@ -13,44 +15,100 @@ args = parser.parse_args()
 
 # ================= CONFIG =================
 OUT_DIR = Path(args.out_dir)
-RELEVANCE_PATH = Path("candidate-pool.jsonl")
+RELEVANCE_PATH = Path("data/candidate-pool.jsonl")
 
 METHOD_FILES = [
-    "run_bm25.jsonl",
-    "run_citation.jsonl",
-    "run_ppr.jsonl",
-    "run_colbert.jsonl",
-    "run_dualenc.jsonl",
-    "run_tmgnrx_base.jsonl",
-    "run_tmgnrx_citation.jsonl",
-    "run_tmgnrx_explicit.jsonl",
-    "run_tmgnrx_all.jsonl",
+    #zs
+    # "run_bm25.jsonl",
+    # "run_citation.jsonl",
+    # "run_dualenc.jsonl",
+    # "run_ppr.jsonl",
+    # "run_colbert.jsonl",
+    # "run_tmgnrx_base.jsonl",
+    # "run_tmgnrx_citation.jsonl",
+    # "run_tmgnrx_explicit.jsonl",
+    # "run_tmgnrx_all.jsonl",
 
-    "run_tmgnrx_base_beta.jsonl",
-    "run_tmgnrx_citation_beta.jsonl",
-    "run_tmgnrx_explicit_beta.jsonl",
-    "run_tmgnrx_all_beta.jsonl",
+    # "run_tmgnrxv4_base_gamma.jsonl",
+    # "run_tmgnrxv4_citation_gamma.jsonl",
+    # "run_tmgnrxv4_explicit_gamma.jsonl",
+    # "run_tmgnrxv4_all_gamma.jsonl",
 
-    "run_tmgnrx_base_decay.jsonl",
-    "run_tmgnrx_citation_decay.jsonl",
-    "run_tmgnrx_explicit_decay.jsonl",
-    "run_tmgnrx_all_decay.jsonl",
+    # "run_tmgnrxv4_base_beta.jsonl",
+    # "run_tmgnrxv4_citation_beta.jsonl",
+    # "run_tmgnrxv4_explicit_beta.jsonl",
+    # "run_tmgnrxv4_all_beta.jsonl",
 
-    "run_tmgnrx_base_gaussian.jsonl",
-    "run_tmgnrx_citation_gaussian.jsonl",
-    "run_tmgnrx_explicit_gaussian.jsonl",
-    "run_tmgnrx_all_gaussian.jsonl",
+    # "run_tmgnrxv4_base_decay.jsonl",
+    # "run_tmgnrxv4_citation_decay.jsonl",
+    # "run_tmgnrxv4_explicit_decay.jsonl",
+    # "run_tmgnrxv4_all_decay.jsonl",
 
-    "run_tmgnrx_base_laplace.jsonl",
-    "run_tmgnrx_citation_laplace.jsonl",
-    "run_tmgnrx_explicit_laplace.jsonl",
-    "run_tmgnrx_all_laplace.jsonl",
+    # "run_tmgnrxv4_base_gaussian.jsonl",
+    # "run_tmgnrxv4_citation_gaussian.jsonl",
+    # "run_tmgnrxv4_explicit_gaussian.jsonl",
+    # "run_tmgnrxv4_all_gaussian.jsonl",
 
-    "run_tmgnrx_base_lognormal.jsonl",
-    "run_tmgnrx_citation_lognormal.jsonl",
-    "run_tmgnrx_explicit_lognormal.jsonl",
-    "run_tmgnrx_all_lognormal.jsonl",
-]
+    # "run_tmgnrxv4_base_laplace.jsonl",
+    # "run_tmgnrxv4_citation_laplace.jsonl",
+    # "run_tmgnrxv4_explicit_laplace.jsonl",
+    # "run_tmgnrxv4_all_laplace.jsonl",
+
+    # "run_tmgnrxv4_base_lognormal.jsonl",
+    # "run_tmgnrxv4_citation_lognormal.jsonl",
+    # "run_tmgnrxv4_explicit_lognormal.jsonl",
+    # "run_tmgnrxv4_all_lognormal.jsonl",
+
+    # "run_tmgnrxv3_base_gamma.jsonl",
+    # "run_tmgnrxv3_citation_gamma.jsonl",
+    # "run_tmgnrxv3_explicit_gamma.jsonl",
+    # "run_tmgnrxv3_all_gamma.jsonl",
+
+    # "run_tmgnrxv3_base_beta.jsonl",
+    # "run_tmgnrxv3_citation_beta.jsonl",
+    # "run_tmgnrxv3_explicit_beta.jsonl",
+    # "run_tmgnrxv3_all_beta.jsonl",
+
+    # "run_tmgnrxv3_base_decay.jsonl",
+    # "run_tmgnrxv3_citation_decay.jsonl",
+    # "run_tmgnrxv3_explicit_decay.jsonl",
+    # "run_tmgnrxv3_all_decay.jsonl",
+
+    # "run_tmgnrxv3_base_gaussian.jsonl",
+    # "run_tmgnrxv3_citation_gaussian.jsonl",
+    # "run_tmgnrxv3_explicit_gaussian.jsonl",
+    # "run_tmgnrxv3_all_gaussian.jsonl",
+
+    # "run_tmgnrxv3_base_laplace.jsonl",
+    # "run_tmgnrxv3_citation_laplace.jsonl",
+    # "run_tmgnrxv3_explicit_laplace.jsonl",
+    # "run_tmgnrxv3_all_laplace.jsonl",
+
+    # "run_tmgnrxv3_base_lognormal.jsonl",
+    # "run_tmgnrxv3_citation_lognormal.jsonl",
+    # "run_tmgnrxv3_explicit_lognormal.jsonl",
+    # "run_tmgnrxv3_all_lognormal.jsonl",
+
+
+    #ltr
+    # "run_dt_all.jsonl",
+    # "run_dt_all+minus_citation.jsonl",
+    # "run_dt_all+minus_gating.jsonl",
+    # "run_dt_all+minus_metadata.jsonl",
+    # "run_dt_all+minus_sim.jsonl",
+    # "run_dt_all+minus_trace_cited.jsonl",
+    # "run_dt_all+minus_trace_sem.jsonl",
+    # "run_dt_all+minus_trace_social.jsonl",
+    # "run_dt_all+minus_trace_struct.jsonl",
+    # "run_dt_all+minus_sparql.jsonl",
+    # "run_dt_uncited_opt.jsonl"
+    "run_ltr_base.jsonl",
+    "run_ltr_base+plus_metadata.jsonl",
+    "run_ltr_base+plus_citation.jsonl",
+    "run_ltr_base+plus_gating.jsonl",
+    "run_ltr_base+plus_metadata+plus_citation.jsonl",
+    "run_ltr_base+plus_metadata+plus_citation+plus_gating.jsonl",
+    ]
 
 TOP_K_NDCG = 50
 TOP_K_RECALL = 50
@@ -58,7 +116,6 @@ STRICT_THRESHOLD = 0.7
 NORMAL_THRESHOLD = 0.5
 
 # ================= LOGGING =================
-
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -212,7 +269,8 @@ for method_file in METHOD_FILES:
         for line in f:
             row = json.loads(line)
 
-            qid = row["query_paper"]["paper"]
+            qid = row["query_paper"]["paper"] 
+            # qid = row["query_paper"]
             if qid not in gold:
                 logger.debug(f"Skipping qid {qid} (not in gold)")
                 continue
