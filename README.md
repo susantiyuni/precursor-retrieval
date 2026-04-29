@@ -13,15 +13,14 @@ pip install -r requirements.txt
 Some dependencies (e.g., PyTorch, ColBERT) may require additional system setup or GPU support. Install according to your supported system resources and environment.
 
 ### Running Precursor Retrieval
-
-Update the candidate pool location in the [`src/run-all-precursor.py`](./src/run-all-precursor.py):
-
-```
-JSONL_PATH = Path("data/candidate-pool.jsonl") 
-```
 Make sure the JSONL file exists at the specified path. Run the full precursor retrieval pipeline with:
+#### Zero-shot setting
 ```
-./run_all_precursor.sh 
+./run_zs.sh 
+```
+#### LTR setting
+```
+./run_ltr.sh 
 ```
 This will run both the proposed approach and all baselines as specified in the paper. The results will be saved in the specified directory. As reference, our output is shared in the [`output`](./output/) folder. 
 
