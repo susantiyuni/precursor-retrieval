@@ -23,12 +23,15 @@ u.set_seed(SEED)
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--out_dir", default="run-bl01/", help="Output directory")
+parser.add_argument("--inputf", default="data/candidate-pool.jsonl", help="input file")
 parser.add_argument("--temp", default="gaussian", help="Output directory")
 args = parser.parse_args()
 
 OUT_DIR = Path(args.out_dir) 
 OUT_DIR.mkdir(parents=True, exist_ok=True)
-DATA_PATH = Path("data/candidate-pool.jsonl")
+# DATA_PATH = Path("data/candidate-pool.jsonl")
+DATA_PATH = Path(args.inputf) 
+
 TOP_K = 50
 YEAR_GAP = 10 
 TEMP_MODEL = args.temp
