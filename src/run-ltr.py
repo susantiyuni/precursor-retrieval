@@ -1,230 +1,243 @@
-import json
-import argparse
+import json, argparse, logging
+from datetime import datetime
 import numpy as np
 from pathlib import Path
-from tqdm import tqdm
-
-import torch
-from torch.utils.data import Dataset, DataLoader
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
-from rank_loss import RankLoss
-
-device = "cuda" if torch.cuda.is_available() else "cpu"
-print(f"Using device: {device}")
+from collections import defaultdict
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.utils import shuffle
+from lightgbm import LGBMRanker
 
 import utils as u
-u.set_seed(66)
-u.set_deterministic()
+SEED = 66
+u.set_seed(SEED)
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--out_dir", default="runs_ce/", help="Output directory")
-parser.add_argument("--model_name", default="distilbert-base-uncased")
-parser.add_argument("--batch_size", type=int, default=1)
-parser.add_argument("--epochs", type=int, default=1)
-parser.add_argument("--lr", type=float, default=5e-5)
-parser.add_argument('--loss_type', type=str, default='lambda_loss') #list_net #rank_net,
-# pointwise_rmse
+parser.add_argument("--out_dir", default="runs_ltr01/", help="output directory")
+parser.add_argument("--feat_dir", default="data/sparql_feats.jsonl", help="sparql feats file")
+parser.add_argument("--model", default="lgbm", help="ranking model")
+parser.add_argument("--ablation", default="all", help="ablation")
 args = parser.parse_args()
 
-OUT_DIR = Path(args.out_dir)
+OUT_DIR = Path(args.out_dir) 
 OUT_DIR.mkdir(parents=True, exist_ok=True)
-
 DATA_PATH = Path("data/candidate-pool.jsonl")
-FEATURE_PATH = Path("data/sparql_feats.jsonl")
+# FEATURE_PATH = Path("data/sparql_feats.jsonl")
+FEATURE_PATH = Path(args.feat_dir) 
+RANKING_MODEL = args.model
+ABLATION = args.ablation #all, all+minus_citation, all+minus_metadata...
+global_path = OUT_DIR / f"run_ltr_{ABLATION}.jsonl"
 TOP_K = 50
-DATA_LIMIT = 100
 
-print(f"\n===== {args.model_name} {args.loss_type} =====")
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+log_path = OUT_DIR / f"run_{timestamp}.log"
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(message)s",
+    handlers=[
+        logging.FileHandler(log_path, mode="w", encoding="utf-8"),
+        logging.StreamHandler(),  # keep console output
+    ],)
+config = {
+    "DATA_PATH": str(DATA_PATH),
+    "FEATURE_PATH": str(FEATURE_PATH),
+    "TOP_K": TOP_K,
+    "ABLATION": str(ABLATION),
+    "MODEL": str(RANKING_MODEL),
+    "OUT_DIR": str(OUT_DIR),
+    "OUT_FILE": str(global_path)
+    }
+logging.info("CONFIG:\n%s", json.dumps(config, indent=2))
+logger = logging.getLogger(__name__)
+logger.info("## START! ##")
 
-# ================================
-# DATASET
-# ================================
-class ListwiseDataset(Dataset):
-    def __init__(self, entries, leave_out_idx, tokenizer):
-        self.entries = []
-        self.tokenizer = tokenizer
+def l2norm(x):
+    return x / (np.linalg.norm(x) + 1e-8)
 
-        for i, entry in enumerate(entries):
-            if i == leave_out_idx:
-                continue
-            self.entries.append(entry)
+def parse_ablation_mode(mode): # "all_minus_sparql+minus_trace_social"
+    return set(mode.split("+"))
 
-    def __len__(self):
-        return len(self.entries)
+taken = parse_ablation_mode(ABLATION)
+logger.info(f"{taken}")
 
-    def __getitem__(self, idx):
-        entry = self.entries[idx]
+def build_full_feature(c, query_p, sim_threshold=0.6, mode=ABLATION, kw_idf=None):
+    disabled = parse_ablation_mode(mode)
+    taken = parse_ablation_mode(mode)
 
-        q = u.build_query_text(entry["query_paper"])
-        # print (q)
-        candidates = entry["candidates"]
+    feats = []
+    # ===== Base =====
+    paper_emb = u.paper_embedding(c, mode="graph")
+    qpaper_emb = u.paper_embedding(query_p, mode="graph")
+    temp = u.temporal_features(query_p["year"], c["year"])
+    embedding_sim, sim_text, sim_graph = u.embedding_similarity(query_p, c)
+    feats.extend([
+        paper_emb,
+        qpaper_emb,
+        temp,
+    ])
+
+    # ===== Similarity ===== 
+    # if "minus_sim" not in disabled:
+    feats.append(np.array([embedding_sim, sim_text, sim_graph], dtype=float))
+
+    # ===== Sparql ===== 
+    cited_sparql, uncited_sparql = u.split_sparql_features(c["sparql_features"])
+    cited_sparql = np.log1p(cited_sparql)
+    uncited_sparql = np.log1p(uncited_sparql)
+    # if "minus_sparql" not in disabled:
+    feats.extend([cited_sparql, uncited_sparql])
+
+    # ===== Trace =====
+    trace_sem = l2norm(u.trace_embedding(c, "semantic"))
+    trace_cited = l2norm(u.trace_embedding(c, "cited"))
+    trace_struct = l2norm(u.trace_embedding(c, "structural"))
+    trace_social = l2norm(u.trace_embedding(c, "social"))
+
+    # if "minus_trace_cited" not in disabled: #harmful
+    #     feats.append(trace_cited)
+    # if "minus_trace_struct" not in disabled:
+    feats.append(trace_struct)
+    # if "minus_trace_sem" not in disabled:
+    feats.append(trace_sem)
+    # if "minus_trace_social" not in disabled:
+    feats.append(trace_social)
+
+    # ===== Metadata =====
+    S_msc, overlap = u.msc_similarity(query_p.get("mscs", []), c.get("msc_codes", []))
+    S_kw = u.keyword_similarity(query_p.get("keywords", []), c.get("keywords", []), kw_idf)
+    # if "minus_metadata" not in disabled:
+    if "plus_metadata" in taken:
+        feats.append(np.array([S_msc, S_kw], dtype=float))
+
+    # ===== Citation =====
+    citation_strength = (
+        2.0 * c["sparql_features"].get("direct_path", 0) +
+        1.0 * c["sparql_features"].get("co_citation_path", 0) +
+        1.0 * c["sparql_features"].get("bib_coupling_path", 0)
+    )
+    is_cited = int(c.get("is_cited", 0))
+    # if "minus_citation" not in disabled:
+    if "plus_citation" in taken:
+        feats.append(np.array([citation_strength, is_cited], dtype=float))
+
+    # ===== Gating =====
+    # if "minus_gating" not in disabled:
+    if "plus_gating" in taken:
+        high_sim_no_cite = float((embedding_sim > sim_threshold) and (not is_cited))
+        sim_x_citation = embedding_sim * citation_strength
+        sim_x_uncited = embedding_sim * (1 - is_cited)
+        cited_mass = np.linalg.norm(cited_sparql)
+        uncited_mass = np.linalg.norm(uncited_sparql)
+        block_ratio = cited_mass / (uncited_mass + 1e-6)
+        gating = np.array([
+            embedding_sim,
+            high_sim_no_cite,
+            sim_x_citation,
+            sim_x_uncited,
+            # cited_mass,
+            # uncited_mass,
+            block_ratio
+        ], dtype=float)
+        feats.append(gating)
+    return np.concatenate(feats)
+
+def build_ltr_dataset(entries, leave_out_idx, kw_idf):
+    X, y, group = [], [], []
+    for i, entry in enumerate(entries):
+        if i == leave_out_idx:
+            continue
+        query_p = entry["query_paper"]
         candidates = sorted(
             entry["candidates"],
             key=lambda c: c["llm_score"],
-            reverse=True
-        )[:DATA_LIMIT]
-
-        # print (u.build_candidate_text(candidates[0]))
-        # sys.exit()
-
-        texts = [u.build_candidate_text(c) for c in candidates]        
+            reverse=True)
+        group.append(len(candidates))
         scores = [c["llm_score"] for c in candidates]
-        # labels = normalize_labels(scores) #for ranknet better?
-        labels = u.quantize_labels(scores)
-
-        enc = self.tokenizer(
-            [q] * len(texts),
-            texts,
-            padding=True,
-            truncation=True,
-            max_length=128,
-            return_tensors="pt"
-        )
-
-        return {
-            "input_ids": enc["input_ids"],             # [n, L]
-            "attention_mask": enc["attention_mask"],   # [n, L]
-            "labels": torch.tensor(labels, dtype=torch.float)
-        }
+        labels = u.quantize_labels_per_query(scores)
+        for c, y_i in zip(candidates, labels):
+            # X.append(build_full_feature(c, query_p))
+            X.append(build_full_feature(c, query_p, kw_idf=kw_idf))
+            y.append(int(y_i))
+    return np.array(X), np.array(y), group
 
 # ================================
-# TRAIN
+# TRAIN LGBM RANKER
 # ================================
-def train_model(dataset, model, tokenizer):
-
-    loader = DataLoader(dataset, batch_size=args.batch_size, shuffle=True, collate_fn=lambda x: x[0])
-    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr)
-    loss_function = getattr(RankLoss, args.loss_type)
-
-    model.train()
-
-    for epoch in range(args.epochs):
-        losses = []
-
-        for batch in tqdm(loader, desc=f"Epoch {epoch}"):
-
-            input_ids = batch["input_ids"].to(device)        # [N, L]
-            attention_mask = batch["attention_mask"].to(device)
-            labels = batch["labels"].to(device)              # [N]
-
-            outputs = model(
-                input_ids=input_ids,
-                attention_mask=attention_mask
-            )
-
-            logits = outputs.logits.squeeze(-1)              # [N]
-
-            mask = (labels != -100)
-            logits = logits.masked_fill(~mask, -1e9)
-
-            loss = loss_function(
-                logits.unsqueeze(0),   # NOW correct: [1, N]
-                labels.unsqueeze(0)
-            )
-
-            loss.backward()
-            optimizer.step()
-            optimizer.zero_grad(set_to_none=True)
-
-            losses.append(loss.item())
-
-        print(f"Epoch {epoch} loss: {np.mean(losses):.4f}")
-
+def train_lgbm_ranker(X, y, group):
+    model = LGBMRanker(
+        objective="lambdarank",
+        metric="ndcg",
+        n_estimators=300,
+        learning_rate=0.03,
+        num_leaves=15,
+        min_data_in_leaf=10,
+        min_gain_to_split=0.01,
+        feature_fraction=0.7,
+        bagging_fraction=0.8,
+        bagging_freq=1,
+    )
+    model.fit(X, y, group=group)
     return model
 
 # ================================
-# RANK
+# RANK/INFERENCE WITH LGBM
 # ================================
-def rank(model, tokenizer, query, candidates):
-
-    model.eval()
-
-    q = u.build_query_text(query)
-    candidates = sorted(
-        candidates,
-        key=lambda c: c["llm_score"],
-        reverse=True
-    )[:DATA_LIMIT]
-
-    texts = [u.build_candidate_text(c) for c in candidates]
-
-    enc = tokenizer(
-        [q] * len(texts),
-        texts,
-        padding=True,
-        truncation=True,
-        max_length=256,
-        return_tensors="pt"
-    )
-
-    enc = {k: v.to(device) for k, v in enc.items()}
-
-    with torch.no_grad():
-        scores = model(**enc).logits.squeeze(-1).cpu().numpy()
-
+def rank_lgbm(model, candidates, query_p, kw_idf):
+    X = np.array([
+        # extract_feature_vector(c["sparql_features"])
+        build_full_feature(c, query_p, kw_idf=kw_idf)
+        for c in candidates
+    ])
+    scores = model.predict(X)
     ranked = sorted(zip(candidates, scores), key=lambda x: -x[1])
-
-    return [
-        {
-            "paper": c["paper"],
+    return [{ "paper": c["paper"],
             "score": float(s),
-            "rank": i + 1
-        }
-        for i, (c, s) in enumerate(ranked[:TOP_K])
-    ]
+            "rank": i + 1}
+        for i, (c, s) in enumerate(ranked[:TOP_K])]
 
 # ================================
-# LOO EVAL
+# LOO EVALUATION
 # ================================
 def run_loo():
     entries = u.load_data(DATA_PATH, FEATURE_PATH)
-    tokenizer = AutoTokenizer.from_pretrained(args.model_name)
+    # logging.info (entries[0]["candidates"][0]) #sanity check merged data
     all_results = []
-
     for leave_out in range(len(entries)):
-        model = AutoModelForSequenceClassification.from_pretrained(
-            args.model_name,
-            num_labels=1
-        ).to(device)
-
-        print(f"\n===== LOO {leave_out} =====")
-
-        dataset = ListwiseDataset(entries, leave_out, tokenizer)
-
-        model = train_model(dataset, model, tokenizer)
-
+        query_p = entries[leave_out]["query_paper"]
+        logging.info (f"\n===== LOO {leave_out} {query_p['year']} =====")
         test_entry = entries[leave_out]
+        candidates = test_entry["candidates"]
+        # candidates = test_entry["candidate_pool"]
 
-        ranked = rank(
-            model,
-            tokenizer,
-            test_entry["query_paper"],
-            test_entry["candidates"]
-        )
+        if RANKING_MODEL in ['lgbm']:
+          kw_idf = u.build_kw_idf(candidates)
+          X, y, group = build_ltr_dataset(entries, leave_out, kw_idf)
+          model_lgbm = train_lgbm_ranker(X, y, group)
+          ranked = rank_lgbm(model_lgbm, candidates, query_p, kw_idf)
 
-        print("\nTop results:")
-        for r in ranked[:5]:
-            print(r)
+        elif RANKING_MODEL in ['pw']:
+          Xp, yp = build_pairwise_dataset(entries, leave_out)
+          model_pw, scaler_pw = train_pairwise(Xp, yp)
+          ranked = rank_pairwise(model_pw, scaler_pw, candidates, query_p)
 
-        output = {
-            "query_paper": test_entry["query_paper"],
-            "ranked_candidates": ranked
-        }
+        logging.info(f"\nTop Ranked Precursors: {test_entry['query_paper']['paper']}")
+        for r in ranked[:2]:
+            logging.info (r)
 
+        output = {"query_paper": test_entry["query_paper"],
+            "ranked_candidates": ranked,}
         all_results.append(output)
 
-        # # ---------------- SAVE PER QUERY ----------------
-        # out_path = OUT_DIR / f"run_{leave_out}_ce.jsonl"
-        # with out_path.open("w") as f:
-        #     f.write(json.dumps(output) + "\n")
+        # save per-query file
+        out_path = OUT_DIR / f"run_{leave_out}_{RANKING_MODEL}.jsonl"
+        with out_path.open("w", encoding="utf-8") as f:
+            f.write(json.dumps(output, ensure_ascii=False) + "\n")
 
-    global_path = OUT_DIR / f"run_global_{args.loss_type[:5]}_{args.model_name[:7]}.jsonl"
     with global_path.open("w", encoding="utf-8") as f:
         for row in all_results:
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
-    print(f"\n===== Saved: {global_path} =====")
-    return all_results    
+    logging.info (f"\n===== Saved: {global_path} =====")
+    return all_results
 
 if __name__ == "__main__":
     run_loo()
-    
