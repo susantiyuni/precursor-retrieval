@@ -14,7 +14,7 @@ u.set_seed(SEED)
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--out_dir", default="runs_ltr01/", help="output directory")
-parser.add_argument("--inputf", default="data/sparql_feats.jsonl", help="sparql feats file")
+parser.add_argument("--inputf", default="data/candidate-pool.jsonl", help="input file")
 parser.add_argument("--feat", default="data/sparql_feats.jsonl", help="sparql feats file")
 parser.add_argument("--model", default="lgbm", help="ranking model")
 parser.add_argument("--ablation", default="all", help="ablation")
