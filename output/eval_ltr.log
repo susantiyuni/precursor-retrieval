@@ -1,0 +1,100 @@
+# Starting evaluation
+Output dir: runs_ltr_ablation3
+Gold file: data/candidate-pool.jsonl
+Loaded gold for 30 queries
+
+ # Evaluating run_ltr_base.jsonl
+run_ltr_base.jsonl: evaluated 30 queries (per-query metrics -> run_ltr_base_per_query_metrics.jsonl)
+run_ltr_base.jsonl | nDCG@10 = 0.7995 ± 0.0786
+run_ltr_base.jsonl | nDCG@10_uncited = 0.3839 ± 0.0952
+run_ltr_base.jsonl | Recall@10 = 0.7034 ± 0.2042
+run_ltr_base.jsonl | Recall@10_uncited = 0.5420 ± 0.2704
+run_ltr_base.jsonl | Recall@10S = 0.8984 ± 0.1429
+run_ltr_base.jsonl | Recall@10S_uncited = 0.6840 ± 0.3612
+run_ltr_base.jsonl | Precision@10 = 0.3907 ± 0.1543
+run_ltr_base.jsonl | Precision@10_uncited = 0.1867 ± 0.1339
+run_ltr_base.jsonl | Precision@10S = 0.1807 ± 0.0765
+run_ltr_base.jsonl | Precision@10S_uncited = 0.0480 ± 0.0466
+run_ltr_base.jsonl | MAP = 0.5642 ± 0.2136
+run_ltr_base.jsonl | MAP_uncited = 0.1168 ± 0.0869
+run_ltr_base.jsonl | MRR = 1.0000 ± 0.0000
+
+ # Evaluating run_ltr_base+plus_metadata.jsonl
+run_ltr_base+plus_metadata.jsonl: evaluated 30 queries (per-query metrics -> run_ltr_base+plus_metadata_per_query_metrics.jsonl)
+run_ltr_base+plus_metadata.jsonl | nDCG@10 = 0.8127 ± 0.0848
+run_ltr_base+plus_metadata.jsonl | nDCG@10_uncited = 0.4080 ± 0.0942
+run_ltr_base+plus_metadata.jsonl | Recall@10 = 0.7119 ± 0.1905
+run_ltr_base+plus_metadata.jsonl | Recall@10_uncited = 0.5632 ± 0.2710
+run_ltr_base+plus_metadata.jsonl | Recall@10S = 0.8928 ± 0.1366
+run_ltr_base+plus_metadata.jsonl | Recall@10S_uncited = 0.7201 ± 0.3147
+run_ltr_base+plus_metadata.jsonl | Precision@10 = 0.4027 ± 0.1668
+run_ltr_base+plus_metadata.jsonl | Precision@10_uncited = 0.2033 ± 0.1460
+run_ltr_base+plus_metadata.jsonl | Precision@10S = 0.1820 ± 0.0824
+run_ltr_base+plus_metadata.jsonl | Precision@10S_uncited = 0.0513 ± 0.0484
+run_ltr_base+plus_metadata.jsonl | MAP = 0.5842 ± 0.2086
+run_ltr_base+plus_metadata.jsonl | MAP_uncited = 0.1338 ± 0.0876
+run_ltr_base+plus_metadata.jsonl | MRR = 1.0000 ± 0.0000
+
+ # Evaluating run_ltr_base+plus_citation.jsonl
+run_ltr_base+plus_citation.jsonl: evaluated 30 queries (per-query metrics -> run_ltr_base+plus_citation_per_query_metrics.jsonl)
+run_ltr_base+plus_citation.jsonl | nDCG@10 = 0.8014 ± 0.0819
+run_ltr_base+plus_citation.jsonl | nDCG@10_uncited = 0.3885 ± 0.0951
+run_ltr_base+plus_citation.jsonl | Recall@10 = 0.7108 ± 0.1970
+run_ltr_base+plus_citation.jsonl | Recall@10_uncited = 0.5594 ± 0.2580
+run_ltr_base+plus_citation.jsonl | Recall@10S = 0.8922 ± 0.1447
+run_ltr_base+plus_citation.jsonl | Recall@10S_uncited = 0.7156 ± 0.3346
+run_ltr_base+plus_citation.jsonl | Precision@10 = 0.3953 ± 0.1523
+run_ltr_base+plus_citation.jsonl | Precision@10_uncited = 0.1927 ± 0.1306
+run_ltr_base+plus_citation.jsonl | Precision@10S = 0.1793 ± 0.0769
+run_ltr_base+plus_citation.jsonl | Precision@10S_uncited = 0.0473 ± 0.0463
+run_ltr_base+plus_citation.jsonl | MAP = 0.5645 ± 0.2104
+run_ltr_base+plus_citation.jsonl | MAP_uncited = 0.1172 ± 0.0832
+run_ltr_base+plus_citation.jsonl | MRR = 0.9833 ± 0.0898
+
+ # Evaluating run_ltr_base+plus_gating.jsonl
+run_ltr_base+plus_gating.jsonl: evaluated 30 queries (per-query metrics -> run_ltr_base+plus_gating_per_query_metrics.jsonl)
+run_ltr_base+plus_gating.jsonl | nDCG@10 = 0.8028 ± 0.0792
+run_ltr_base+plus_gating.jsonl | nDCG@10_uncited = 0.3823 ± 0.0929
+run_ltr_base+plus_gating.jsonl | Recall@10 = 0.7122 ± 0.1987
+run_ltr_base+plus_gating.jsonl | Recall@10_uncited = 0.5588 ± 0.2523
+run_ltr_base+plus_gating.jsonl | Recall@10S = 0.9005 ± 0.1451
+run_ltr_base+plus_gating.jsonl | Recall@10S_uncited = 0.7177 ± 0.3577
+run_ltr_base+plus_gating.jsonl | Precision@10 = 0.3973 ± 0.1558
+run_ltr_base+plus_gating.jsonl | Precision@10_uncited = 0.1933 ± 0.1343
+run_ltr_base+plus_gating.jsonl | Precision@10S = 0.1813 ± 0.0776
+run_ltr_base+plus_gating.jsonl | Precision@10S_uncited = 0.0487 ± 0.0470
+run_ltr_base+plus_gating.jsonl | MAP = 0.5661 ± 0.2070
+run_ltr_base+plus_gating.jsonl | MAP_uncited = 0.1146 ± 0.0836
+run_ltr_base+plus_gating.jsonl | MRR = 1.0000 ± 0.0000
+
+ # Evaluating run_ltr_base+plus_metadata+plus_citation.jsonl
+run_ltr_base+plus_metadata+plus_citation.jsonl: evaluated 30 queries (per-query metrics -> run_ltr_base+plus_metadata+plus_citation_per_query_metrics.jsonl)
+run_ltr_base+plus_metadata+plus_citation.jsonl | nDCG@10 = 0.8132 ± 0.0820
+run_ltr_base+plus_metadata+plus_citation.jsonl | nDCG@10_uncited = 0.4038 ± 0.0978
+run_ltr_base+plus_metadata+plus_citation.jsonl | Recall@10 = 0.7184 ± 0.1919
+run_ltr_base+plus_metadata+plus_citation.jsonl | Recall@10_uncited = 0.5708 ± 0.2880
+run_ltr_base+plus_metadata+plus_citation.jsonl | Recall@10S = 0.8889 ± 0.1367
+run_ltr_base+plus_metadata+plus_citation.jsonl | Recall@10S_uncited = 0.6819 ± 0.3409
+run_ltr_base+plus_metadata+plus_citation.jsonl | Precision@10 = 0.4067 ± 0.1692
+run_ltr_base+plus_metadata+plus_citation.jsonl | Precision@10_uncited = 0.2047 ± 0.1495
+run_ltr_base+plus_metadata+plus_citation.jsonl | Precision@10S = 0.1800 ± 0.0797
+run_ltr_base+plus_metadata+plus_citation.jsonl | Precision@10S_uncited = 0.0480 ± 0.0458
+run_ltr_base+plus_metadata+plus_citation.jsonl | MAP = 0.5902 ± 0.2069
+run_ltr_base+plus_metadata+plus_citation.jsonl | MAP_uncited = 0.1316 ± 0.0896
+run_ltr_base+plus_metadata+plus_citation.jsonl | MRR = 1.0000 ± 0.0000
+
+ # Evaluating run_ltr_base+plus_metadata+plus_citation+plus_gating.jsonl
+run_ltr_base+plus_metadata+plus_citation+plus_gating.jsonl: evaluated 30 queries (per-query metrics -> run_ltr_base+plus_metadata+plus_citation+plus_gating_per_query_metrics.jsonl)
+run_ltr_base+plus_metadata+plus_citation+plus_gating.jsonl | nDCG@10 = 0.8135 ± 0.0815
+run_ltr_base+plus_metadata+plus_citation+plus_gating.jsonl | nDCG@10_uncited = 0.4007 ± 0.0921
+run_ltr_base+plus_metadata+plus_citation+plus_gating.jsonl | Recall@10 = 0.7209 ± 0.1930
+run_ltr_base+plus_metadata+plus_citation+plus_gating.jsonl | Recall@10_uncited = 0.5870 ± 0.2603
+run_ltr_base+plus_metadata+plus_citation+plus_gating.jsonl | Recall@10S = 0.9010 ± 0.1343
+run_ltr_base+plus_metadata+plus_citation+plus_gating.jsonl | Recall@10S_uncited = 0.7511 ± 0.2920
+run_ltr_base+plus_metadata+plus_citation+plus_gating.jsonl | Precision@10 = 0.4053 ± 0.1652
+run_ltr_base+plus_metadata+plus_citation+plus_gating.jsonl | Precision@10_uncited = 0.2033 ± 0.1440
+run_ltr_base+plus_metadata+plus_citation+plus_gating.jsonl | Precision@10S = 0.1820 ± 0.0782
+run_ltr_base+plus_metadata+plus_citation+plus_gating.jsonl | Precision@10S_uncited = 0.0500 ± 0.0449
+run_ltr_base+plus_metadata+plus_citation+plus_gating.jsonl | MAP = 0.5822 ± 0.2066
+run_ltr_base+plus_metadata+plus_citation+plus_gating.jsonl | MAP_uncited = 0.1284 ± 0.0848
+run_ltr_base+plus_metadata+plus_citation+plus_gating.jsonl | MRR = 1.0000 ± 0.0000

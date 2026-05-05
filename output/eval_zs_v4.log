@@ -1,0 +1,388 @@
+# Starting evaluation
+Output dir: run-zsv3-alltemp
+Gold file: data/candidate-pool.jsonl
+Loaded gold for 30 queries
+
+ # Evaluating run_tmgnrxv3_base_gamma.jsonl
+run_tmgnrxv3_base_gamma.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_base_gamma_per_query_metrics.jsonl)
+run_tmgnrxv3_base_gamma.jsonl | nDCG@10 = 0.7678 ± 0.0799
+run_tmgnrxv3_base_gamma.jsonl | nDCG@10_uncited = 0.4034 ± 0.0757
+run_tmgnrxv3_base_gamma.jsonl | Recall@10 = 0.6642 ± 0.1861
+run_tmgnrxv3_base_gamma.jsonl | Recall@10_uncited = 0.5529 ± 0.2194
+run_tmgnrxv3_base_gamma.jsonl | Recall@10S = 0.8545 ± 0.1719
+run_tmgnrxv3_base_gamma.jsonl | Recall@10S_uncited = 0.7083 ± 0.2526
+run_tmgnrxv3_base_gamma.jsonl | Precision@10 = 0.3760 ± 0.1614
+run_tmgnrxv3_base_gamma.jsonl | Precision@10_uncited = 0.1927 ± 0.1383
+run_tmgnrxv3_base_gamma.jsonl | Precision@10S = 0.1727 ± 0.0796
+run_tmgnrxv3_base_gamma.jsonl | Precision@10S_uncited = 0.0460 ± 0.0400
+run_tmgnrxv3_base_gamma.jsonl | MAP = 0.4956 ± 0.1945
+run_tmgnrxv3_base_gamma.jsonl | MAP_uncited = 0.1166 ± 0.0638
+run_tmgnrxv3_base_gamma.jsonl | MRR = 1.0000 ± 0.0000
+
+ # Evaluating run_tmgnrxv3_citation_gamma.jsonl
+run_tmgnrxv3_citation_gamma.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_citation_gamma_per_query_metrics.jsonl)
+run_tmgnrxv3_citation_gamma.jsonl | nDCG@10 = 0.7816 ± 0.0776
+run_tmgnrxv3_citation_gamma.jsonl | nDCG@10_uncited = 0.3508 ± 0.0645
+run_tmgnrxv3_citation_gamma.jsonl | Recall@10 = 0.6905 ± 0.1898
+run_tmgnrxv3_citation_gamma.jsonl | Recall@10_uncited = 0.5366 ± 0.2260
+run_tmgnrxv3_citation_gamma.jsonl | Recall@10S = 0.8718 ± 0.1514
+run_tmgnrxv3_citation_gamma.jsonl | Recall@10S_uncited = 0.6989 ± 0.2629
+run_tmgnrxv3_citation_gamma.jsonl | Precision@10 = 0.3853 ± 0.1547
+run_tmgnrxv3_citation_gamma.jsonl | Precision@10_uncited = 0.1847 ± 0.1304
+run_tmgnrxv3_citation_gamma.jsonl | Precision@10S = 0.1760 ± 0.0784
+run_tmgnrxv3_citation_gamma.jsonl | Precision@10S_uncited = 0.0447 ± 0.0392
+run_tmgnrxv3_citation_gamma.jsonl | MAP = 0.5332 ± 0.2145
+run_tmgnrxv3_citation_gamma.jsonl | MAP_uncited = 0.0870 ± 0.0520
+run_tmgnrxv3_citation_gamma.jsonl | MRR = 1.0000 ± 0.0000
+
+ # Evaluating run_tmgnrxv3_explicit_gamma.jsonl
+run_tmgnrxv3_explicit_gamma.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_explicit_gamma_per_query_metrics.jsonl)
+run_tmgnrxv3_explicit_gamma.jsonl | nDCG@10 = 0.7904 ± 0.1039
+run_tmgnrxv3_explicit_gamma.jsonl | nDCG@10_uncited = 0.4841 ± 0.1147
+run_tmgnrxv3_explicit_gamma.jsonl | Recall@10 = 0.6869 ± 0.1982
+run_tmgnrxv3_explicit_gamma.jsonl | Recall@10_uncited = 0.5989 ± 0.2651
+run_tmgnrxv3_explicit_gamma.jsonl | Recall@10S = 0.8435 ± 0.2298
+run_tmgnrxv3_explicit_gamma.jsonl | Recall@10S_uncited = 0.7608 ± 0.2797
+run_tmgnrxv3_explicit_gamma.jsonl | Precision@10 = 0.3920 ± 0.1706
+run_tmgnrxv3_explicit_gamma.jsonl | Precision@10_uncited = 0.2187 ± 0.1570
+run_tmgnrxv3_explicit_gamma.jsonl | Precision@10S = 0.1740 ± 0.0759
+run_tmgnrxv3_explicit_gamma.jsonl | Precision@10S_uncited = 0.0533 ± 0.0474
+run_tmgnrxv3_explicit_gamma.jsonl | MAP = 0.5392 ± 0.2181
+run_tmgnrxv3_explicit_gamma.jsonl | MAP_uncited = 0.1787 ± 0.1134
+run_tmgnrxv3_explicit_gamma.jsonl | MRR = 0.9833 ± 0.0898
+
+ # Evaluating run_tmgnrxv3_all_gamma.jsonl
+run_tmgnrxv3_all_gamma.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_all_gamma_per_query_metrics.jsonl)
+run_tmgnrxv3_all_gamma.jsonl | nDCG@10 = 0.8143 ± 0.0814
+run_tmgnrxv3_all_gamma.jsonl | nDCG@10_uncited = 0.4279 ± 0.0934
+run_tmgnrxv3_all_gamma.jsonl | Recall@10 = 0.7093 ± 0.1950
+run_tmgnrxv3_all_gamma.jsonl | Recall@10_uncited = 0.5769 ± 0.2761
+run_tmgnrxv3_all_gamma.jsonl | Recall@10S = 0.8997 ± 0.1395
+run_tmgnrxv3_all_gamma.jsonl | Recall@10S_uncited = 0.7608 ± 0.2797
+run_tmgnrxv3_all_gamma.jsonl | Precision@10 = 0.4013 ± 0.1677
+run_tmgnrxv3_all_gamma.jsonl | Precision@10_uncited = 0.2080 ± 0.1490
+run_tmgnrxv3_all_gamma.jsonl | Precision@10S = 0.1813 ± 0.0781
+run_tmgnrxv3_all_gamma.jsonl | Precision@10S_uncited = 0.0533 ± 0.0474
+run_tmgnrxv3_all_gamma.jsonl | MAP = 0.5823 ± 0.2129
+run_tmgnrxv3_all_gamma.jsonl | MAP_uncited = 0.1396 ± 0.0880
+run_tmgnrxv3_all_gamma.jsonl | MRR = 1.0000 ± 0.0000
+
+ # Evaluating run_tmgnrxv3_base_beta.jsonl
+run_tmgnrxv3_base_beta.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_base_beta_per_query_metrics.jsonl)
+run_tmgnrxv3_base_beta.jsonl | nDCG@10 = 0.7052 ± 0.0831
+run_tmgnrxv3_base_beta.jsonl | nDCG@10_uncited = 0.4151 ± 0.1003
+run_tmgnrxv3_base_beta.jsonl | Recall@10 = 0.5815 ± 0.1903
+run_tmgnrxv3_base_beta.jsonl | Recall@10_uncited = 0.4816 ± 0.2191
+run_tmgnrxv3_base_beta.jsonl | Recall@10S = 0.7775 ± 0.2231
+run_tmgnrxv3_base_beta.jsonl | Recall@10S_uncited = 0.6458 ± 0.2923
+run_tmgnrxv3_base_beta.jsonl | Precision@10 = 0.3233 ± 0.1411
+run_tmgnrxv3_base_beta.jsonl | Precision@10_uncited = 0.1713 ± 0.1295
+run_tmgnrxv3_base_beta.jsonl | Precision@10S = 0.1540 ± 0.0749
+run_tmgnrxv3_base_beta.jsonl | Precision@10S_uncited = 0.0420 ± 0.0370
+run_tmgnrxv3_base_beta.jsonl | MAP = 0.3913 ± 0.1738
+run_tmgnrxv3_base_beta.jsonl | MAP_uncited = 0.1049 ± 0.0744
+run_tmgnrxv3_base_beta.jsonl | MRR = 0.9833 ± 0.0898
+
+ # Evaluating run_tmgnrxv3_citation_beta.jsonl
+run_tmgnrxv3_citation_beta.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_citation_beta_per_query_metrics.jsonl)
+run_tmgnrxv3_citation_beta.jsonl | nDCG@10 = 0.7396 ± 0.0795
+run_tmgnrxv3_citation_beta.jsonl | nDCG@10_uncited = 0.3616 ± 0.0828
+run_tmgnrxv3_citation_beta.jsonl | Recall@10 = 0.6353 ± 0.1980
+run_tmgnrxv3_citation_beta.jsonl | Recall@10_uncited = 0.4738 ± 0.2247
+run_tmgnrxv3_citation_beta.jsonl | Recall@10S = 0.8369 ± 0.1852
+run_tmgnrxv3_citation_beta.jsonl | Recall@10S_uncited = 0.6374 ± 0.2963
+run_tmgnrxv3_citation_beta.jsonl | Precision@10 = 0.3493 ± 0.1373
+run_tmgnrxv3_citation_beta.jsonl | Precision@10_uncited = 0.1653 ± 0.1235
+run_tmgnrxv3_citation_beta.jsonl | Precision@10S = 0.1673 ± 0.0758
+run_tmgnrxv3_citation_beta.jsonl | Precision@10S_uncited = 0.0413 ± 0.0369
+run_tmgnrxv3_citation_beta.jsonl | MAP = 0.4632 ± 0.1879
+run_tmgnrxv3_citation_beta.jsonl | MAP_uncited = 0.0793 ± 0.0572
+run_tmgnrxv3_citation_beta.jsonl | MRR = 0.9833 ± 0.0898
+
+ # Evaluating run_tmgnrxv3_explicit_beta.jsonl
+run_tmgnrxv3_explicit_beta.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_explicit_beta_per_query_metrics.jsonl)
+run_tmgnrxv3_explicit_beta.jsonl | nDCG@10 = 0.7406 ± 0.0926
+run_tmgnrxv3_explicit_beta.jsonl | nDCG@10_uncited = 0.4902 ± 0.1263
+run_tmgnrxv3_explicit_beta.jsonl | Recall@10 = 0.6297 ± 0.1923
+run_tmgnrxv3_explicit_beta.jsonl | Recall@10_uncited = 0.5498 ± 0.2634
+run_tmgnrxv3_explicit_beta.jsonl | Recall@10S = 0.8087 ± 0.1967
+run_tmgnrxv3_explicit_beta.jsonl | Recall@10S_uncited = 0.7205 ± 0.3035
+run_tmgnrxv3_explicit_beta.jsonl | Precision@10 = 0.3553 ± 0.1550
+run_tmgnrxv3_explicit_beta.jsonl | Precision@10_uncited = 0.2027 ± 0.1545
+run_tmgnrxv3_explicit_beta.jsonl | Precision@10S = 0.1600 ± 0.0721
+run_tmgnrxv3_explicit_beta.jsonl | Precision@10S_uncited = 0.0487 ± 0.0425
+run_tmgnrxv3_explicit_beta.jsonl | MAP = 0.4468 ± 0.1886
+run_tmgnrxv3_explicit_beta.jsonl | MAP_uncited = 0.1734 ± 0.1206
+run_tmgnrxv3_explicit_beta.jsonl | MRR = 0.9611 ± 0.1471
+
+ # Evaluating run_tmgnrxv3_all_beta.jsonl
+run_tmgnrxv3_all_beta.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_all_beta_per_query_metrics.jsonl)
+run_tmgnrxv3_all_beta.jsonl | nDCG@10 = 0.7696 ± 0.0777
+run_tmgnrxv3_all_beta.jsonl | nDCG@10_uncited = 0.4425 ± 0.1109
+run_tmgnrxv3_all_beta.jsonl | Recall@10 = 0.6606 ± 0.1984
+run_tmgnrxv3_all_beta.jsonl | Recall@10_uncited = 0.5382 ± 0.2677
+run_tmgnrxv3_all_beta.jsonl | Recall@10S = 0.8569 ± 0.1842
+run_tmgnrxv3_all_beta.jsonl | Recall@10S_uncited = 0.7100 ± 0.3018
+run_tmgnrxv3_all_beta.jsonl | Precision@10 = 0.3713 ± 0.1545
+run_tmgnrxv3_all_beta.jsonl | Precision@10_uncited = 0.1933 ± 0.1454
+run_tmgnrxv3_all_beta.jsonl | Precision@10S = 0.1707 ± 0.0746
+run_tmgnrxv3_all_beta.jsonl | Precision@10S_uncited = 0.0473 ± 0.0411
+run_tmgnrxv3_all_beta.jsonl | MAP = 0.5010 ± 0.1890
+run_tmgnrxv3_all_beta.jsonl | MAP_uncited = 0.1424 ± 0.0970
+run_tmgnrxv3_all_beta.jsonl | MRR = 1.0000 ± 0.0000
+
+ # Evaluating run_tmgnrxv3_base_decay.jsonl
+run_tmgnrxv3_base_decay.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_base_decay_per_query_metrics.jsonl)
+run_tmgnrxv3_base_decay.jsonl | nDCG@10 = 0.7713 ± 0.0768
+run_tmgnrxv3_base_decay.jsonl | nDCG@10_uncited = 0.4060 ± 0.0795
+run_tmgnrxv3_base_decay.jsonl | Recall@10 = 0.6644 ± 0.1839
+run_tmgnrxv3_base_decay.jsonl | Recall@10_uncited = 0.5546 ± 0.2233
+run_tmgnrxv3_base_decay.jsonl | Recall@10S = 0.8514 ± 0.1663
+run_tmgnrxv3_base_decay.jsonl | Recall@10S_uncited = 0.6885 ± 0.2845
+run_tmgnrxv3_base_decay.jsonl | Precision@10 = 0.3733 ± 0.1549
+run_tmgnrxv3_base_decay.jsonl | Precision@10_uncited = 0.1913 ± 0.1347
+run_tmgnrxv3_base_decay.jsonl | Precision@10S = 0.1713 ± 0.0783
+run_tmgnrxv3_base_decay.jsonl | Precision@10S_uncited = 0.0447 ± 0.0402
+run_tmgnrxv3_base_decay.jsonl | MAP = 0.4999 ± 0.1908
+run_tmgnrxv3_base_decay.jsonl | MAP_uncited = 0.1154 ± 0.0663
+run_tmgnrxv3_base_decay.jsonl | MRR = 1.0000 ± 0.0000
+
+ # Evaluating run_tmgnrxv3_citation_decay.jsonl
+run_tmgnrxv3_citation_decay.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_citation_decay_per_query_metrics.jsonl)
+run_tmgnrxv3_citation_decay.jsonl | nDCG@10 = 0.7839 ± 0.0763
+run_tmgnrxv3_citation_decay.jsonl | nDCG@10_uncited = 0.3518 ± 0.0660
+run_tmgnrxv3_citation_decay.jsonl | Recall@10 = 0.6869 ± 0.1926
+run_tmgnrxv3_citation_decay.jsonl | Recall@10_uncited = 0.5322 ± 0.2275
+run_tmgnrxv3_citation_decay.jsonl | Recall@10S = 0.8685 ± 0.1541
+run_tmgnrxv3_citation_decay.jsonl | Recall@10S_uncited = 0.6850 ± 0.2893
+run_tmgnrxv3_citation_decay.jsonl | Precision@10 = 0.3820 ± 0.1522
+run_tmgnrxv3_citation_decay.jsonl | Precision@10_uncited = 0.1813 ± 0.1275
+run_tmgnrxv3_citation_decay.jsonl | Precision@10S = 0.1753 ± 0.0786
+run_tmgnrxv3_citation_decay.jsonl | Precision@10S_uncited = 0.0440 ± 0.0398
+run_tmgnrxv3_citation_decay.jsonl | MAP = 0.5386 ± 0.2113
+run_tmgnrxv3_citation_decay.jsonl | MAP_uncited = 0.0866 ± 0.0538
+run_tmgnrxv3_citation_decay.jsonl | MRR = 1.0000 ± 0.0000
+
+ # Evaluating run_tmgnrxv3_explicit_decay.jsonl
+run_tmgnrxv3_explicit_decay.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_explicit_decay_per_query_metrics.jsonl)
+run_tmgnrxv3_explicit_decay.jsonl | nDCG@10 = 0.7910 ± 0.1027
+run_tmgnrxv3_explicit_decay.jsonl | nDCG@10_uncited = 0.4841 ± 0.1183
+run_tmgnrxv3_explicit_decay.jsonl | Recall@10 = 0.6842 ± 0.2017
+run_tmgnrxv3_explicit_decay.jsonl | Recall@10_uncited = 0.5951 ± 0.2760
+run_tmgnrxv3_explicit_decay.jsonl | Recall@10S = 0.8383 ± 0.2271
+run_tmgnrxv3_explicit_decay.jsonl | Recall@10S_uncited = 0.7556 ± 0.2764
+run_tmgnrxv3_explicit_decay.jsonl | Precision@10 = 0.3907 ± 0.1698
+run_tmgnrxv3_explicit_decay.jsonl | Precision@10_uncited = 0.2160 ± 0.1544
+run_tmgnrxv3_explicit_decay.jsonl | Precision@10S = 0.1727 ± 0.0746
+run_tmgnrxv3_explicit_decay.jsonl | Precision@10S_uncited = 0.0527 ± 0.0460
+run_tmgnrxv3_explicit_decay.jsonl | MAP = 0.5387 ± 0.2113
+run_tmgnrxv3_explicit_decay.jsonl | MAP_uncited = 0.1778 ± 0.1127
+run_tmgnrxv3_explicit_decay.jsonl | MRR = 0.9667 ± 0.1247
+
+ # Evaluating run_tmgnrxv3_all_decay.jsonl
+run_tmgnrxv3_all_decay.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_all_decay_per_query_metrics.jsonl)
+run_tmgnrxv3_all_decay.jsonl | nDCG@10 = 0.8146 ± 0.0787
+run_tmgnrxv3_all_decay.jsonl | nDCG@10_uncited = 0.4329 ± 0.0987
+run_tmgnrxv3_all_decay.jsonl | Recall@10 = 0.7125 ± 0.1975
+run_tmgnrxv3_all_decay.jsonl | Recall@10_uncited = 0.5833 ± 0.2782
+run_tmgnrxv3_all_decay.jsonl | Recall@10S = 0.8958 ± 0.1420
+run_tmgnrxv3_all_decay.jsonl | Recall@10S_uncited = 0.7556 ± 0.2764
+run_tmgnrxv3_all_decay.jsonl | Precision@10 = 0.4007 ± 0.1607
+run_tmgnrxv3_all_decay.jsonl | Precision@10_uncited = 0.2080 ± 0.1457
+run_tmgnrxv3_all_decay.jsonl | Precision@10S = 0.1800 ± 0.0768
+run_tmgnrxv3_all_decay.jsonl | Precision@10S_uncited = 0.0527 ± 0.0460
+run_tmgnrxv3_all_decay.jsonl | MAP = 0.5798 ± 0.2071
+run_tmgnrxv3_all_decay.jsonl | MAP_uncited = 0.1421 ± 0.0892
+run_tmgnrxv3_all_decay.jsonl | MRR = 1.0000 ± 0.0000
+
+ # Evaluating run_tmgnrxv3_base_gaussian.jsonl
+run_tmgnrxv3_base_gaussian.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_base_gaussian_per_query_metrics.jsonl)
+run_tmgnrxv3_base_gaussian.jsonl | nDCG@10 = 0.7511 ± 0.0769
+run_tmgnrxv3_base_gaussian.jsonl | nDCG@10_uncited = 0.4121 ± 0.0878
+run_tmgnrxv3_base_gaussian.jsonl | Recall@10 = 0.6419 ± 0.1892
+run_tmgnrxv3_base_gaussian.jsonl | Recall@10_uncited = 0.5443 ± 0.2374
+run_tmgnrxv3_base_gaussian.jsonl | Recall@10S = 0.8389 ± 0.1902
+run_tmgnrxv3_base_gaussian.jsonl | Recall@10S_uncited = 0.7072 ± 0.2757
+run_tmgnrxv3_base_gaussian.jsonl | Precision@10 = 0.3593 ± 0.1499
+run_tmgnrxv3_base_gaussian.jsonl | Precision@10_uncited = 0.1833 ± 0.1282
+run_tmgnrxv3_base_gaussian.jsonl | Precision@10S = 0.1673 ± 0.0767
+run_tmgnrxv3_base_gaussian.jsonl | Precision@10S_uncited = 0.0447 ± 0.0385
+run_tmgnrxv3_base_gaussian.jsonl | MAP = 0.4577 ± 0.1764
+run_tmgnrxv3_base_gaussian.jsonl | MAP_uncited = 0.1100 ± 0.0684
+run_tmgnrxv3_base_gaussian.jsonl | MRR = 1.0000 ± 0.0000
+
+ # Evaluating run_tmgnrxv3_citation_gaussian.jsonl
+run_tmgnrxv3_citation_gaussian.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_citation_gaussian_per_query_metrics.jsonl)
+run_tmgnrxv3_citation_gaussian.jsonl | nDCG@10 = 0.7735 ± 0.0770
+run_tmgnrxv3_citation_gaussian.jsonl | nDCG@10_uncited = 0.3489 ± 0.0693
+run_tmgnrxv3_citation_gaussian.jsonl | Recall@10 = 0.6713 ± 0.1956
+run_tmgnrxv3_citation_gaussian.jsonl | Recall@10_uncited = 0.5156 ± 0.2416
+run_tmgnrxv3_citation_gaussian.jsonl | Recall@10S = 0.8701 ± 0.1553
+run_tmgnrxv3_citation_gaussian.jsonl | Recall@10S_uncited = 0.6965 ± 0.2675
+run_tmgnrxv3_citation_gaussian.jsonl | Precision@10 = 0.3727 ± 0.1468
+run_tmgnrxv3_citation_gaussian.jsonl | Precision@10_uncited = 0.1720 ± 0.1212
+run_tmgnrxv3_citation_gaussian.jsonl | Precision@10S = 0.1753 ± 0.0776
+run_tmgnrxv3_citation_gaussian.jsonl | Precision@10S_uncited = 0.0440 ± 0.0377
+run_tmgnrxv3_citation_gaussian.jsonl | MAP = 0.5160 ± 0.2074
+run_tmgnrxv3_citation_gaussian.jsonl | MAP_uncited = 0.0785 ± 0.0487
+run_tmgnrxv3_citation_gaussian.jsonl | MRR = 1.0000 ± 0.0000
+
+ # Evaluating run_tmgnrxv3_explicit_gaussian.jsonl
+run_tmgnrxv3_explicit_gaussian.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_explicit_gaussian_per_query_metrics.jsonl)
+run_tmgnrxv3_explicit_gaussian.jsonl | nDCG@10 = 0.7760 ± 0.0978
+run_tmgnrxv3_explicit_gaussian.jsonl | nDCG@10_uncited = 0.4965 ± 0.1240
+run_tmgnrxv3_explicit_gaussian.jsonl | Recall@10 = 0.6700 ± 0.1956
+run_tmgnrxv3_explicit_gaussian.jsonl | Recall@10_uncited = 0.5733 ± 0.2757
+run_tmgnrxv3_explicit_gaussian.jsonl | Recall@10S = 0.8564 ± 0.1764
+run_tmgnrxv3_explicit_gaussian.jsonl | Recall@10S_uncited = 0.7480 ± 0.2792
+run_tmgnrxv3_explicit_gaussian.jsonl | Precision@10 = 0.3827 ± 0.1694
+run_tmgnrxv3_explicit_gaussian.jsonl | Precision@10_uncited = 0.2107 ± 0.1567
+run_tmgnrxv3_explicit_gaussian.jsonl | Precision@10S = 0.1707 ± 0.0742
+run_tmgnrxv3_explicit_gaussian.jsonl | Precision@10S_uncited = 0.0513 ± 0.0446
+run_tmgnrxv3_explicit_gaussian.jsonl | MAP = 0.5108 ± 0.2061
+run_tmgnrxv3_explicit_gaussian.jsonl | MAP_uncited = 0.1868 ± 0.1239
+run_tmgnrxv3_explicit_gaussian.jsonl | MRR = 0.9611 ± 0.1471
+
+ # Evaluating run_tmgnrxv3_all_gaussian.jsonl
+run_tmgnrxv3_all_gaussian.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_all_gaussian_per_query_metrics.jsonl)
+run_tmgnrxv3_all_gaussian.jsonl | nDCG@10 = 0.8031 ± 0.0773
+run_tmgnrxv3_all_gaussian.jsonl | nDCG@10_uncited = 0.4405 ± 0.1066
+run_tmgnrxv3_all_gaussian.jsonl | Recall@10 = 0.6973 ± 0.1917
+run_tmgnrxv3_all_gaussian.jsonl | Recall@10_uncited = 0.5699 ± 0.2813
+run_tmgnrxv3_all_gaussian.jsonl | Recall@10S = 0.8936 ± 0.1458
+run_tmgnrxv3_all_gaussian.jsonl | Recall@10S_uncited = 0.7459 ± 0.2827
+run_tmgnrxv3_all_gaussian.jsonl | Precision@10 = 0.3960 ± 0.1659
+run_tmgnrxv3_all_gaussian.jsonl | Precision@10_uncited = 0.2060 ± 0.1522
+run_tmgnrxv3_all_gaussian.jsonl | Precision@10S = 0.1787 ± 0.0739
+run_tmgnrxv3_all_gaussian.jsonl | Precision@10S_uncited = 0.0507 ± 0.0437
+run_tmgnrxv3_all_gaussian.jsonl | MAP = 0.5587 ± 0.2023
+run_tmgnrxv3_all_gaussian.jsonl | MAP_uncited = 0.1445 ± 0.0933
+run_tmgnrxv3_all_gaussian.jsonl | MRR = 1.0000 ± 0.0000
+
+ # Evaluating run_tmgnrxv3_base_laplace.jsonl
+run_tmgnrxv3_base_laplace.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_base_laplace_per_query_metrics.jsonl)
+run_tmgnrxv3_base_laplace.jsonl | nDCG@10 = 0.7581 ± 0.0735
+run_tmgnrxv3_base_laplace.jsonl | nDCG@10_uncited = 0.4162 ± 0.0846
+run_tmgnrxv3_base_laplace.jsonl | Recall@10 = 0.6478 ± 0.1911
+run_tmgnrxv3_base_laplace.jsonl | Recall@10_uncited = 0.5452 ± 0.2308
+run_tmgnrxv3_base_laplace.jsonl | Recall@10S = 0.8481 ± 0.1823
+run_tmgnrxv3_base_laplace.jsonl | Recall@10S_uncited = 0.7159 ± 0.2675
+run_tmgnrxv3_base_laplace.jsonl | Precision@10 = 0.3627 ± 0.1489
+run_tmgnrxv3_base_laplace.jsonl | Precision@10_uncited = 0.1853 ± 0.1281
+run_tmgnrxv3_base_laplace.jsonl | Precision@10S = 0.1700 ± 0.0776
+run_tmgnrxv3_base_laplace.jsonl | Precision@10S_uncited = 0.0460 ± 0.0397
+run_tmgnrxv3_base_laplace.jsonl | MAP = 0.4682 ± 0.1784
+run_tmgnrxv3_base_laplace.jsonl | MAP_uncited = 0.1127 ± 0.0688
+run_tmgnrxv3_base_laplace.jsonl | MRR = 1.0000 ± 0.0000
+
+ # Evaluating run_tmgnrxv3_citation_laplace.jsonl
+run_tmgnrxv3_citation_laplace.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_citation_laplace_per_query_metrics.jsonl)
+run_tmgnrxv3_citation_laplace.jsonl | nDCG@10 = 0.7779 ± 0.0747
+run_tmgnrxv3_citation_laplace.jsonl | nDCG@10_uncited = 0.3513 ± 0.0674
+run_tmgnrxv3_citation_laplace.jsonl | Recall@10 = 0.6818 ± 0.1917
+run_tmgnrxv3_citation_laplace.jsonl | Recall@10_uncited = 0.5319 ± 0.2333
+run_tmgnrxv3_citation_laplace.jsonl | Recall@10S = 0.8715 ± 0.1520
+run_tmgnrxv3_citation_laplace.jsonl | Recall@10S_uncited = 0.6916 ± 0.2879
+run_tmgnrxv3_citation_laplace.jsonl | Precision@10 = 0.3787 ± 0.1471
+run_tmgnrxv3_citation_laplace.jsonl | Precision@10_uncited = 0.1780 ± 0.1229
+run_tmgnrxv3_citation_laplace.jsonl | Precision@10S = 0.1760 ± 0.0787
+run_tmgnrxv3_citation_laplace.jsonl | Precision@10S_uncited = 0.0447 ± 0.0399
+run_tmgnrxv3_citation_laplace.jsonl | MAP = 0.5228 ± 0.2077
+run_tmgnrxv3_citation_laplace.jsonl | MAP_uncited = 0.0812 ± 0.0501
+run_tmgnrxv3_citation_laplace.jsonl | MRR = 1.0000 ± 0.0000
+
+ # Evaluating run_tmgnrxv3_explicit_laplace.jsonl
+run_tmgnrxv3_explicit_laplace.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_explicit_laplace_per_query_metrics.jsonl)
+run_tmgnrxv3_explicit_laplace.jsonl | nDCG@10 = 0.7798 ± 0.1014
+run_tmgnrxv3_explicit_laplace.jsonl | nDCG@10_uncited = 0.4978 ± 0.1252
+run_tmgnrxv3_explicit_laplace.jsonl | Recall@10 = 0.6767 ± 0.1947
+run_tmgnrxv3_explicit_laplace.jsonl | Recall@10_uncited = 0.5835 ± 0.2728
+run_tmgnrxv3_explicit_laplace.jsonl | Recall@10S = 0.8624 ± 0.1773
+run_tmgnrxv3_explicit_laplace.jsonl | Recall@10S_uncited = 0.7598 ± 0.2815
+run_tmgnrxv3_explicit_laplace.jsonl | Precision@10 = 0.3873 ± 0.1716
+run_tmgnrxv3_explicit_laplace.jsonl | Precision@10_uncited = 0.2153 ± 0.1586
+run_tmgnrxv3_explicit_laplace.jsonl | Precision@10S = 0.1713 ± 0.0732
+run_tmgnrxv3_explicit_laplace.jsonl | Precision@10S_uncited = 0.0520 ± 0.0443
+run_tmgnrxv3_explicit_laplace.jsonl | MAP = 0.5194 ± 0.2109
+run_tmgnrxv3_explicit_laplace.jsonl | MAP_uncited = 0.1865 ± 0.1215
+run_tmgnrxv3_explicit_laplace.jsonl | MRR = 0.9611 ± 0.1471
+
+ # Evaluating run_tmgnrxv3_all_laplace.jsonl
+run_tmgnrxv3_all_laplace.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_all_laplace_per_query_metrics.jsonl)
+run_tmgnrxv3_all_laplace.jsonl | nDCG@10 = 0.8060 ± 0.0821
+run_tmgnrxv3_all_laplace.jsonl | nDCG@10_uncited = 0.4382 ± 0.1021
+run_tmgnrxv3_all_laplace.jsonl | Recall@10 = 0.7048 ± 0.1984
+run_tmgnrxv3_all_laplace.jsonl | Recall@10_uncited = 0.5728 ± 0.2757
+run_tmgnrxv3_all_laplace.jsonl | Recall@10S = 0.8874 ± 0.1536
+run_tmgnrxv3_all_laplace.jsonl | Recall@10S_uncited = 0.7494 ± 0.2770
+run_tmgnrxv3_all_laplace.jsonl | Precision@10 = 0.3980 ± 0.1649
+run_tmgnrxv3_all_laplace.jsonl | Precision@10_uncited = 0.2080 ± 0.1510
+run_tmgnrxv3_all_laplace.jsonl | Precision@10S = 0.1773 ± 0.0741
+run_tmgnrxv3_all_laplace.jsonl | Precision@10S_uncited = 0.0513 ± 0.0440
+run_tmgnrxv3_all_laplace.jsonl | MAP = 0.5644 ± 0.2112
+run_tmgnrxv3_all_laplace.jsonl | MAP_uncited = 0.1449 ± 0.0947
+run_tmgnrxv3_all_laplace.jsonl | MRR = 1.0000 ± 0.0000
+
+ # Evaluating run_tmgnrxv3_base_lognormal.jsonl
+run_tmgnrxv3_base_lognormal.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_base_lognormal_per_query_metrics.jsonl)
+run_tmgnrxv3_base_lognormal.jsonl | nDCG@10 = 0.7667 ± 0.0803
+run_tmgnrxv3_base_lognormal.jsonl | nDCG@10_uncited = 0.4042 ± 0.0769
+run_tmgnrxv3_base_lognormal.jsonl | Recall@10 = 0.6630 ± 0.1874
+run_tmgnrxv3_base_lognormal.jsonl | Recall@10_uncited = 0.5523 ± 0.2201
+run_tmgnrxv3_base_lognormal.jsonl | Recall@10S = 0.8545 ± 0.1719
+run_tmgnrxv3_base_lognormal.jsonl | Recall@10S_uncited = 0.7083 ± 0.2526
+run_tmgnrxv3_base_lognormal.jsonl | Precision@10 = 0.3747 ± 0.1602
+run_tmgnrxv3_base_lognormal.jsonl | Precision@10_uncited = 0.1920 ± 0.1377
+run_tmgnrxv3_base_lognormal.jsonl | Precision@10S = 0.1727 ± 0.0796
+run_tmgnrxv3_base_lognormal.jsonl | Precision@10S_uncited = 0.0460 ± 0.0400
+run_tmgnrxv3_base_lognormal.jsonl | MAP = 0.4945 ± 0.1952
+run_tmgnrxv3_base_lognormal.jsonl | MAP_uncited = 0.1169 ± 0.0645
+run_tmgnrxv3_base_lognormal.jsonl | MRR = 1.0000 ± 0.0000
+
+ # Evaluating run_tmgnrxv3_citation_lognormal.jsonl
+run_tmgnrxv3_citation_lognormal.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_citation_lognormal_per_query_metrics.jsonl)
+run_tmgnrxv3_citation_lognormal.jsonl | nDCG@10 = 0.7813 ± 0.0775
+run_tmgnrxv3_citation_lognormal.jsonl | nDCG@10_uncited = 0.3512 ± 0.0645
+run_tmgnrxv3_citation_lognormal.jsonl | Recall@10 = 0.6905 ± 0.1898
+run_tmgnrxv3_citation_lognormal.jsonl | Recall@10_uncited = 0.5366 ± 0.2260
+run_tmgnrxv3_citation_lognormal.jsonl | Recall@10S = 0.8718 ± 0.1514
+run_tmgnrxv3_citation_lognormal.jsonl | Recall@10S_uncited = 0.6989 ± 0.2629
+run_tmgnrxv3_citation_lognormal.jsonl | Precision@10 = 0.3853 ± 0.1547
+run_tmgnrxv3_citation_lognormal.jsonl | Precision@10_uncited = 0.1847 ± 0.1304
+run_tmgnrxv3_citation_lognormal.jsonl | Precision@10S = 0.1760 ± 0.0784
+run_tmgnrxv3_citation_lognormal.jsonl | Precision@10S_uncited = 0.0447 ± 0.0392
+run_tmgnrxv3_citation_lognormal.jsonl | MAP = 0.5332 ± 0.2145
+run_tmgnrxv3_citation_lognormal.jsonl | MAP_uncited = 0.0873 ± 0.0520
+run_tmgnrxv3_citation_lognormal.jsonl | MRR = 1.0000 ± 0.0000
+
+ # Evaluating run_tmgnrxv3_explicit_lognormal.jsonl
+run_tmgnrxv3_explicit_lognormal.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_explicit_lognormal_per_query_metrics.jsonl)
+run_tmgnrxv3_explicit_lognormal.jsonl | nDCG@10 = 0.7887 ± 0.1033
+run_tmgnrxv3_explicit_lognormal.jsonl | nDCG@10_uncited = 0.4873 ± 0.1175
+run_tmgnrxv3_explicit_lognormal.jsonl | Recall@10 = 0.6869 ± 0.1982
+run_tmgnrxv3_explicit_lognormal.jsonl | Recall@10_uncited = 0.5998 ± 0.2648
+run_tmgnrxv3_explicit_lognormal.jsonl | Recall@10S = 0.8435 ± 0.2298
+run_tmgnrxv3_explicit_lognormal.jsonl | Recall@10S_uncited = 0.7608 ± 0.2797
+run_tmgnrxv3_explicit_lognormal.jsonl | Precision@10 = 0.3920 ± 0.1706
+run_tmgnrxv3_explicit_lognormal.jsonl | Precision@10_uncited = 0.2193 ± 0.1577
+run_tmgnrxv3_explicit_lognormal.jsonl | Precision@10S = 0.1740 ± 0.0759
+run_tmgnrxv3_explicit_lognormal.jsonl | Precision@10S_uncited = 0.0533 ± 0.0474
+run_tmgnrxv3_explicit_lognormal.jsonl | MAP = 0.5384 ± 0.2182
+run_tmgnrxv3_explicit_lognormal.jsonl | MAP_uncited = 0.1808 ± 0.1145
+run_tmgnrxv3_explicit_lognormal.jsonl | MRR = 0.9667 ± 0.1247
+
+ # Evaluating run_tmgnrxv3_all_lognormal.jsonl
+run_tmgnrxv3_all_lognormal.jsonl: evaluated 30 queries (per-query metrics -> run_tmgnrxv3_all_lognormal_per_query_metrics.jsonl)
+run_tmgnrxv3_all_lognormal.jsonl | nDCG@10 = 0.8130 ± 0.0833
+run_tmgnrxv3_all_lognormal.jsonl | nDCG@10_uncited = 0.4283 ± 0.0939
+run_tmgnrxv3_all_lognormal.jsonl | Recall@10 = 0.7067 ± 0.1969
+run_tmgnrxv3_all_lognormal.jsonl | Recall@10_uncited = 0.5763 ± 0.2764
+run_tmgnrxv3_all_lognormal.jsonl | Recall@10S = 0.8963 ± 0.1453
+run_tmgnrxv3_all_lognormal.jsonl | Recall@10S_uncited = 0.7608 ± 0.2797
+run_tmgnrxv3_all_lognormal.jsonl | Precision@10 = 0.3993 ± 0.1671
+run_tmgnrxv3_all_lognormal.jsonl | Precision@10_uncited = 0.2073 ± 0.1479
+run_tmgnrxv3_all_lognormal.jsonl | Precision@10S = 0.1807 ± 0.0786
+run_tmgnrxv3_all_lognormal.jsonl | Precision@10S_uncited = 0.0533 ± 0.0474
+run_tmgnrxv3_all_lognormal.jsonl | MAP = 0.5812 ± 0.2140
+run_tmgnrxv3_all_lognormal.jsonl | MAP_uncited = 0.1395 ± 0.0877
+run_tmgnrxv3_all_lognormal.jsonl | MRR = 1.0000 ± 0.0000
