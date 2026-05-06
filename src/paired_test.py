@@ -16,21 +16,9 @@ def extract_metric(data, metric):
             vals.append(d[metric])
     return np.array(vals)
 
-A = np.array([0.29907196, 0.73702044, 0.61618082, 0.53947103, 0.67387297, 0.66281143,
-              0.54413591, 0.68895332, 0.62978117, 0.67217976, 0.77840458, 0.63651409,
-              0.65844544, 0.77883119, 0.69796428, 0.65699529, 0.75043723, 0.78377278,
-              0.67191863, 0.74389943, 0.77184252, 0.56273971, 0.71713746, 0.72104151,
-              0.66292737, 0.71176538, 0.51481396, 0.57552262, 0.30690136, 0.59068256])
-
-B = np.array([0.60355458, 0.79336426, 0.7892031,  0.76680153, 0.7807666,  0.73765851,
-              0.66522871, 0.85432541, 0.70672174, 0.72140399, 0.83178142, 0.78544977,
-              0.74877359, 0.81962408, 0.78125533, 0.77134351, 0.78956168, 0.84397221,
-              0.72599453, 0.82141918, 0.84782643, 0.67095754, 0.79755416, 0.69900802,
-              0.81368179, 0.81882218, 0.63892216, 0.80303118, 0.74800216, 0.71337237])
-
-our_file = "output/run_tmgnrx_citation_per_query_metrics.jsonl"
-baseline_file  = "output/run_bm25_per_query_metrics.jsonl"
-baseline_file  = "output/run_citation_per_query_metrics.jsonl"
+our_file = "run-zsv3-alltemp/run_tmgnrxv3_all_gamma_per_query_metrics.jsonl"
+# baseline_file  = "run-zs-baseline-01/run_bm25_per_query_metrics.jsonl" ##lowest baseline for all-pool
+baseline_file  = "run-zs-baseline-01/run_citation_per_query_metrics.jsonl" ##lowest baseline for uncited-only pool
 
 baseline_data = read_jsonl(baseline_file)
 our_data  = read_jsonl(our_file)
