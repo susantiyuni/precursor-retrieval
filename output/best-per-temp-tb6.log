@@ -1,53 +1,53 @@
 🟦 nDCG@10 (best per prior & pool)
 Prior	All (best run)	Score	Uncited (best run)	Score
-decay	all_decay	0.8146	explicit_decay	0.4841
-gaussian	all_gaussian	0.8031	explicit_gaussian	0.4965
-laplace	all_laplace	0.8060	explicit_laplace	0.4978
-lognormal	all_lognormal	0.8130	explicit_lognormal	0.4873
-gamma	all_gamma	0.8143	explicit_gamma	0.4841
-beta	all_beta	0.7696	explicit_beta	0.4902
+decay	all_decay	0.8146	metadata_decay	0.4841
+gaussian	all_gaussian	0.8031	metadata_gaussian	0.4965
+laplace	all_laplace	0.8060	metadata_laplace	0.4978
+lognormal	all_lognormal	0.8130	metadata_lognormal	0.4873
+gamma	all_gamma	0.8143	metadata_gamma	0.4841
+beta	all_beta	0.7696	metadata_beta	0.4902
 
 🟩 Recall@10 (best per prior & pool)
 Prior	All	Score	Uncited	Score
-decay	all_decay	0.7125	explicit_decay	0.5951
-gaussian	all_gaussian	0.6973	explicit_gaussian	0.5733
-laplace	all_laplace	0.7048	explicit_laplace	0.5835
-lognormal	all_lognormal	0.7067	explicit_lognormal	0.5998
-gamma	all_gamma	0.7093	explicit_gamma	0.5989
-beta	all_beta	0.6606	explicit_beta	0.5498
+decay	all_decay	0.7125	metadata_decay	0.5951
+gaussian	all_gaussian	0.6973	metadata_gaussian	0.5733
+laplace	all_laplace	0.7048	metadata_laplace	0.5835
+lognormal	all_lognormal	0.7067	metadata_lognormal	0.5998
+gamma	all_gamma	0.7093	metadata_gamma	0.5989
+beta	all_beta	0.6606	metadata_beta	0.5498
 
 🟨 Recall@10S (best per prior & pool)
 Prior	All	Score	Uncited	Score
-decay	all_decay	0.8958	explicit_decay	0.7556
-gaussian	all_gaussian	0.8936	explicit_gaussian	0.7480
-laplace	all_laplace	0.8874	explicit_laplace	0.7598
-lognormal	all_lognormal	0.8963	explicit_lognormal	0.7608
-gamma	all_gamma	0.8997	explicit_gamma	0.7608
-beta	all_beta	0.8569	explicit_beta	0.7205
+decay	all_decay	0.8958	metadata_decay	0.7556
+gaussian	all_gaussian	0.8936	metadata_gaussian	0.7480
+laplace	all_laplace	0.8874	metadata_laplace	0.7598
+lognormal	all_lognormal	0.8963	metadata_lognormal	0.7608
+gamma	all_gamma	0.8997	metadata_gamma	0.7608
+beta	all_beta	0.8569	metadata_beta	0.7205
 
 🟧 Precision@10 (best per prior & pool)
 Prior	All	Score	Uncited	Score
-decay	all_decay	0.4007	explicit_decay	0.2160
-gaussian	all_gaussian	0.3960	explicit_gaussian	0.2107
-laplace	all_laplace	0.3980	explicit_laplace	0.2153
-lognormal	all_lognormal	0.3993	explicit_lognormal	0.2193
-gamma	all_gamma	0.4013	explicit_gamma	0.2187
-beta	all_beta	0.3713	explicit_beta	0.2027
+decay	all_decay	0.4007	metadata_decay	0.2160
+gaussian	all_gaussian	0.3960	metadata_gaussian	0.2107
+laplace	all_laplace	0.3980	metadata_laplace	0.2153
+lognormal	all_lognormal	0.3993	metadata_lognormal	0.2193
+gamma	all_gamma	0.4013	metadata_gamma	0.2187
+beta	all_beta	0.3713	metadata_beta	0.2027
 
 🟥 Precision@10S (best per prior & pool)
 Prior	All	Score	Uncited	Score
-decay	all_decay	0.1800	explicit_decay	0.0527
-gaussian	all_gaussian	0.1787	explicit_gaussian	0.0513
-laplace	all_laplace	0.1773	explicit_laplace	0.0520
-lognormal	all_lognormal	0.1807	explicit_lognormal	0.0533
-gamma	all_gamma	0.1813	explicit_gamma	0.0533
-beta	all_beta	0.1707	explicit_beta	0.0487
+decay	all_decay	0.1800	metadata_decay	0.0527
+gaussian	all_gaussian	0.1787	metadata_gaussian	0.0513
+laplace	all_laplace	0.1773	metadata_laplace	0.0520
+lognormal	all_lognormal	0.1807	metadata_lognormal	0.0533
+gamma	all_gamma	0.1813	metadata_gamma	0.0533
+beta	all_beta	0.1707	metadata_beta	0.0487
 
 🟪 MAP (best per prior & pool)
 Prior	All	Score	Uncited	Score
-decay	all_decay	0.5798	explicit_decay	0.1778
-gaussian	all_gaussian	0.5587	explicit_gaussian	0.1868
-laplace	all_laplace	0.5644	explicit_laplace	0.1865
-lognormal	all_lognormal	0.5812	explicit_lognormal	0.1808
-gamma	all_gamma	0.5823	explicit_gamma	0.1787
-beta	all_beta	0.5010	explicit_beta	0.1734
+decay	all_decay	0.5798	metadata_decay	0.1778
+gaussian	all_gaussian	0.5587	metadata_gaussian	0.1868
+laplace	all_laplace	0.5644	metadata_laplace	0.1865
+lognormal	all_lognormal	0.5812	metadata_lognormal	0.1808
+gamma	all_gamma	0.5823	metadata_gamma	0.1787
+beta	all_beta	0.5010	metadata_beta	0.1734
