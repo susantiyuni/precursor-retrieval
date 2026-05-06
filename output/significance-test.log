@@ -1,0 +1,131 @@
+##all candidate
+metric='nDCG@10'
+A:run-zs-baseline-01/run_bm25_per_query_metrics.jsonl vs. B:run-zsv3-alltemp/run_tmgnrxv3_all_gamma_per_query_metrics.jsonl
+Mean A: 0.5324256088099321
+Mean B: 0.8143328275532643
+Difference (B - A): 0.28190721874333224
+Paired t-test:
+t = 12.398703787949104
+p = 4.0786785431403874e-13
+RESULT: Statistically significant (p < 0.05)
+
+
+metric='Recall@10'
+A:run-zs-baseline-01/run_bm25_per_query_metrics.jsonl vs. B:run-zsv3-alltemp/run_tmgnrxv3_all_gamma_per_query_metrics.jsonl
+Mean A: 0.3817974037780307
+Mean B: 0.7092642037976434
+Difference (B - A): 0.32746680001961276
+Paired t-test:
+t = 9.078133500062798
+p = 5.647951756028674e-10
+RESULT: Statistically significant (p < 0.05)
+
+
+metric='Recall@10S'
+A:run-zs-baseline-01/run_bm25_per_query_metrics.jsonl vs. B:run-zsv3-alltemp/run_tmgnrxv3_all_gamma_per_query_metrics.jsonl
+Mean A: 0.42073123600288276
+Mean B: 0.8996720760218212
+Difference (B - A): 0.47894084001893844
+Paired t-test:
+t = 9.273776237773097
+p = 3.547951611062157e-10
+RESULT: Statistically significant (p < 0.05)
+
+
+metric='Precision@10'
+A:run-zs-baseline-01/run_bm25_per_query_metrics.jsonl vs. B:run-zsv3-alltemp/run_tmgnrxv3_all_gamma_per_query_metrics.jsonl
+Mean A: 0.23
+Mean B: 0.4013333333333334
+Difference (B - A): 0.17133333333333337
+Paired t-test:
+t = 11.195828427458263
+p = 4.792562974631767e-12
+RESULT: Statistically significant (p < 0.05)
+
+
+metric='Precision@10S'
+A:run-zs-baseline-01/run_bm25_per_query_metrics.jsonl vs. B:run-zsv3-alltemp/run_tmgnrxv3_all_gamma_per_query_metrics.jsonl
+Mean A: 0.09400000000000001
+Mean B: 0.18133333333333335
+Difference (B - A): 0.08733333333333333
+Paired t-test:
+t = 9.470282454854987
+p = 2.2355024423884088e-10
+RESULT: Statistically significant (p < 0.05)
+
+
+metric='MAP'
+A:run-zs-baseline-01/run_bm25_per_query_metrics.jsonl vs. B:run-zsv3-alltemp/run_tmgnrxv3_all_gamma_per_query_metrics.jsonl
+Mean A: 0.21386755312872777
+Mean B: 0.582330108095564
+Difference (B - A): 0.3684625549668362
+Paired t-test:
+t = 9.87553865483961
+p = 8.761968536534333e-11
+RESULT: Statistically significant (p < 0.05)
+
+##uncited-only
+metric='nDCG@10_uncited'
+A:run-zs-baseline-01/run_citation_per_query_metrics.jsonl vs. B:run-zsv3-alltemp/run_tmgnrxv3_all_gamma_per_query_metrics.jsonl
+Mean A: 0.23542998981162438
+Mean B: 0.4278741676268781
+Difference (B - A): 0.1924441778152537
+Paired t-test:
+t = 14.13083505333553
+p = 1.5501731768483745e-14
+RESULT: Statistically significant (p < 0.05)
+
+
+metric='Recall@10_uncited'
+A:run-zs-baseline-01/run_citation_per_query_metrics.jsonl vs. B:run-zsv3-alltemp/run_tmgnrxv3_all_gamma_per_query_metrics.jsonl
+Mean A: 0.2638309861170458
+Mean B: 0.5769385065175796
+Difference (B - A): 0.3131075204005338
+Paired t-test:
+t = 5.847321220165991
+p = 2.4233556409184844e-06
+RESULT: Statistically significant (p < 0.05)
+
+
+metric='Recall@10S_uncited'
+A:run-zs-baseline-01/run_citation_per_query_metrics.jsonl vs. B:run-zsv3-alltemp/run_tmgnrxv3_all_gamma_per_query_metrics.jsonl
+Mean A: 0.36726641414141414
+Mean B: 0.760822510822511
+Difference (B - A): 0.3935560966810968
+Paired t-test:
+t = 5.625614150546802
+p = 1.0020842840312194e-05
+RESULT: Statistically significant (p < 0.05)
+
+
+metric='Precision@10_uncited'
+A:run-zs-baseline-01/run_citation_per_query_metrics.jsonl vs. B:run-zsv3-alltemp/run_tmgnrxv3_all_gamma_per_query_metrics.jsonl
+Mean A: 0.09866666666666668
+Mean B: 0.20799999999999993
+Difference (B - A): 0.10933333333333325
+Paired t-test:
+t = 6.250561986354624
+p = 8.028561813011005e-07
+RESULT: Statistically significant (p < 0.05)
+
+
+metric='Precision@10S_uncited'
+A:run-zs-baseline-01/run_citation_per_query_metrics.jsonl vs. B:run-zsv3-alltemp/run_tmgnrxv3_all_gamma_per_query_metrics.jsonl
+Mean A: 0.024000000000000007
+Mean B: 0.05333333333333334
+Difference (B - A): 0.02933333333333333
+Paired t-test:
+t = 4.3376276240389435
+p = 0.00015888962836122655
+RESULT: Statistically significant (p < 0.05)
+
+
+metric='MAP_uncited'
+A:run-zs-baseline-01/run_citation_per_query_metrics.jsonl vs. B:run-zsv3-alltemp/run_tmgnrxv3_all_gamma_per_query_metrics.jsonl
+Mean A: 0.026280664819891053
+Mean B: 0.13958661792375984
+Difference (B - A): 0.11330595310386879
+Paired t-test:
+t = 7.288139696570616
+p = 5.008788010786788e-08
+RESULT: Statistically significant (p < 0.05)
