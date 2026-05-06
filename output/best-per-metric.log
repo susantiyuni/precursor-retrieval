@@ -4,76 +4,76 @@ Best Variants per Metric
 Setting	Best Variant
 Base	decay (0.7713)
 Citation	decay (0.7839)
-Explicit	decay (0.7910)
+Metadata	decay (0.7910)
 All	decay (0.8146)
 🔹 nDCG@10 (Uncited)
 Setting	Best Variant
 Base	laplace (0.4162)
 Citation	beta (0.3616)
-Explicit	laplace (0.4978)
+Metadata	laplace (0.4978)
 All	beta (0.4425)
 
 🔹 Recall@10 (Cited)
 Setting	Best Variant
 Base	decay (0.6644)
 Citation	gamma / lognormal (0.6905)
-Explicit	gamma / lognormal (0.6869)
+Metadata	gamma / lognormal (0.6869)
 All	decay (0.7125)
 🔹 Recall@10 (Uncited)
 Setting	Best Variant
 Base	decay (0.5546)
 Citation	gamma / lognormal (0.5366)
-Explicit	lognormal (0.5998)
+Metadata	lognormal (0.5998)
 All	decay (0.5833)
 
 🔹 Recall@10S (Cited)
 Setting	Best Variant
 Base	gamma / lognormal (0.8545)
 Citation	gamma / lognormal (0.8718)
-Explicit	laplace (0.8624)
+Metadata	laplace (0.8624)
 All	gamma (0.8997)
 🔹 Recall@10S (Uncited)
 Setting	Best Variant
 Base	laplace (0.7159)
 Citation	gamma / lognormal (0.6989)
-Explicit	gamma / lognormal (0.7608)
+Metadata	gamma / lognormal (0.7608)
 All	gamma / lognormal (0.7608)
 
 🔹 Precision@10 (Cited)
 Setting	Best Variant
 Base	gamma (0.3760)
 Citation	gamma / lognormal (0.3853)
-Explicit	gamma / lognormal (0.3920)
+Metadata	gamma / lognormal (0.3920)
 All	gamma (0.4013)
 🔹 Precision@10 (Uncited)
 Setting	Best Variant
 Base	gamma (0.1927)
 Citation	gamma / lognormal (0.1847)
-Explicit	lognormal (0.2193)
+Metadata	lognormal (0.2193)
 All	gamma / decay (0.2080)
 
 🔹 Precision@10S (Cited)
 Setting	Best Variant
 Base	gamma / lognormal (0.1727)
 Citation	gamma / lognormal (0.1760)
-Explicit	gamma / lognormal (0.1740)
+Metadata	gamma / lognormal (0.1740)
 All	gamma (0.1813)
 🔹 Precision@10S (Uncited)
 Setting	Best Variant
 Base	gamma / lognormal / laplace (0.0460)
 Citation	gamma / lognormal (0.0447)
-Explicit	gamma / lognormal (0.0533)
+Metadata	gamma / lognormal (0.0533)
 All	gamma / lognormal (0.0533)
 
 🔹 MAP (Cited)
 Setting	Best Variant
 Base	decay (0.4999)
 Citation	decay (0.5386)
-Explicit	gamma (0.5392)
+Metadata	gamma (0.5392)
 All	gamma (0.5823)
 🔹 MAP (Uncited)
 Setting	Best Variant
 Base	lognormal (0.1169)
 Citation	lognormal (0.0873)
-Explicit	gaussian (0.1868)
+Metadata	gaussian (0.1868)
 All	laplace (0.1449)
