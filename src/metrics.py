@@ -18,47 +18,14 @@ OUT_DIR = Path(args.out_dir)
 RELEVANCE_PATH = Path("data/candidate-pool.jsonl")
 
 METHOD_FILES = [
-    #zs
-    # "run_bm25.jsonl",
-    # "run_citation.jsonl",
-    # "run_dualenc.jsonl",
-    # "run_ppr.jsonl",
-    # "run_colbert.jsonl",
-    # "run_tmgnrx_base.jsonl",
-    # "run_tmgnrx_citation.jsonl",
-    # "run_tmgnrx_explicit.jsonl",
-    # "run_tmgnrx_all.jsonl",
+    ###zs
+    "run_bm25.jsonl",
+    "run_citation.jsonl",
+    "run_dualenc.jsonl",
+    "run_ppr.jsonl",
+    "run_colbert.jsonl",
 
-    # "run_tmgnrxv4_base_gamma.jsonl",
-    # "run_tmgnrxv4_citation_gamma.jsonl",
-    # "run_tmgnrxv4_explicit_gamma.jsonl",
-    # "run_tmgnrxv4_all_gamma.jsonl",
-
-    # "run_tmgnrxv4_base_beta.jsonl",
-    # "run_tmgnrxv4_citation_beta.jsonl",
-    # "run_tmgnrxv4_explicit_beta.jsonl",
-    # "run_tmgnrxv4_all_beta.jsonl",
-
-    # "run_tmgnrxv4_base_decay.jsonl",
-    # "run_tmgnrxv4_citation_decay.jsonl",
-    # "run_tmgnrxv4_explicit_decay.jsonl",
-    # "run_tmgnrxv4_all_decay.jsonl",
-
-    # "run_tmgnrxv4_base_gaussian.jsonl",
-    # "run_tmgnrxv4_citation_gaussian.jsonl",
-    # "run_tmgnrxv4_explicit_gaussian.jsonl",
-    # "run_tmgnrxv4_all_gaussian.jsonl",
-
-    # "run_tmgnrxv4_base_laplace.jsonl",
-    # "run_tmgnrxv4_citation_laplace.jsonl",
-    # "run_tmgnrxv4_explicit_laplace.jsonl",
-    # "run_tmgnrxv4_all_laplace.jsonl",
-
-    # "run_tmgnrxv4_base_lognormal.jsonl",
-    # "run_tmgnrxv4_citation_lognormal.jsonl",
-    # "run_tmgnrxv4_explicit_lognormal.jsonl",
-    # "run_tmgnrxv4_all_lognormal.jsonl",
-
+    ### zs temporal ablation
     # "run_tmgnrxv3_base_gamma.jsonl",
     # "run_tmgnrxv3_citation_gamma.jsonl",
     # "run_tmgnrxv3_explicit_gamma.jsonl",
@@ -89,25 +56,20 @@ METHOD_FILES = [
     # "run_tmgnrxv3_explicit_lognormal.jsonl",
     # "run_tmgnrxv3_all_lognormal.jsonl",
 
+    ### zs schema ablation
+    # "run_tmgnrx_base_int_influence.jsonl",
+    # "run_tmgnrx_base_comm_consensus.jsonl",
+    # "run_tmgnrx_base_pure_topical_continuity.jsonl",
+    # "run_tmgnrx_base_hybrid_topical_continuity.jsonl",
+    # "run_tmgnrx_base_hybrid.jsonl",
 
-    #ltr
-    # "run_dt_all.jsonl",
-    # "run_dt_all+minus_citation.jsonl",
-    # "run_dt_all+minus_gating.jsonl",
-    # "run_dt_all+minus_metadata.jsonl",
-    # "run_dt_all+minus_sim.jsonl",
-    # "run_dt_all+minus_trace_cited.jsonl",
-    # "run_dt_all+minus_trace_sem.jsonl",
-    # "run_dt_all+minus_trace_social.jsonl",
-    # "run_dt_all+minus_trace_struct.jsonl",
-    # "run_dt_all+minus_sparql.jsonl",
-    # "run_dt_uncited_opt.jsonl"
-    "run_ltr_base.jsonl",
-    "run_ltr_base+plus_metadata.jsonl",
-    "run_ltr_base+plus_citation.jsonl",
-    "run_ltr_base+plus_gating.jsonl",
-    "run_ltr_base+plus_metadata+plus_citation.jsonl",
-    "run_ltr_base+plus_metadata+plus_citation+plus_gating.jsonl",
+    #ltr ablation
+    # "run_ltr_base.jsonl",
+    # "run_ltr_base+plus_metadata.jsonl",
+    # "run_ltr_base+plus_citation.jsonl",
+    # "run_ltr_base+plus_gating.jsonl",
+    # "run_ltr_base+plus_metadata+plus_citation.jsonl",
+    # "run_ltr_base+plus_metadata+plus_citation+plus_gating.jsonl",
     ]
 
 TOP_K_NDCG = 50
@@ -136,11 +98,7 @@ logger.info("# Starting evaluation")
 logger.info(f"Output dir: {OUT_DIR}")
 logger.info(f"Gold file: {RELEVANCE_PATH}")
 
-# =========================================================
 # LOAD GOLD JUDGMENTS
-# =========================================================
-# gold[qid][pid] -> {llm_score, is_cited}
-# =========================================================
 
 gold = {}
 
@@ -157,12 +115,7 @@ with RELEVANCE_PATH.open("r", encoding="utf-8") as f:
             for c in row.get("candidates", []) or row.get("ranked_candidates")
         }
 
-# print(f"Loaded gold for {len(gold)} queries")
 logger.info(f"Loaded gold for {len(gold)} queries")
-
-# =========================================================
-# METRIC HELPERS 
-# =========================================================
 
 def mean_std(xs):
     xs = [x for x in xs if x is not None]
@@ -220,10 +173,21 @@ def precision_at_k(ranked, judged, k, threshold, uncited_only=False):
     )
     return hits / len(top_k)
 
-# ---- extra metrics reviewers like ----
+def average_precision(ranked, judged, threshold, uncited_only=False):
+    def relevant(v): 
+        return v["llm_score"] >= threshold
 
-def average_precision(ranked, judged, threshold):
-    rel_set = {pid for pid, v in judged.items() if v["llm_score"] >= threshold}
+    if uncited_only:
+        rel_set = {
+            pid for pid, v in judged.items()
+            if relevant(v) and v["is_cited"] == 0
+        }
+    else:
+        rel_set = {
+            pid for pid, v in judged.items()
+            if relevant(v)
+        }
+
     if not rel_set:
         return None
 
@@ -231,12 +195,13 @@ def average_precision(ranked, judged, threshold):
     ap = 0
 
     for i, c in enumerate(ranked, start=1):
-        if c["paper"] in rel_set:
+        pid = c["paper"]
+
+        if pid in rel_set:
             hits += 1
             ap += hits / i
 
     return ap / len(rel_set)
-
 
 def mrr(ranked, judged, threshold):
     rel_set = {pid for pid, v in judged.items() if v["llm_score"] >= threshold}
@@ -251,12 +216,7 @@ def mean(xs):
     return sum(xs) / len(xs) if xs else 0
 
 
-# =========================================================
-# EVALUATION LOOP
-# =========================================================
-
 for method_file in METHOD_FILES:
-
     path = OUT_DIR / method_file
     if not path.exists():
         logger.warning(f"Skip {method_file}")
@@ -288,23 +248,23 @@ for method_file in METHOD_FILES:
                 continue
 
             metrics = {
-                "nDCG@10": ndcg_at_k(ranked, judged, TOP_K_NDCG),
-                "nDCG@10_uncited": ndcg_at_k(ranked, judged, TOP_K_NDCG, uncited_only=True),
+                "nDCG@": ndcg_at_k(ranked, judged, TOP_K_NDCG),
+                "nDCG@_uncited": ndcg_at_k(ranked, judged, TOP_K_NDCG, uncited_only=True),
 
-                "Recall@10": recall_at_k(ranked, judged, TOP_K_RECALL, NORMAL_THRESHOLD),
-                "Recall@10_uncited": recall_at_k(ranked, judged, TOP_K_RECALL, NORMAL_THRESHOLD, True),
+                "Recall": recall_at_k(ranked, judged, TOP_K_RECALL, NORMAL_THRESHOLD),
+                "Recall_uncited": recall_at_k(ranked, judged, TOP_K_RECALL, NORMAL_THRESHOLD, True),
 
-                "Recall@10S": recall_at_k(ranked, judged, TOP_K_RECALL, STRICT_THRESHOLD),
-                "Recall@10S_uncited": recall_at_k(ranked, judged, TOP_K_RECALL, STRICT_THRESHOLD, True),
+                "RecallS": recall_at_k(ranked, judged, TOP_K_RECALL, STRICT_THRESHOLD),
+                "RecallS_uncited": recall_at_k(ranked, judged, TOP_K_RECALL, STRICT_THRESHOLD, True),
 
-                "Precision@10": precision_at_k(ranked, judged, TOP_K_RECALL, NORMAL_THRESHOLD),
-                "Precision@10_uncited": precision_at_k(ranked, judged, TOP_K_RECALL, NORMAL_THRESHOLD, True),
+                "Precision": precision_at_k(ranked, judged, TOP_K_RECALL, NORMAL_THRESHOLD),
+                "Precision_uncited": precision_at_k(ranked, judged, TOP_K_RECALL, NORMAL_THRESHOLD, True),
 
-                "Precision@10S": precision_at_k(ranked, judged, TOP_K_RECALL, STRICT_THRESHOLD),
-                "Precision@10S_uncited": precision_at_k(ranked, judged, TOP_K_RECALL, STRICT_THRESHOLD, True),
+                "PrecisionS": precision_at_k(ranked, judged, TOP_K_RECALL, STRICT_THRESHOLD),
+                "PrecisionS_uncited": precision_at_k(ranked, judged, TOP_K_RECALL, STRICT_THRESHOLD, True),
 
                 "MAP": average_precision(ranked, judged, NORMAL_THRESHOLD),
-                "MRR": mrr(ranked, judged, NORMAL_THRESHOLD),
+                "MAP_uncited": average_precision(ranked, judged, NORMAL_THRESHOLD, True),
             }
 
             per_query.append(metrics)
@@ -321,6 +281,5 @@ for method_file in METHOD_FILES:
         # val = mean([q[key] for q in per_query])
         mean_val, std_val = mean_std([q[key] for q in per_query])
         # print(f"{key:18s}: {val:.3f}")
-        # logger.info(f"{method_file} | {key} = {val:.4f}")
         logger.info(f"{method_file} | {key} = {mean_val:.4f} ± {std_val:.4f}")
     print(f"\n")
