@@ -16,20 +16,44 @@ def extract_metric(data, metric):
             vals.append(d[metric])
     return np.array(vals)
 
-our_file = "run-zsv3-alltemp/run_tmgnrxv3_all_gamma_per_query_metrics.jsonl"
-# baseline_file  = "run-zs-baseline-01/run_bm25_per_query_metrics.jsonl" ##lowest baseline for all-pool
-baseline_file  = "run-zs-baseline-01/run_citation_per_query_metrics.jsonl" ##lowest baseline for uncited-only pool
+# our_file = "run-zsv3-alltemp/run_tmgnrxv3_all_gamma_per_query_metrics.jsonl"
+our_file = "run-zsv3-alltemp/run_tmgnrxv3_explicit_gamma_per_query_metrics.jsonl"
+
+# baseline_file  = "run-zs-baseline-01/run_bm25_per_query_metrics.jsonl" ##weakest all pool
+baseline_file  = "run-zs-baseline-01/run_citation_per_query_metrics.jsonl" ##weakest uncited_only pool
+# baseline_file  = "run-zs-baseline-01/run_ppr_per_query_metrics.jsonl" ##strongest all pool
+# baseline_file  = "run-zs-baseline-01/run_dualenc_per_query_metrics.jsonl" ##strongest uncited_only pool
 
 baseline_data = read_jsonl(baseline_file)
 our_data  = read_jsonl(our_file)
 
+# metrics = [
+#     "nDCG", "nDCG_uncited",
+#     "Recall", "Recall_uncited",
+#     "RecallS", "RecallS_uncited",
+#     "Precision", "Precision_uncited",
+#     "PrecisionS", "PrecisionS_uncited",
+#     "MAP", "MAP_uncited"
+# ]
+
+## all candidates
 metrics = [
-    "nDCG@10", "nDCG@10_uncited",
-    "Recall@10", "Recall@10_uncited",
-    "Recall@10S", "Recall@10S_uncited",
-    "Precision@10", "Precision@10_uncited",
-    "Precision@10S", "Precision@10S_uncited",
-    "MAP", "MRR"
+    "nDCG",
+    "Recall", 
+    "RecallS", 
+    "Precision",
+    "PrecisionS", 
+    "MAP"
+]
+
+## uncited_only
+metrics = [
+    "nDCG_uncited",
+    "Recall_uncited",
+    "RecallS_uncited",
+    "Precision_uncited",
+    "PrecisionS_uncited",
+    "MAP_uncited"
 ]
 
 alpha = 0.05  # significance level
@@ -62,21 +86,5 @@ for metric in metrics:
         print("RESULT: Statistically significant (p < 0.05)")
     else:
         print("RESULT: Not statistically significant (p >= 0.05)")
-    # # 3. Cohen's d for paired samples
-    # diff = B - A
-    # cohen_d = np.mean(diff) / np.std(diff, ddof=1)
-    # print("\nCohen's d:", cohen_d)
-    # if abs(cohen_d) >= 0.8:
-    #     print("Effect size: Large")
-    # elif abs(cohen_d) >= 0.5:
-    #     print("Effect size: Medium")
-    # elif abs(cohen_d) >= 0.2:
-    #     print("Effect size: Small")
-    # else:
-    #     print("Effect size: Negligible")
-
-    # # 4. 95% CI for mean difference
-    # ci_low, ci_high = stats.t.interval(
-    #     0.95, len(diff)-1, loc=np.mean(diff), scale=stats.sem(diff))
-    # print("\n95% CI for mean difference:", (ci_low, ci_high))
+    
     print (f"\n")
