@@ -1,17 +1,12 @@
 import json, random, os
 import math
 from pathlib import Path
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sentence_transformers import SentenceTransformer
 import numpy as np
 from collections import Counter, defaultdict
 import argparse
 import pickle
 import logging
 from datetime import datetime
-import networkx as nx
-import torch
-from rank_bm25 import BM25Okapi
 
 import utils as u
 SEED = 66
