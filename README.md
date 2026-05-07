@@ -21,7 +21,6 @@ precursor-retrieval/
 ├── src/                   # Main source code
 ├── run_all_zs.sh          # Zero-shot experiment runner
 ├── run_all_ltr.sh         # Learning-to-rank experiment runner
-├── run_metrics.sh         # Metric evaluation configuration
 ├── requirements.txt
 └── README.md
 ```
