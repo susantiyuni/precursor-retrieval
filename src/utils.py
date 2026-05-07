@@ -113,7 +113,7 @@ pure_topical_continuity = {"msc_direct", "keyword_direct"}
 hybrid_topical_continuity = {"msc_direct", "keyword_direct", "hybrid_msc", "hybrid_keyword", "author_topic_traj"}
 hybrid = {"hybrid_msc", "hybrid_keyword", "author_topic_traj"}
 
-def trace_embedding_2(candidate, mode=None):
+def trace_embedding(candidate, mode=None):
     traces = candidate.get("traces", [])
     if mode == "int_influence":
         traces = [t for t in traces if t["type"] in int_influence]
