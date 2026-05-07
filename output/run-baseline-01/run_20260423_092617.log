@@ -3,7 +3,6 @@ CONFIG:
   "DATA_PATH": "data/candidate-pool.jsonl",
   "TOP_K": 50,
   "YEAR_GAP": 10,
-  "TEMP_MODEL": "gaussian",
   "OUT_DIR": "run-baseline-01"
 }
 ## START! ##
