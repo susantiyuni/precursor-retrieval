@@ -29,17 +29,14 @@ args = parser.parse_args()
 OUT_DIR = Path(args.out_dir) 
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 # DATA_PATH = Path("data/candidate-pool.jsonl")
-# FEATURE_PATH = Path("data/sparql_feats.jsonl")
-# DATA_PATH = Path("data/candidate-pool.jsonl")
 DATA_PATH = Path(args.inputf) 
 # FEATURE_PATH = Path("data/sparql_feats.jsonl")
 FEATURE_PATH = Path(args.feat) 
-TOP_K = 50
-YEAR_GAP = 10 
-
 TEMP_MODEL = args.temp #gaussian, laplace, decay, beta, gamma, lognormal
 TRACE_MODE = args.trace #none=all, other=semantic, 
 ABLATION_MODE = args.abl
+TOP_K = 50
+YEAR_GAP = 10 
 
 ABLATION_MODES = {
     "base",          
