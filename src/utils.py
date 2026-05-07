@@ -16,19 +16,7 @@ with open(MSC_FILE, "r", encoding="utf-8") as f:
     for line in f:
         entry = json.loads(line)
         msc_lookup[entry["code"]] = entry
-
-# ================= EMBEDDING MODEL =================
-# MODEL = SentenceTransformer("all-mpnet-base-v2")
-MODEL = SentenceTransformer("all-MiniLM-L6-v2")
-_embed_cache = {}
-def embed(text: str, MODEL: SentenceTransformer) -> np.ndarray:
-    key = (text, id(MODEL))  # ensure cache is MODEL-specific
-    if key not in _embed_cache:
-        _embed_cache[key] = MODEL.encode(
-            text, normalize_embeddings=True, show_progress_bar=False
-        )
-    return _embed_cache[key]
-
+    
 def set_seed(seed):
     os.environ['PYTHONHASHSEED'] = '{}'.format(seed)
     random.seed(seed)
@@ -43,6 +31,18 @@ def set_deterministic():
     torch.backends.cudnn.benchmark = False
     torch.use_deterministic_algorithms(True)
 
+# ================= EMBEDDING MODEL =================
+# MODEL = SentenceTransformer("all-mpnet-base-v2")
+MODEL = SentenceTransformer("all-MiniLM-L6-v2")
+_embed_cache = {}
+def embed(text: str, MODEL: SentenceTransformer) -> np.ndarray:
+    key = (text, id(MODEL))  # ensure cache is MODEL-specific
+    if key not in _embed_cache:
+        _embed_cache[key] = MODEL.encode(
+            text, normalize_embeddings=True, show_progress_bar=False
+        )
+    return _embed_cache[key]
+
 def embedding_similarity(query_p, c):
     q_text = paper_embedding(query_p, mode="text")
     q_graph = paper_embedding(query_p, mode="graph")
@@ -54,29 +54,8 @@ def embedding_similarity(query_p, c):
     alpha = 0.6
     sim = alpha * sim_text + (1 - alpha) * sim_graph
     return sim, sim_text, sim_graph
-
-def extract_feature_vector(sparql_feats):
-    keys = sorted(sparql_feats.keys())
-    return np.array([sparql_feats[k] for k in keys], dtype=float), keys
-
-def split_sparql_features(sparql_feats):
-    cited_keys = [
-        "direct_path",
-        "reverse_path",
-        "two_hop_path",
-        ]
-    uncited_keys = [
-        "bib_coupling_path",
-        "co_citation_path",
-        "keyword_path",
-        "msc_path",
-        "hybrid_keyword",
-        "hybrid_msc",
-        "graph_semantic_bridge"]
-    cited = np.array([sparql_feats.get(k, 0.0) for k in cited_keys], dtype=float)
-    uncited = np.array([sparql_feats.get(k, 0.0) for k in uncited_keys], dtype=float)
-    return cited, uncited
-
+    
+# ================= SCHEMA/TRACE HELPERS =================
 def verbalize_trace(trace):
     rel_map = {
         "CITES": "cites",
@@ -107,13 +86,39 @@ def verbalize_trace(trace):
         return "no connection"
     return " ; ".join(parts)
 
+CITED_TRACES = {"direct", "reverse", "two_hop"}
+STRONG_STRUCTURAL = {"co_citation", "bib_coupling"}
+SEMANTIC_TRACES = {"msc_direct", "keyword_direct", "hybrid_msc", "hybrid_keyword"}
+SOCIAL_TRACES = {"author", "coauthor", "author_topic_traj", "reviewer", "venue"}
+
+def trace_embedding(candidate, mode=None):
+    traces = candidate.get("traces", [])
+    if mode == "cited":
+        traces = [t for t in traces if t["type"] in CITED_TRACES]
+    elif mode == "uncited":
+        traces = [t for t in traces if t["type"] not in CITED_TRACES]
+    elif mode == "structural":
+        traces = [t for t in traces if t["type"] in STRONG_STRUCTURAL]
+    elif mode == "semantic":
+        traces = [t for t in traces if t["type"] in SEMANTIC_TRACES]
+    elif mode == "social":
+        traces = [t for t in traces if t["type"] in SOCIAL_TRACES]
+    if not traces:
+        NULL_TRACE_EMB = embed("no relation between papers", MODEL)
+        return NULL_TRACE_EMB
+    # text = " ; ".join(verbalize_trace(t) for t in traces)
+    text = " ; ".join(t["tokens"] for t in traces)
+    emb = embed(text.lower(), MODEL)
+    # return emb * np.log1p(len(traces))
+    return emb
+
 int_influence = {"direct", "reverse", "two_hop", "author"}
 comm_consensus = {"co_citation", "bib_coupling", "venue", "coauthor", "reviewer"}
 pure_topical_continuity = {"msc_direct", "keyword_direct"}
 hybrid_topical_continuity = {"msc_direct", "keyword_direct", "hybrid_msc", "hybrid_keyword", "author_topic_traj"}
 hybrid = {"hybrid_msc", "hybrid_keyword", "author_topic_traj"}
 
-def trace_embedding(candidate, mode=None):
+def trace_embedding_zs(candidate, mode=None):
     traces = candidate.get("traces", [])
     if mode == "int_influence":
         traces = [t for t in traces if t["type"] in int_influence]
@@ -132,6 +137,7 @@ def trace_embedding(candidate, mode=None):
     emb = embed(text.lower(), MODEL)
     return emb
 
+# ================= TEMPORAL FUNCTIONS HELPERS =================
 def beta_pdf(x, alpha, beta):
     """Compute Beta PDF manually (no scipy dependency)."""
     if x <= 0 or x >= 1:
@@ -198,7 +204,30 @@ def temporal_features(year_q, year_c, mode="full"):
             math.exp(-(dt - 5)**2 / (2 * 3**2)),
             math.exp(-(dt - 10)**2 / (2 * 5**2)),
         ], dtype=float)
-        
+
+# ================= SPARQL numerics =================
+def extract_feature_vector(sparql_feats):
+    keys = sorted(sparql_feats.keys())
+    return np.array([sparql_feats[k] for k in keys], dtype=float), keys
+
+def split_sparql_features(sparql_feats):
+    cited_keys = [
+        "direct_path",
+        "reverse_path",
+        "two_hop_path",
+        ]
+    uncited_keys = [
+        "bib_coupling_path",
+        "co_citation_path",
+        "keyword_path",
+        "msc_path",
+        "hybrid_keyword",
+        "hybrid_msc",
+        "graph_semantic_bridge"]
+    cited = np.array([sparql_feats.get(k, 0.0) for k in cited_keys], dtype=float)
+    uncited = np.array([sparql_feats.get(k, 0.0) for k in uncited_keys], dtype=float)
+    return cited, uncited
+
 # ================= HELPERS =================
 def normalize_labels(scores):
     scores = np.array(scores)
