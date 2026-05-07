@@ -56,6 +56,7 @@ Run the LTR variants and ablation studies:
 ./run_all_ltr.sh 
 ```
 This will run the training and ablation evaluations for the LTR versions of SchemaPathRank.
+See [run_all_ltr.sh](./run_all_ltr.sh ) for configuration details.
 
 ### Baselines
 Run all baseline methods reported in the paper:
