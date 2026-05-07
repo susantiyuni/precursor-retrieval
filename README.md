@@ -1,10 +1,10 @@
 # Historically-Grounded Retrieval of Scholarly Research Beyond Citations
 
-We introduce *historically-grounded* **precursor retrieval**, a scholarly information retrieval task aimed at identifying influential prior scientific work beyond explicit citation links.
+We introduce *historically-grounded* **precursor retrieval**, a novel scholarly information retrieval task aimed at identifying influential prior scientific work beyond explicit citations.
 
 This repository contains the [`source code`](./src) and [`dataset`](./data) for:
 
-- Reproducing the proposed _SchemaPathRank_ approach
+- Reproducing the proposed __SchemaPathRank__, a _scholarly lineage-aware_ precursor retrieval framework over heterogeneous knowledge graphs
 - Running all baseline methods from the paper
 - Computing evaluation metrics reported in the paper, including significance testing result
 - (Optionally) generating custom query–candidate pools using the constructed zbMATH knowledge graph
