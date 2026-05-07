@@ -26,42 +26,42 @@ METHOD_FILES = [
     "run_colbert.jsonl",
 
     ### zs temporal ablation
-    # "run_tmgnrxv3_base_gamma.jsonl",
-    # "run_tmgnrxv3_citation_gamma.jsonl",
-    # "run_tmgnrxv3_explicit_gamma.jsonl",
-    # "run_tmgnrxv3_all_gamma.jsonl",
+    # "run_zs_base_gamma.jsonl",
+    # "run_zs_citation_gamma.jsonl",
+    # "run_zs_explicit_gamma.jsonl",
+    # "run_zs_all_gamma.jsonl",
 
-    # "run_tmgnrxv3_base_beta.jsonl",
-    # "run_tmgnrxv3_citation_beta.jsonl",
-    # "run_tmgnrxv3_explicit_beta.jsonl",
-    # "run_tmgnrxv3_all_beta.jsonl",
+    # "run_zs_base_beta.jsonl",
+    # "run_zs_citation_beta.jsonl",
+    # "run_zs_explicit_beta.jsonl",
+    # "run_zs_all_beta.jsonl",
 
-    # "run_tmgnrxv3_base_decay.jsonl",
-    # "run_tmgnrxv3_citation_decay.jsonl",
-    # "run_tmgnrxv3_explicit_decay.jsonl",
-    # "run_tmgnrxv3_all_decay.jsonl",
+    # "run_zs_base_decay.jsonl",
+    # "run_zs_citation_decay.jsonl",
+    # "run_zs_explicit_decay.jsonl",
+    # "run_zs_all_decay.jsonl",
 
-    # "run_tmgnrxv3_base_gaussian.jsonl",
-    # "run_tmgnrxv3_citation_gaussian.jsonl",
-    # "run_tmgnrxv3_explicit_gaussian.jsonl",
-    # "run_tmgnrxv3_all_gaussian.jsonl",
+    # "run_zs_base_gaussian.jsonl",
+    # "run_zs_citation_gaussian.jsonl",
+    # "run_zs_explicit_gaussian.jsonl",
+    # "run_zs_all_gaussian.jsonl",
 
-    # "run_tmgnrxv3_base_laplace.jsonl",
-    # "run_tmgnrxv3_citation_laplace.jsonl",
-    # "run_tmgnrxv3_explicit_laplace.jsonl",
-    # "run_tmgnrxv3_all_laplace.jsonl",
+    # "run_zs_base_laplace.jsonl",
+    # "run_zs_citation_laplace.jsonl",
+    # "run_zs_explicit_laplace.jsonl",
+    # "run_zs_all_laplace.jsonl",
 
-    # "run_tmgnrxv3_base_lognormal.jsonl",
-    # "run_tmgnrxv3_citation_lognormal.jsonl",
-    # "run_tmgnrxv3_explicit_lognormal.jsonl",
-    # "run_tmgnrxv3_all_lognormal.jsonl",
+    # "run_zs_base_lognormal.jsonl",
+    # "run_zs_citation_lognormal.jsonl",
+    # "run_zs_explicit_lognormal.jsonl",
+    # "run_zs_all_lognormal.jsonl",
 
     ### zs schema ablation
-    # "run_tmgnrx_base_int_influence.jsonl",
-    # "run_tmgnrx_base_comm_consensus.jsonl",
-    # "run_tmgnrx_base_pure_topical_continuity.jsonl",
-    # "run_tmgnrx_base_hybrid_topical_continuity.jsonl",
-    # "run_tmgnrx_base_hybrid.jsonl",
+    # "run_zs_base_int_influence.jsonl",
+    # "run_zs_base_comm_consensus.jsonl",
+    # "run_zs_base_pure_topical_continuity.jsonl",
+    # "run_zs_base_hybrid_topical_continuity.jsonl",
+    # "run_zs_base_hybrid.jsonl",
 
     #ltr ablation
     # "run_ltr_base.jsonl",
@@ -248,8 +248,8 @@ for method_file in METHOD_FILES:
                 continue
 
             metrics = {
-                "nDCG@": ndcg_at_k(ranked, judged, TOP_K_NDCG),
-                "nDCG@_uncited": ndcg_at_k(ranked, judged, TOP_K_NDCG, uncited_only=True),
+                "nDCG": ndcg_at_k(ranked, judged, TOP_K_NDCG),
+                "nDCG_uncited": ndcg_at_k(ranked, judged, TOP_K_NDCG, uncited_only=True),
 
                 "Recall": recall_at_k(ranked, judged, TOP_K_RECALL, NORMAL_THRESHOLD),
                 "Recall_uncited": recall_at_k(ranked, judged, TOP_K_RECALL, NORMAL_THRESHOLD, True),
