@@ -29,8 +29,8 @@ Make sure the data JSONL files exist at the specified path. Run the full precurs
 ./run_all_ltr.sh 
 ```
 #### Baselines
-```
-python src/run_baselines.py
+```bash
+python src/run_baselines.py --out_dir runs_bl01 --inputf data/candidate-pool.jsonl 
 ```
 This will run both the proposed approach (SchemaPathRank, with ablations) and all baselines as specified in the paper. The results (e.g., ranked candidate files per query, experiment logs) will be saved in the specified directory. As reference, our output is shared in the [`output`](./output/) folder. 
 
