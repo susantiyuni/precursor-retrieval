@@ -90,7 +90,7 @@ For reference, we share our significance test results: [`significance_test`](./o
 To generate your own query–candidate pools, you must set up the RDF triple store for the zbMATH Open KG yourself.
 Please refer to the complete installation and setup guide here:
 
-_(complete readme to be updated after anonymous period concludes)_
+_(to be updated after anonymous period concludes)_
 
 This includes:
 - Downloading zbMATH Open KG data via OAI-PMH.
