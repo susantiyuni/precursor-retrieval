@@ -4,10 +4,10 @@ We introduce *historically-grounded* **precursor retrieval**, a scholarly inform
 
 This repository contains the [`source code`](./src) and [`dataset`](./data) for:
 
-- Reproducing the proposed **SchemaPathRank** approach
+- Reproducing the proposed _SchemaPathRank_ approach
 - Running all baseline methods from the paper
-- Running the evaluations including significance testing
-- (Optionally) generating custom query–candidate pools using the knowledge graph
+- Computing evaluation metrics reported in the paper, including significance testing result
+- (Optionally) generating custom query–candidate pools using the constructed zbMATH knowledge graph
 
 ---
 
@@ -41,6 +41,8 @@ pip install -r requirements.txt
 Some dependencies (e.g., PyTorch, ColBERT) may require additional system setup or GPU support. Please install them according to your supported hardware and environment.
 
 ## Running the Experiments
+For all the experiments in the following, the results (e.g., ranked candidate files per query, experiment logs) will be saved in the specified output directory ``out_dir``.
+
 ### Zero-Shot Variants
 Run all zero-shot variants of SchemaPathRank:
 ```
@@ -64,8 +66,6 @@ python src/run_baselines.py \
     --out_dir runs_bl01 \
     --inputf data/candidate-pool.jsonl
 ```
-
-For all the experiments, the results (e.g., ranked candidate files per query, experiment logs) will be saved in the specified output directory ``out_dir``.
 
 ## Evaluation Metrics
 To compute evaluation metrics:
