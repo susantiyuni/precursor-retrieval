@@ -53,6 +53,7 @@ logging.info("CONFIG:\n%s", json.dumps(config, indent=2))
 logger = logging.getLogger(__name__)
 logger.info("## START! ##")
 
+## FEATURE REPRESENTATION
 def l2norm(x):
     return x / (np.linalg.norm(x) + 1e-8)
 
@@ -77,16 +78,13 @@ def build_full_feature(c, query_p, sim_threshold=0.6, mode=ABLATION, kw_idf=None
         qpaper_emb,
         temp,
     ])
-
     # ===== Similarity ===== 
-    # if "minus_sim" not in disabled:
     feats.append(np.array([embedding_sim, sim_text, sim_graph], dtype=float))
 
     # ===== Sparql ===== 
     cited_sparql, uncited_sparql = u.split_sparql_features(c["sparql_features"])
     cited_sparql = np.log1p(cited_sparql)
     uncited_sparql = np.log1p(uncited_sparql)
-    # if "minus_sparql" not in disabled:
     feats.extend([cited_sparql, uncited_sparql])
 
     # ===== Trace =====
@@ -95,19 +93,13 @@ def build_full_feature(c, query_p, sim_threshold=0.6, mode=ABLATION, kw_idf=None
     trace_struct = l2norm(u.trace_embedding(c, "structural"))
     trace_social = l2norm(u.trace_embedding(c, "social"))
 
-    # if "minus_trace_cited" not in disabled: #harmful
-    #     feats.append(trace_cited)
-    # if "minus_trace_struct" not in disabled:
     feats.append(trace_struct)
-    # if "minus_trace_sem" not in disabled:
     feats.append(trace_sem)
-    # if "minus_trace_social" not in disabled:
     feats.append(trace_social)
 
     # ===== Metadata =====
     S_msc, overlap = u.msc_similarity(query_p.get("mscs", []), c.get("msc_codes", []))
     S_kw = u.keyword_similarity(query_p.get("keywords", []), c.get("keywords", []), kw_idf)
-    # if "minus_metadata" not in disabled:
     if "plus_metadata" in taken:
         feats.append(np.array([S_msc, S_kw], dtype=float))
 
@@ -118,12 +110,10 @@ def build_full_feature(c, query_p, sim_threshold=0.6, mode=ABLATION, kw_idf=None
         1.0 * c["sparql_features"].get("bib_coupling_path", 0)
     )
     is_cited = int(c.get("is_cited", 0))
-    # if "minus_citation" not in disabled:
     if "plus_citation" in taken:
         feats.append(np.array([citation_strength, is_cited], dtype=float))
 
     # ===== Gating =====
-    # if "minus_gating" not in disabled:
     if "plus_gating" in taken:
         high_sim_no_cite = float((embedding_sim > sim_threshold) and (not is_cited))
         sim_x_citation = embedding_sim * citation_strength
@@ -162,9 +152,7 @@ def build_ltr_dataset(entries, leave_out_idx, kw_idf):
             y.append(int(y_i))
     return np.array(X), np.array(y), group
 
-# ================================
-# TRAIN LGBM RANKER
-# ================================
+## TRAIN LGBM RANKER
 def train_lgbm_ranker(X, y, group):
     model = LGBMRanker(
         objective="lambdarank",
@@ -181,9 +169,7 @@ def train_lgbm_ranker(X, y, group):
     model.fit(X, y, group=group)
     return model
 
-# ================================
-# RANK/INFERENCE WITH LGBM
-# ================================
+## RANK/INFERENCE WITH LGBM
 def rank_lgbm(model, candidates, query_p, kw_idf):
     X = np.array([
         # extract_feature_vector(c["sparql_features"])
@@ -197,9 +183,7 @@ def rank_lgbm(model, candidates, query_p, kw_idf):
             "rank": i + 1}
         for i, (c, s) in enumerate(ranked[:TOP_K])]
 
-# ================================
-# LOO EVALUATION
-# ================================
+## LOO EVALUATION
 def run_loo():
     entries = u.load_data(DATA_PATH, FEATURE_PATH)
     # logging.info (entries[0]["candidates"][0]) #sanity check merged data
