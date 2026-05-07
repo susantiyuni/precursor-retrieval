@@ -2,7 +2,7 @@
 
 ## Task Overview
 
-For each query paper and its associated candidate papers, you will evaluate how strongly each candidate serves as a _precursor_ to the query paper.
+For each query paper and its associated candidate papers in ``subset-random.jsonl``, you will evaluate how strongly each candidate serves as a _precursor_ to the query paper.
 
 A *precursor* is a paper that introduces ideas, methods, definitions, or results that are later directly used, extended, or refined in the query paper. The key question is:
 
@@ -39,11 +39,37 @@ Assign a score from **1 to 10**, where higher values indicate stronger precursor
 - Critical prerequisite for the query paper  
 ---
 
-## Important Instructions
+## Instructions
 
 - Focus on **directional influence**: precursor → query paper  
 - Maintain consistency across all annotations  
 - You are allowed to consult search engines or LLMs, but **do NOT directly ask an LLM to assign the relevance score for you.**
   - The LLM may be used for background understanding only  
   - Final scoring must be based on your own judgment  
-  - You are fully responsible for the final annotation decision  
+  - **You are fully responsible for the final annotation decision ** 
+- Save your annotation results in the same format after adding the relevance score (see example below).
+- You may optionally add a note explaining your judgment.
+
+## Annotation Example
+```json
+{
+  "query_title": {
+    "paper": "https://zbmath.org/7285677",
+    "title": "Derivatives of normal functions in reverse mathematics"
+  },
+  "candidates": [
+    {
+      "paper": "https://zbmath.org/7736245",
+      "title": "A note on ordinal exponentiation and derivatives of normal functions",
+      "relevance": 8,
+      "note": "About normal functions, important for the query paper"
+    },
+    {
+      "paper": "https://zbmath.org/7244013",
+      "title": "Computable aspects of the Bachmann-Howard principle",
+      "relevance": 5,
+    },
+    ....
+  ]
+}
+```
