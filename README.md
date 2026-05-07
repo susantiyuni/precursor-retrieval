@@ -94,6 +94,11 @@ This includes:
 - Setting up the RDF triple store (with Virtuoso or Apache Fuseki)
 - Configuring the SPARQL endpoint
 
+## Human Validation – LLM Judgment
+
+We provide human annotation guidelines and results for assessing precursor relevance, along with LLM-based judgments, including the model outputs and prompts. See [annotation](./annotation)
+ for details.
+
 ## Citation
 ```bibtex
 @inproceedings{precursor2026,
