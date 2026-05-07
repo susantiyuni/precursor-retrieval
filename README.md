@@ -15,7 +15,6 @@ This repository contains the [`source code`](./src) and [`dataset`](./data) for:
 
 ```text
 precursor-retrieval/
-│
 ├── data/                  # Evaluation set (query and candidate pool) and other datasets
 ├── output/                # Shared experiment outputs, evaluation logs, significance test etc.
 ├── src/                   # Main source code
