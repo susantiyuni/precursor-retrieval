@@ -99,7 +99,7 @@ This includes:
 
 ## Citation
 ```bibtex
-@inproceedings{susanti_precursor_2026,
+@inproceedings{precursor2026,
   title={Historically-Grounded Retrieval of Scholarly Research Beyond Citations},
   author={X},
   year={2026}
