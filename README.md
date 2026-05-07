@@ -97,7 +97,7 @@ This includes:
 
 ## Human Validation – LLM Judgment
 
-We provide human annotation guidelines and results for assessing precursor relevance, along with LLM-based judgments, including the model outputs and prompts. See [annotation](./annotation)
+We provide human annotation guidelines and results for assessing precursor relevance, along with LLM-based judgments, including the model outputs and prompts. See [annotation](./annotation/README.md)
  for details.
 
 ## Citation
