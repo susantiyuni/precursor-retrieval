@@ -64,7 +64,8 @@ python src/run_baselines.py \
     --out_dir runs_bl01 \
     --inputf data/candidate-pool.jsonl
 ```
-This will run all baselines as specified in the paper. The results (e.g., ranked candidate files per query, experiment logs) will be saved in the specified directory.
+
+For all the experiments, the results (e.g., ranked candidate files per query, experiment logs) will be saved in the specified output directory ``out_dir``.
 
 ## Evaluation Metrics
 To compute evaluation metrics:
