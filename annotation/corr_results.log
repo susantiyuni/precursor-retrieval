@@ -1,0 +1,44 @@
+Loaded: 12 human / 12 system
+{'paper': 'https://zbmath.org/7285677', 'title': 'Derivatives of normal functions in reverse mathematics'}
+{'paper': 'https://zbmath.org/7285677', 'title': 'Derivatives of normal functions in reverse mathematics'}
+{'https://zbmath.org/6919831': 1.0, 'https://zbmath.org/7736245': 2.5, 'https://zbmath.org/5601749': 2.5, 'https://zbmath.org/7107214': 4.0, 'https://zbmath.org/7244013': 5.0, 'https://zbmath.org/7142405': 6.5, 'https://zbmath.org/5913852': 6.5, 'https://zbmath.org/2209336': 8.5, 'https://zbmath.org/3781164': 8.5, 'https://zbmath.org/3781163': 10.0}
+{'https://zbmath.org/6919831': 1, 'https://zbmath.org/7107214': 2, 'https://zbmath.org/7736245': 3, 'https://zbmath.org/5913852': 4, 'https://zbmath.org/7142405': 5, 'https://zbmath.org/7244013': 6, 'https://zbmath.org/3781164': 7, 'https://zbmath.org/5601749': 8, 'https://zbmath.org/2209336': 9, 'https://zbmath.org/3781163': 10}
+{'https://zbmath.org/6410056': 1.0, 'https://zbmath.org/1096401': 2.5, 'https://zbmath.org/5810561': 2.5, 'https://zbmath.org/92944': 4.5, 'https://zbmath.org/1990931': 4.5, 'https://zbmath.org/221870': 7.0, 'https://zbmath.org/5121372': 7.0, 'https://zbmath.org/42239': 7.0, 'https://zbmath.org/3847380': 9.0, 'https://zbmath.org/1833668': 10.0}
+{'https://zbmath.org/6410056': 1, 'https://zbmath.org/5810561': 2, 'https://zbmath.org/1990931': 3, 'https://zbmath.org/92944': 4, 'https://zbmath.org/1096401': 5, 'https://zbmath.org/42239': 6, 'https://zbmath.org/1833668': 7, 'https://zbmath.org/221870': 8, 'https://zbmath.org/5121372': 9, 'https://zbmath.org/3847380': 10}
+{'https://zbmath.org/6338771': 1.5, 'https://zbmath.org/6257198': 1.5, 'https://zbmath.org/5175701': 3.5, 'https://zbmath.org/4051583': 3.5, 'https://zbmath.org/5051863': 5.0, 'https://zbmath.org/1758491': 6.5, 'https://zbmath.org/1908324': 6.5, 'https://zbmath.org/2104961': 8.0, 'https://zbmath.org/221870': 9.0, 'https://zbmath.org/4047711': 10.0}
+{'https://zbmath.org/6338771': 1, 'https://zbmath.org/4051583': 2, 'https://zbmath.org/6257198': 3, 'https://zbmath.org/5051863': 4, 'https://zbmath.org/221870': 5, 'https://zbmath.org/5175701': 6, 'https://zbmath.org/2104961': 7, 'https://zbmath.org/1908324': 8, 'https://zbmath.org/1758491': 9, 'https://zbmath.org/4047711': 10}
+{'https://zbmath.org/6052208': 1.5, 'https://zbmath.org/5019721': 1.5, 'https://zbmath.org/5152894': 3.5, 'https://zbmath.org/7034676': 3.5, 'https://zbmath.org/6340278': 5.5, 'https://zbmath.org/16165': 5.5, 'https://zbmath.org/4114006': 7.0, 'https://zbmath.org/5655006': 8.0, 'https://zbmath.org/2184055': 9.0, 'https://zbmath.org/4069090': 10.0}
+{'https://zbmath.org/6052208': 1, 'https://zbmath.org/5019721': 2, 'https://zbmath.org/7034676': 3, 'https://zbmath.org/5152894': 4, 'https://zbmath.org/16165': 5, 'https://zbmath.org/6340278': 6, 'https://zbmath.org/4114006': 7, 'https://zbmath.org/5655006': 8, 'https://zbmath.org/2184055': 9, 'https://zbmath.org/4069090': 10}
+{'https://zbmath.org/3720945': 1.5, 'https://zbmath.org/7041394': 1.5, 'https://zbmath.org/3140168': 4.0, 'https://zbmath.org/3485838': 4.0, 'https://zbmath.org/3906526': 4.0, 'https://zbmath.org/2516413': 7.0, 'https://zbmath.org/3794101': 7.0, 'https://zbmath.org/3414341': 7.0, 'https://zbmath.org/13353': 9.0, 'https://zbmath.org/810255': 10.0}
+{'https://zbmath.org/7041394': 1, 'https://zbmath.org/3720945': 2, 'https://zbmath.org/3906526': 3, 'https://zbmath.org/3414341': 4, 'https://zbmath.org/3794101': 5, 'https://zbmath.org/3485838': 6, 'https://zbmath.org/810255': 7, 'https://zbmath.org/13353': 8, 'https://zbmath.org/2516413': 9, 'https://zbmath.org/3140168': 10}
+{'https://zbmath.org/6302864': 1.5, 'https://zbmath.org/6313668': 1.5, 'https://zbmath.org/5216531': 3.5, 'https://zbmath.org/5908831': 3.5, 'https://zbmath.org/1389506': 5.0, 'https://zbmath.org/6569605': 6.0, 'https://zbmath.org/1346885': 7.5, 'https://zbmath.org/1917866': 7.5, 'https://zbmath.org/1234257': 9.0, 'https://zbmath.org/1331375': 10.0}
+{'https://zbmath.org/6313668': 1, 'https://zbmath.org/5216531': 2, 'https://zbmath.org/6302864': 3, 'https://zbmath.org/6569605': 4, 'https://zbmath.org/1389506': 5, 'https://zbmath.org/1234257': 6, 'https://zbmath.org/5908831': 7, 'https://zbmath.org/1331375': 8, 'https://zbmath.org/1346885': 9, 'https://zbmath.org/1917866': 10}
+{'https://zbmath.org/3383299': 1.5, 'https://zbmath.org/7308119': 1.5, 'https://zbmath.org/5769283': 3.5, 'https://zbmath.org/5220873': 3.5, 'https://zbmath.org/3862075': 5.0, 'https://zbmath.org/5486433': 6.0, 'https://zbmath.org/1850785': 7.5, 'https://zbmath.org/1218688': 7.5, 'https://zbmath.org/5186664': 9.0, 'https://zbmath.org/7921': 10.0}
+{'https://zbmath.org/5769283': 1, 'https://zbmath.org/3383299': 2, 'https://zbmath.org/3862075': 3, 'https://zbmath.org/7308119': 4, 'https://zbmath.org/5220873': 5, 'https://zbmath.org/7921': 6, 'https://zbmath.org/1218688': 7, 'https://zbmath.org/5486433': 8, 'https://zbmath.org/1850785': 9, 'https://zbmath.org/5186664': 10}
+{'https://zbmath.org/1421586': 1.5, 'https://zbmath.org/4161679': 1.5, 'https://zbmath.org/3977922': 3.5, 'https://zbmath.org/6393312': 3.5, 'https://zbmath.org/4173903': 6.0, 'https://zbmath.org/5175398': 6.0, 'https://zbmath.org/2239363': 6.0, 'https://zbmath.org/7167616': 8.0, 'https://zbmath.org/2193574': 9.0, 'https://zbmath.org/5208165': 10.0}
+{'https://zbmath.org/1421586': 1, 'https://zbmath.org/3977922': 2, 'https://zbmath.org/4161679': 3, 'https://zbmath.org/7167616': 4, 'https://zbmath.org/6393312': 5, 'https://zbmath.org/5175398': 6, 'https://zbmath.org/2239363': 7, 'https://zbmath.org/4173903': 8, 'https://zbmath.org/2193574': 9, 'https://zbmath.org/5208165': 10}
+{'https://zbmath.org/6604660': 2.0, 'https://zbmath.org/6993379': 2.0, 'https://zbmath.org/5982453': 2.0, 'https://zbmath.org/7192278': 4.0, 'https://zbmath.org/6868380': 5.0, 'https://zbmath.org/3843800': 6.0, 'https://zbmath.org/5776082': 7.0, 'https://zbmath.org/4098397': 8.0, 'https://zbmath.org/5565209': 9.0, 'https://zbmath.org/802356': 10.0}
+{'https://zbmath.org/6604660': 1, 'https://zbmath.org/5982453': 2, 'https://zbmath.org/7192278': 3, 'https://zbmath.org/6868380': 4, 'https://zbmath.org/5776082': 5, 'https://zbmath.org/4098397': 6, 'https://zbmath.org/6993379': 7, 'https://zbmath.org/802356': 8, 'https://zbmath.org/5565209': 9, 'https://zbmath.org/3843800': 10}
+{'https://zbmath.org/6637275': 1.5, 'https://zbmath.org/6675905': 1.5, 'https://zbmath.org/3383360': 4.0, 'https://zbmath.org/5819419': 4.0, 'https://zbmath.org/5043277': 4.0, 'https://zbmath.org/5676165': 6.5, 'https://zbmath.org/6032945': 6.5, 'https://zbmath.org/2138918': 8.0, 'https://zbmath.org/2157661': 9.0, 'https://zbmath.org/5710798': 10.0}
+{'https://zbmath.org/6637275': 1, 'https://zbmath.org/6675905': 2, 'https://zbmath.org/5676165': 3, 'https://zbmath.org/6032945': 4, 'https://zbmath.org/5043277': 5, 'https://zbmath.org/5819419': 6, 'https://zbmath.org/2138918': 7, 'https://zbmath.org/2157661': 8, 'https://zbmath.org/5710798': 9, 'https://zbmath.org/3383360': 10}
+{'https://zbmath.org/1418967': 1.5, 'https://zbmath.org/5081744': 1.5, 'https://zbmath.org/3947622': 3.5, 'https://zbmath.org/5990603': 3.5, 'https://zbmath.org/3555465': 5.0, 'https://zbmath.org/5047257': 6.5, 'https://zbmath.org/4166917': 6.5, 'https://zbmath.org/1635436': 8.5, 'https://zbmath.org/780891': 8.5, 'https://zbmath.org/2184055': 10.0}
+{'https://zbmath.org/1418967': 1, 'https://zbmath.org/5047257': 2, 'https://zbmath.org/5081744': 3, 'https://zbmath.org/1635436': 4, 'https://zbmath.org/3947622': 5, 'https://zbmath.org/5990603': 6, 'https://zbmath.org/4166917': 7, 'https://zbmath.org/780891': 8, 'https://zbmath.org/3555465': 9, 'https://zbmath.org/2184055': 10}
+{'https://zbmath.org/437534': 1.5, 'https://zbmath.org/5485526': 1.5, 'https://zbmath.org/5530908': 4.0, 'https://zbmath.org/811665': 4.0, 'https://zbmath.org/5780485': 4.0, 'https://zbmath.org/7104625': 6.0, 'https://zbmath.org/5990603': 7.0, 'https://zbmath.org/4089293': 8.0, 'https://zbmath.org/5565299': 9.0, 'https://zbmath.org/3943047': 10.0}
+{'https://zbmath.org/5485526': 1, 'https://zbmath.org/437534': 2, 'https://zbmath.org/7104625': 3, 'https://zbmath.org/811665': 4, 'https://zbmath.org/5530908': 5, 'https://zbmath.org/5990603': 6, 'https://zbmath.org/4089293': 7, 'https://zbmath.org/5780485': 8, 'https://zbmath.org/5565299': 9, 'https://zbmath.org/3943047': 10}
+
+=== Results ===
+Overall Mean Spearman: 0.7399
+
+=== Per Query ===
+Query 00 | Spearman: 0.7156
+Query 01 | Spearman: 0.8458
+Query 02 | Spearman: 0.7707
+Query 03 | Spearman: 0.9909
+Query 04 | Spearman: 0.5734
+Query 05 | Spearman: 0.7401
+Query 06 | Spearman: 0.7401
+Query 07 | Spearman: 0.8273
+Query 08 | Spearman: 0.6565
+Query 09 | Spearman: 0.6112
+Query 10 | Spearman: 0.5829
+Query 11 | Spearman: 0.8247
