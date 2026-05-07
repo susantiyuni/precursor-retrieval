@@ -27,8 +27,9 @@ OUT_DIR.mkdir(parents=True, exist_ok=True)
 DATA_PATH = Path(args.inputf) 
 # FEATURE_PATH = Path("data/sparql_feats.jsonl")
 FEATURE_PATH = Path(args.feat) 
-TEMP_MODEL = args.temp #gaussian, laplace, decay, beta, gamma, lognormal
-TRACE_MODE = args.trace #none=all, other=semantic, 
+TEMP_MODEL = args.temp #gaussian, laplace, decay, beta, gamma, lognormal...
+TRACE_MODE = args.trace #none=all, hybrid_topical_continuity, int_influence... 
+
 ABLATION_MODE = args.abl
 TOP_K = 50
 YEAR_GAP = 10 
@@ -37,13 +38,13 @@ ABLATION_MODES = {
     "base",          
     "metadata",      #  metadata
     "citation",      #  citation 
-    "all",            
+    "all",           # base + metadata + citation
 }
 
 TEMP_MODES = {
     "decay",          
-    "beta",      # sim + metadata
-    "gamma",      # sim + citation signals
+    "beta",     
+    "gamma",   
     "gaussian",  
     "lognormal",
     "laplace",         
