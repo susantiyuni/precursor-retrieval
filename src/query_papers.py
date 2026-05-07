@@ -106,7 +106,7 @@ for msc, label in msc_prefixes.items():
 print(f"\nTOTAL PAPERS: {len(all_papers)}")
 
 # ---------------- EXPORT JSONL ----------------
-jsonl_path = Path("query-papers-2.jsonl")
+jsonl_path = Path("query-papers.jsonl")
 
 with jsonl_path.open("w", encoding="utf-8") as f:
     for row in all_papers:
