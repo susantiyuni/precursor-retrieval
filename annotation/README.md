@@ -2,7 +2,7 @@
 
 ## Task Overview
 
-For each query paper and its associated candidate papers in ``subset-random.jsonl``, you will evaluate how strongly each candidate serves as a _precursor_ to the query paper.
+For each query paper and its associated candidate papers in [``subset-random.jsonl``](./subset-random.jsonl), you will evaluate how strongly each candidate serves as a _precursor_ to the query paper.
 
 A *precursor* is a paper that introduces ideas, methods, definitions, or results that are later directly used, extended, or refined in the query paper. The key question is:
 
