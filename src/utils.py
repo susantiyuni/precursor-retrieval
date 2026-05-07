@@ -29,27 +29,53 @@ def embed(text: str, MODEL: SentenceTransformer) -> np.ndarray:
         )
     return _embed_cache[key]
 
+def set_seed(seed):
+    os.environ['PYTHONHASHSEED'] = '{}'.format(seed)
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    
+def set_deterministic():
+    torch.cuda.empty_cache()
+    os.environ["CUBLAS_WORKSPACE_CONFIG"]=":4096:8"
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+    torch.use_deterministic_algorithms(True)
+
+def embedding_similarity(query_p, c):
+    q_text = paper_embedding(query_p, mode="text")
+    q_graph = paper_embedding(query_p, mode="graph")
+    c_text = paper_embedding(c, mode="text")
+    c_graph = paper_embedding(c, mode="graph")
+    sim_text = float(np.dot(q_text, c_text))
+    sim_graph = float(np.dot(q_graph, c_graph))
+    # weighted combination
+    alpha = 0.6
+    sim = alpha * sim_text + (1 - alpha) * sim_graph
+    return sim, sim_text, sim_graph
+
 def extract_feature_vector(sparql_feats):
-    return np.array([sparql_feats.get(k, 0.0) for k in FEATURE_KEYS], dtype=float)
+    keys = sorted(sparql_feats.keys())
+    return np.array([sparql_feats[k] for k in keys], dtype=float), keys
 
-def normalize_labels(scores):
-    scores = np.array(scores)
-    if scores.max() == scores.min():
-        return np.ones_like(scores)
-    scores = (scores - scores.min()) / (scores.max() - scores.min())
-    return scores
-
-def quantize_labels(scores, bins=5):
-    scores = np.array(scores)
-    bins = np.linspace(scores.min(), scores.max(), bins)
-    return np.digitize(scores, bins)
-
-def quantize_labels_per_query(scores, n_bins=5): #for lgbm, pairwise
-    scores = np.array(scores)
-    # rank-based binning (robust)
-    ranks = scores.argsort().argsort()
-    bins = np.floor(n_bins * ranks / len(scores)).astype(int)
-    return bins
+def split_sparql_features(sparql_feats):
+    cited_keys = [
+        "direct_path",
+        "reverse_path",
+        "two_hop_path",
+        ]
+    uncited_keys = [
+        "bib_coupling_path",
+        "co_citation_path",
+        "keyword_path",
+        "msc_path",
+        "hybrid_keyword",
+        "hybrid_msc",
+        "graph_semantic_bridge"]
+    cited = np.array([sparql_feats.get(k, 0.0) for k in cited_keys], dtype=float)
+    uncited = np.array([sparql_feats.get(k, 0.0) for k in uncited_keys], dtype=float)
+    return cited, uncited
 
 def verbalize_trace(trace):
     rel_map = {
@@ -57,12 +83,12 @@ def verbalize_trace(trace):
         "CITED_BY": "is cited by",
         "HAS_TOPIC": "has topic",
         "HAS_SUBJECT": "has subject",
-        "SHARED_SUBJECT": "shares subject with",
-        "SHARED_TOPIC": "shares topic with",
+        "SHARED_SUBJECT": "has subject overlap with",
+        "SHARED_TOPIC": "has topic overlap with",
         "HAS_KEYWORD": "has keyword",
-        "SHARED_KEYWORD": "shares keyword with",
+        "SHARED_KEYWORD": "has keyword overlap with",
         "BIB_COUPLED": "shares references with",
-        "CO_CITED_BY": "is co-cited with",
+        "CO_CITED_BY": "co-cited with",
         "IS_PART_OF": "published in",
         "SHARED_VENUE": "same venue as",
         "HAS_AUTHOR": "has author",
@@ -75,82 +101,127 @@ def verbalize_trace(trace):
         src = edge["src"]
         tgt = edge["tgt"]
         rel = rel_map.get(edge["rel"], edge["rel"].lower())
-        parts.append(f"{src} {rel} {tgt}")
+        # parts.append(f"{src} {rel} {tgt}")
+        parts.append(f"{src} {rel} {tgt} [SEP]")
     if not parts:
         return "no connection"
     return " ; ".join(parts)
 
-def candidate_text(candidate):
+int_influence = {"direct", "reverse", "two_hop", "author"}
+comm_consensus = {"co_citation", "bib_coupling", "venue", "coauthor", "reviewer"}
+pure_topical_continuity = {"msc_direct", "keyword_direct"}
+hybrid_topical_continuity = {"msc_direct", "keyword_direct", "hybrid_msc", "hybrid_keyword", "author_topic_traj"}
+hybrid = {"hybrid_msc", "hybrid_keyword", "author_topic_traj"}
+
+def trace_embedding_2(candidate, mode=None):
     traces = candidate.get("traces", [])
+    if mode == "int_influence":
+        traces = [t for t in traces if t["type"] in int_influence]
+    elif mode == "hybrid":
+        traces = [t for t in traces if t["type"] in hybrid]
+    elif mode == "comm_consensus":
+        traces = [t for t in traces if t["type"] in comm_consensus]
+    elif mode == "pure_topical_continuity":
+        traces = [t for t in traces if t["type"] in pure_topical_continuity]
+    elif mode == "hybrid_topical_continuity":
+        traces = [t for t in traces if t["type"] in hybrid_topical_continuity]
     if not traces:
-        return "no known connection between query and candidate"
-    # return " ; ".join(verbalize_trace(t) for t in traces)
-    return f"{len(traces)} paths: " + " ; ".join(verbalize_trace(t) for t in traces)
+        NULL_TRACE_EMB = embed("no relation between papers", MODEL)
+        return NULL_TRACE_EMB
+    text = " ; ".join(t["tokens"] for t in traces)
+    emb = embed(text.lower(), MODEL)
+    return emb
 
-def get_embedding(candidate):
-    text = candidate_text(candidate)
-    return embed(text, MODEL)
+def beta_pdf(x, alpha, beta):
+    """Compute Beta PDF manually (no scipy dependency)."""
+    if x <= 0 or x >= 1:
+        return 0.0
+    B = math.gamma(alpha) * math.gamma(beta) / math.gamma(alpha + beta)
+    return (x ** (alpha - 1) * (1 - x) ** (beta - 1)) / B
 
-# ================================
-# BUILD TEXT INPUT
-# ================================
-def build_query_text(q):
-    return (
-        f"Find prior work related to the paper: "
-        f"URI: {q['paper']}. "
-        f"Title: {q['title']}. "
-        f"Publication year: {q['year']}. "
-        f"Subjects: {q['mscs'][:20]}. "
-        f"Keywords: {q['keywords'][:20]}. "
-        f"References: {q['references'][:20]}. "
-        # f"Review: {c["review"][:1000]}."
-    )
-    # return f"Find prior work related to paper with id {qid["paper"]}. Title: {qid["title"]}. Publication year: {qid["year"]}. Topics: {qid["mscs"]}. Keywords: {qid["keywords"]}. References: {qid["references"][:20]}"
+def gamma_pdf(dt, k=2, theta=5):
+    if dt <= 0:
+        return 0.0
+    return (dt ** (k - 1) * math.exp(-dt / theta)) / \
+           (math.gamma(k) * theta ** k)
 
-def format_scores(scores):
-    if not scores:
-        return "no scores"
-    # keep only non-zero signals
-    active = {k: round(v, 3) for k, v in scores.items() if v != 0}
-    return ", ".join([f"{k}={v}" for k, v in active.items()])
+def lognormal(dt, mu=2.5, sigma=0.5):
+    if dt <= 0:
+        return 0.0
+    return (1 / (dt * sigma * math.sqrt(2 * math.pi))) * \
+           math.exp(-((math.log(dt) - mu) ** 2) / (2 * sigma ** 2))
 
-def build_candidate_text(c):
-    traces = c.get("traces", [])
-    sparql_scores = c.get("sparql_features", {})
-    path_strings = []
-    for t in traces:
-        v = verbalize_trace(t)
-        if isinstance(v, list):
-            v = " ".join(map(str, v))
-        path_strings.append(v)
-
-    if path_strings:
-        path_text = " ; ".join(path_strings)
+def temporal_hist_modeling(year_q, year_c, mode="decay", mu=12, sigma=6, tau=25, alpha=2, beta=5, max_dt=50):
+    dt = year_q - year_c
+    if dt <= 0:
+        return 0.0
+    if mode == "gaussian":
+        return math.exp(-((dt - mu) ** 2) / (2 * sigma ** 2))
+    elif mode == "laplace":
+        return math.exp(-abs(dt - mu) / sigma)
+    elif mode == "decay":
+        return math.exp(-dt / tau)
+    elif mode == "beta":
+        # Normalize dt to [0,1]
+        x = min(dt / max_dt, 1.0)
+        return beta_pdf(x, alpha, beta)
+    elif mode == "gamma":
+        return gamma_pdf(dt)
+    elif mode == "lognormal":
+        return lognormal(dt)
     else:
-        path_text = "no known connection"
-    return (
-        f"Candidate paper URI: {c['paper']}. "
-        f"Title: {c['title']}. "
-        f"Publication year: {c['year']}. "
-        f"Subjects: {c['msc_codes'][:20]}. "
-        f"Keywords: {c['keywords'][:20]}. "
-        f"References: {c['references'][:20]}. "
-        f"Cited by: {c['is_cited']}. "
-        f"Evidence: {path_text}. "
-        f"Scores: {format_scores(sparql_scores)}."
-        # f"Review: {c["review"][:1000]}."
-        )
+        raise ValueError("mode must be one of: gaussian, laplace, decay, beta")
 
+## for LTR: approximate them by sampling the function at multiple settings
+def temporal_features(year_q, year_c, mode="full"):
+    dt = max(0, year_q - year_c)
+    if mode == "none":
+        return np.array([])
+    if mode == "dt":
+        return np.array([dt]) #linear (dt)
+    if mode == "decay": # exponential decay family
+        return np.array([
+            math.exp(-dt / 5),
+            math.exp(-dt / 10),
+            math.exp(-dt / 20),
+        ])
+    if mode == "gaussian": # gaussian peak family
+        return np.array([
+            math.exp(-(dt - 5)**2 / (2 * 3**2)),
+            math.exp(-(dt - 10)**2 / (2 * 5**2)),
+        ])
+    if mode == "full":
+        return np.array([dt, np.log1p(dt),
+            math.exp(-dt / 5),
+            math.exp(-dt / 10),
+            math.exp(-dt / 20),
+            math.exp(-(dt - 5)**2 / (2 * 3**2)),
+            math.exp(-(dt - 10)**2 / (2 * 5**2)),
+        ], dtype=float)
+        
 # ================= HELPERS =================
-def load_data_path(data_path):
-    entries = []
-    with data_path.open() as f:
-        for line in f:
-            entries.append(json.loads(line))
-    return entries
+def normalize_labels(scores):
+    scores = np.array(scores)
+    if scores.max() == scores.min():
+        return np.ones_like(scores)
+    scores = (scores - scores.min()) / (scores.max() - scores.min())
+    return scores
+
+# Use value-based binning if the magnitude of scores matters
+def quantize_labels(scores, bins=5):
+    scores = np.array(scores)
+    bins = np.linspace(scores.min(), scores.max(), bins)
+    return np.digitize(scores, bins)
+
+# Use rank-based binning for LTR setups, where relative order is what matters
+def quantize_labels_per_query(scores, n_bins=5):
+    scores = np.array(scores)
+    # rank-based binning (robust)
+    ranks = scores.argsort().argsort()
+    bins = np.floor(n_bins * ranks / len(scores)).astype(int)
+    return bins
 
 def load_data(data_path, feature_path):
-    # ---- load feature data and build lookup ----
     feature_lookup = {}
     with open(feature_path) as f:
         for line in f:
@@ -158,7 +229,6 @@ def load_data(data_path, feature_path):
             qid = entry["query_paper"]
             feature_lookup[qid] = {
                 c["paper"]: c for c in entry.get("candidates", []) }
-    # ---- load main data and merge ----
     merged = []
     with open(data_path) as f:
         for line in f:
@@ -177,7 +247,10 @@ def load_data(data_path, feature_path):
             entry["candidates"] = new_candidates
             merged.append(entry)
     return merged
-    
+
+def cosine(a, b):
+    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b) + 1e-8)
+
 def time_filtered_pool(query, candidates, YEAR_GAP=10):
     cutoff = query["year"] - YEAR_GAP
     return [c for c in candidates if c.get("year") and c["year"] <= cutoff]
@@ -348,72 +421,10 @@ def tokenize(paper, mode="text"):
         raise ValueError("mode must be one of: text, metadata, all")
     return " ".join(parts).split()
 
-def build_candidate_pool(query, candidates, pool_un=150, pool_ci=50):
-    uncited = sorted(
-        (c for c in candidates if c.get("is_cited") == 0),
-        key=lambda c: c.get("llm_score", 0),
-        reverse=True)[:pool_un]
-    cited = sorted(
-        (c for c in candidates if c.get("is_cited") == 1),
-        key=lambda c: c.get("llm_score", 0),
-        reverse=True)[:pool_ci]
-    cited = time_filtered_pool(query, cited)
-    random.shuffle(uncited)
-    random.shuffle(cited)
-    pool = uncited + cited
-    random.shuffle(pool)
-    return pool
+def load_data_only(data_path):
+    entries = []
+    with data_path.open() as f:
+        for line in f:
+            entries.append(json.loads(line))
+    return entries
 
-def beta_pdf(x, alpha, beta):
-    """Compute Beta PDF manually (no scipy dependency)."""
-    if x <= 0 or x >= 1:
-        return 0.0
-    B = math.gamma(alpha) * math.gamma(beta) / math.gamma(alpha + beta)
-    return (x ** (alpha - 1) * (1 - x) ** (beta - 1)) / B
-
-def gamma_pdf(dt, k=2, theta=5):
-    if dt <= 0:
-        return 0.0
-    return (dt ** (k - 1) * math.exp(-dt / theta)) / \
-           (math.gamma(k) * theta ** k)
-
-def lognormal(dt, mu=2.5, sigma=0.5):
-    if dt <= 0:
-        return 0.0
-    return (1 / (dt * sigma * math.sqrt(2 * math.pi))) * \
-           math.exp(-((math.log(dt) - mu) ** 2) / (2 * sigma ** 2))
-
-def temporal_hist_modeling(year_q, year_c, mode="decay", mu=12, sigma=6, tau=25, alpha=2, beta=5, max_dt=50):
-    dt = year_q - year_c
-    if dt <= 0:
-        return 0.0
-    if mode == "gaussian":
-        return math.exp(-((dt - mu) ** 2) / (2 * sigma ** 2))
-    elif mode == "laplace":
-        return math.exp(-abs(dt - mu) / sigma)
-    elif mode == "decay":
-        return math.exp(-dt / tau)
-    elif mode == "beta":
-        # Normalize dt to [0,1]
-        x = min(dt / max_dt, 1.0)
-        return beta_pdf(x, alpha, beta)
-    elif mode == "gamma":
-        return gamma_pdf(dt)
-    elif mode == "lognormal":
-        return lognormal(dt)
-    else:
-        raise ValueError("mode must be one of: gaussian, laplace, decay, beta")
-
-def set_seed(seed):
-    os.environ['PYTHONHASHSEED'] = '{}'.format(seed)
-    random.seed(seed)
-    np.random.seed(seed)
-    torch.manual_seed(seed)
-    torch.cuda.manual_seed_all(seed)
-    
-def set_deterministic():
-    torch.cuda.empty_cache()
-    # os.environ["CUBLAS_WORKSPACE_CONFIG"]=":4096:8"
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
-    torch.use_deterministic_algorithms(True)
