@@ -1,0 +1,745 @@
+{
+  "query_title": {
+    "paper": "https://zbmath.org/7285677",
+    "title": "Derivatives of normal functions in reverse mathematics"
+  },
+  "candidates": [
+    {
+      "paper": "https://zbmath.org/6919831",
+      "title": "Derivatives of normal functions and \\(\\omega \\)-models",
+      "relevance": 10,
+      "note": "Direct overlap"
+    },
+    {
+      "paper": "https://zbmath.org/7736245",
+      "title": "A note on ordinal exponentiation and derivatives of normal functions",
+      "relevance": 9,
+      "note": "Strong precursor on derivatives of normal functions"
+    },
+    {
+      "paper": "https://zbmath.org/5601749",
+      "title": "Subsystems of second order arithmetic",
+      "relevance": 9,
+      "note": "Foundational framework for used by the query paper."
+    },
+    {
+      "paper": "https://zbmath.org/7107214",
+      "title": "\\(\\Pi_1^1\\)-comprehension as a well-ordering principle",
+      "relevance": 8,
+    },
+    {
+      "paper": "https://zbmath.org/7244013",
+      "title": "Computable aspects of the Bachmann-Howard principle",
+      "relevance": 7,
+      "note": "Related to normal function hierarchies."
+    },
+    {
+      "paper": "https://zbmath.org/7142405",
+      "title": "A categorical construction of Bachmann-Howard fixed points",
+      "relevance": 6,
+      "note": "Related to normal function."
+    },
+    {
+      "paper": "https://zbmath.org/5913852",
+      "title": "The Veblen functions for computability theorists",
+      "relevance": 6,
+    },
+    {
+      "paper": "https://zbmath.org/2209336",
+      "title": "Introduction to \\(\\Pi^1_2\\)-logic",
+      "relevance": 4,
+      "note": "only indirectly relevant."
+    },
+    {
+      "paper": "https://zbmath.org/3781164",
+      "title": "\\(\\Pi_2^1\\)-logic. I: Dilators",
+      "relevance": 4,
+    },
+    {
+      "paper": "https://zbmath.org/3781163",
+      "title": "Herbrand's theorem and proof-theory",
+      "relevance": 2,
+    }
+  ]
+}
+
+{
+  "query_title": {
+    "paper": "https://zbmath.org/7370914",
+    "title": "Hereditary interval algebras and cardinal characteristics of the continuum"
+  },
+  "candidates": [
+    {
+      "paper": "https://zbmath.org/6410056",
+      "title": "Algebras that are hereditarily interval.",
+      "relevance": 10,
+      "note": "Direct focus on hereditarily interval algebras, immediate precursor."
+    },
+    {
+      "paper": "https://zbmath.org/1096401",
+      "title": "On subalgebras of Boolean interval algebras",
+      "relevance": 9,
+      "note": "Closely related to hereditary variants."
+    },
+    {
+      "paper": "https://zbmath.org/5810561",
+      "title": "Combinatorial cardinal characteristics of the continuum",
+      "relevance": 9,
+    },
+    {
+      "paper": "https://zbmath.org/92944",
+      "title": "Pseudo-trees and Boolean algebras",
+      "relevance": 8,
+    },
+    {
+      "paper": "https://zbmath.org/1990931",
+      "title": "Pseudo treealgebras",
+      "relevance": 8,
+      "note": "Further development of pseudo-tree-based Boolean algebras."
+    },
+    {
+      "paper": "https://zbmath.org/221870",
+      "title": "OCA and automorphisms of \\({\\mathfrak P}(\\omega)/\\text{fin}\\)",
+      "relevance": 7,
+    },
+    {
+      "paper": "https://zbmath.org/5121372",
+      "title": "Compact spaces, elementary submodels, and the countable chain condition",
+      "relevance": 7,
+    },
+    {
+      "paper": "https://zbmath.org/42239",
+      "title": "Handbook of Boolean algebras. Volumes 1-3. Ed. with the cooperation of Robert Bonnet",
+      "relevance": 7,
+    },
+    {
+      "paper": "https://zbmath.org/3847380",
+      "title": "Set theory. An introduction to independence proofs. 2nd print",
+      "relevance": 6,
+    },
+    {
+      "paper": "https://zbmath.org/1833668",
+      "title": "Set theory.",
+      "relevance": 5,
+    }
+  ]
+}
+
+{
+  "query_title": {
+    "paper": "https://zbmath.org/7353242",
+    "title": "Martin's maximum\\(^{++}\\) implies Woodin's axiom \\((*)\\)"
+  },
+  "candidates": [
+    {
+      "paper": "https://zbmath.org/6338771",
+      "title": "Bounded Martin's maximum with an asterisk",
+      "relevance": 10,
+      "note": "Directly about a strengthened form of Martin’s Maximum."
+    },
+    {
+      "paper": "https://zbmath.org/6257198",
+      "title": "The extender algebra and vagaries of \\(\\Sigma^2_1\\) absoluteness",
+      "relevance": 10,
+    },
+    {
+      "paper": "https://zbmath.org/5175701",
+      "title": "A stationary-tower-free proof of the derived model theorem",
+      "relevance": 9,
+    },
+    {
+      "paper": "https://zbmath.org/4051583",
+      "title": "Martin's maximum, saturated ideals, and nonregular ultrafilters. I",
+      "relevance": 9,
+      "note": "Foundational results about Martin’s Maximum."
+    },
+    {
+      "paper": "https://zbmath.org/5051863",
+      "title": "PFA implies \\(\\text{AD}^{L(\\mathbb{R})}\\)",
+      "relevance": 8,
+    },
+    {
+      "paper": "https://zbmath.org/1758491",
+      "title": "The core model for almost linear iterations",
+      "relevance": 7,
+    },
+    {
+      "paper": "https://zbmath.org/1908324",
+      "title": "The higher infinite. Large cardinals in set theory from their beginnings.",
+      "relevance": 7,
+    },
+    {
+      "paper": "https://zbmath.org/2104961",
+      "title": "Sweet \\& sour and other flavours of ccc forcing notions",
+      "relevance": 6,
+    },
+    {
+      "paper": "https://zbmath.org/221870",
+      "title": "OCA and automorphisms of \\({\\mathfrak P}(\\omega)/\\text{fin}\\)",
+      "relevance": 5,
+    },
+    {
+      "paper": "https://zbmath.org/4047711",
+      "title": "Remarks on superatomic Boolean algebras",
+      "relevance": 3,
+      "note": "Boolean algebra topic, minimal connection."
+    }
+  ]
+}
+
+{
+  "query_title": {
+    "paper": "https://zbmath.org/7713776",
+    "title": "Nonvanishing Betti numbers of edge ideals of weakly chordal graphs"
+  },
+  "candidates": [
+    {
+      "paper": "https://zbmath.org/6052208",
+      "title": "Edge ideals: algebraic and combinatorial properties",
+      "relevance": 10,
+      "note": "Comprehensive study of edge ideals; central background for Betti numbers."
+    },
+    {
+      "paper": "https://zbmath.org/5019721",
+      "title": "Characteristic-independence of Betti numbers of graph ideals",
+      "relevance": 10,
+      "note": "Directly studies Betti numbers of graph ideals."
+    },
+    {
+      "paper": "https://zbmath.org/5152894",
+      "title": "Sequentially Cohen-Macaulay edge ideals",
+      "relevance": 9,
+      "note": "Explores (including Betti behavior) edge ideals."
+    },
+    {
+      "paper": "https://zbmath.org/7034676",
+      "title": "The projective dimension of the edge ideal of a very well-covered graph",
+      "relevance": 9,
+      "note": "Investigates edge ideals for special graph classes"
+    },
+    {
+      "paper": "https://zbmath.org/6340278",
+      "title": "Matchings, coverings, and Castelnuovo-Mumford regularity",
+      "relevance": 8,
+    },
+    {
+      "paper": "https://zbmath.org/16165",
+      "title": "On Stanley-Reisner rings",
+      "relevance": 8,
+    },
+    {
+      "paper": "https://zbmath.org/4114006",
+      "title": "Optimizing weakly triangulated graphs",
+      "relevance": 7,
+    },
+    {
+      "paper": "https://zbmath.org/5655006",
+      "title": "Top homology of hypergraph matching complexes, \\(p\\)-cycle complexes and Quillen complexes of symmetric groups.",
+      "relevance": 6,
+    },
+    {
+      "paper": "https://zbmath.org/2184055",
+      "title": "Generating bicliques of a graph in lexicographic order",
+      "relevance": 4,
+    },
+    {
+      "paper": "https://zbmath.org/4069090",
+      "title": "Positive semidefinite matrices with a given sparsity pattern",
+      "relevance": 3,
+    }
+  ]
+}
+
+{
+  "query_title": {
+    "paper": "https://zbmath.org/7347280",
+    "title": "Vertex-minimal planar graphs with a prescribed automorphism group"
+  },
+  "candidates": [
+    {
+      "paper": "https://zbmath.org/3720945",
+      "title": "Vertex minimal planar cyclic graphs",
+      "relevance": 10,
+      "note": "Direct overlap"
+    },
+    {
+      "paper": "https://zbmath.org/7041394",
+      "title": "Vertex-minimal graphs with dihedral symmetry. II",
+      "relevance": 10,
+      "note": "Studies vertex-minimal graphs, closely aligned."
+    },
+    {
+      "paper": "https://zbmath.org/3140168",
+      "title": "On the minimum order of graphs with given automorphism group",
+      "relevance": 9,
+    },
+    {
+      "paper": "https://zbmath.org/3485838",
+      "title": "On the minimum order of graphs with given group",
+      "relevance": 9,
+      "note": "General treatment of minimal graphs"
+    },
+    {
+      "paper": "https://zbmath.org/3906526",
+      "title": "The classification of minimal graphs with given abelian automorphism group",
+      "relevance": 9,
+      "note": "Classification results for minimal graphs"
+    },
+    {
+      "paper": "https://zbmath.org/2516413",
+      "title": "Herstellung von Graphen mit vorgegebener abstrakter Gruppe.",
+      "relevance": 8,
+    },
+    {
+      "paper": "https://zbmath.org/3794101",
+      "title": "Extremal problems for graphs with dihedral automorphism group",
+      "relevance": 8,
+    },
+    {
+      "paper": "https://zbmath.org/3414341",
+      "title": "The least number of edges for graphs having dihedral automorphism group",
+      "relevance": 8,
+    },
+    {
+      "paper": "https://zbmath.org/13353",
+      "title": "Graphs with given automorphism group and few edge orbits",
+      "relevance": 7,
+    },
+    {
+      "paper": "https://zbmath.org/810255",
+      "title": "Separating double rays in locally finite planar graphs",
+      "relevance": 4,
+    }
+  ]
+}
+
+{
+  "query_title": {
+    "paper": "https://zbmath.org/7726458",
+    "title": "On minimum generalized degree distance index of cyclic graphs"
+  },
+  "candidates": [
+    {
+      "paper": "https://zbmath.org/6302864",
+      "title": "A note on degree distance of 4-cyclic graphs",
+      "relevance": 10,
+      "note": "Directly studies degree distance in a specific class of cyclic graphs."
+    },
+    {
+      "paper": "https://zbmath.org/6313668",
+      "title": "Minimum generalized degree distance of \\(n\\)-vertex tricyclic graphs",
+      "relevance": 10,
+      "note": "Very close topic on degree distance minimization for cyclic graph."
+    },
+    {
+      "paper": "https://zbmath.org/5216531",
+      "title": "Unicyclic and bicyclic graphs having minimum degree distance",
+      "relevance": 9,
+    },
+    {
+      "paper": "https://zbmath.org/5908831",
+      "title": "A note on tricyclic graphs with minimum degree distance",
+      "relevance": 9,
+    },
+    {
+      "paper": "https://zbmath.org/1389506",
+      "title": "Some extremal properties of the degree distance of a graph",
+      "relevance": 8,
+    },
+    {
+      "paper": "https://zbmath.org/6569605",
+      "title": "Generalized degree distance of strong product of graphs",
+      "relevance": 7,
+    },
+    {
+      "paper": "https://zbmath.org/1346885",
+      "title": "On the spectrum, the growth, and the diameter of a graph",
+      "relevance": 5,
+    },
+    {
+      "paper": "https://zbmath.org/1917866",
+      "title": "A distance-regular graph with bipartite geodetically closed subgraphs.",
+      "relevance": 5,
+    },
+    {
+      "paper": "https://zbmath.org/1234257",
+      "title": "A note on large graphs of diameter two and given maximum degree",
+      "relevance": 4,
+      "note": "Concerns diameter and degree, only a bit related to degree distance."
+    },
+    {
+      "paper": "https://zbmath.org/1331375",
+      "title": "The realization graph of a degree sequence with majorization gap 1 is Hamiltonian",
+      "relevance": 3,
+      "note": "Focuses on degree sequences, not on degree distance."
+    }
+  ]
+}
+
+{
+  "query_title": {
+    "paper": "https://zbmath.org/7502634",
+    "title": "Cochain level May-Steenrod operations"
+  },
+  "candidates": [
+    {
+      "paper": "https://zbmath.org/3383299",
+      "title": "A general algebraic approach to Steenrod operations",
+      "relevance": 10,
+      "note": "Direct foundational framework for Steenrod operations"
+    },
+    {
+      "paper": "https://zbmath.org/7308119",
+      "title": "A finitely presented \\(E_{\\infty}\\)-prop. I: Algebraic context",
+      "relevance": 10,
+    },
+    {
+      "paper": "https://zbmath.org/5769283",
+      "title": "Coalgebraic tensor product and homology operations",
+      "relevance": 9,
+    },
+    {
+      "paper": "https://zbmath.org/5220873",
+      "title": "Infinity structure of Poincaré duality spaces. With an appendix by Dennis Sullivan",
+      "relevance": 9,
+    },
+    {
+      "paper": "https://zbmath.org/3862075",
+      "title": "Bar and cobar constructions. I",
+      "relevance": 8,
+    },
+    {
+      "paper": "https://zbmath.org/5486433",
+      "title": "Homology rings of homotopy associative \\(H\\)-spaces",
+      "relevance": 7,
+    },
+    {
+      "paper": "https://zbmath.org/1850785",
+      "title": "A property of the degree filtration on polynomial functors",
+      "relevance": 6,
+    },
+    {
+      "paper": "https://zbmath.org/1218688",
+      "title": "Lots of Hopf algebras",
+      "relevance": 6,
+      "note": "Hopf algebra structures are often related to cohomology operation."
+    },
+    {
+      "paper": "https://zbmath.org/5186664",
+      "title": "The homotopy category of pseudofunctors and translation cohomology",
+      "relevance": 5,
+    },
+    {
+      "paper": "https://zbmath.org/7921",
+      "title": "General homology and cohomology theories. Current state and typical applications",
+      "relevance": 4,
+    }
+  ]
+}
+
+{
+  "query_title": {
+    "paper": "https://zbmath.org/7724103",
+    "title": "Monoids related to self homotopy equivalences of fibred product"
+  },
+  "candidates": [
+    {
+      "paper": "https://zbmath.org/1421586",
+      "title": "Self fibre homotopy equivalences of fibred products",
+      "relevance": 10,
+      "note": "Direct precursor studying self homotopy equivalences of fibred products."
+    },
+    {
+      "paper": "https://zbmath.org/4161679",
+      "title": "On the groups \\({\\mathcal E}(X\\times Y)\\) and \\({\\mathcal E}^ B_ B(X\\times_ BY)\\)",
+      "relevance": 10,
+    },
+    {
+      "paper": "https://zbmath.org/3977922",
+      "title": "On the spaces of self homotopy equivalences for fibre spaces. II",
+      "relevance": 9,
+      "note": "Core study of self-homotopy equivalences in fiber space settings."
+    },
+    {
+      "paper": "https://zbmath.org/6393312",
+      "title": "Certain numbers on the groups of self-homotopy equivalences",
+      "relevance": 9,
+    },
+    {
+      "paper": "https://zbmath.org/4173903",
+      "title": "The group of self-homotopy equivalences - a survey",
+      "relevance": 8,
+      "note": "Survey providing foundational background on self-homotopy equivalence groups"
+    },
+    {
+      "paper": "https://zbmath.org/5175398",
+      "title": "Reducibility of self-homotopy equivalences",
+      "relevance": 8,
+    },
+    {
+      "paper": "https://zbmath.org/2239363",
+      "title": "On the group \\(aut_\\sharp(X_{1} \\times \\ldots \\times X_{n})\\)",
+      "relevance": 8,
+    },
+    {
+      "paper": "https://zbmath.org/7167616",
+      "title": "Self-closeness numbers of finite cell complexes",
+      "relevance": 6,
+    },
+    {
+      "paper": "https://zbmath.org/2193574",
+      "title": "Weak factorizations, fractions and homotopies",
+      "relevance": 5,
+    },
+    {
+      "paper": "https://zbmath.org/5208165",
+      "title": "Triangulated categories without models",
+      "relevance": 3,
+    }
+  ]
+}
+
+{
+  "query_title": {
+    "paper": "https://zbmath.org/7243314",
+    "title": "Large deviations of subgraph counts for sparse Erdős-Rényi graphs"
+  },
+  "candidates": [
+    {
+      "paper": "https://zbmath.org/6604660",
+      "title": "Nonlinear large deviations",
+      "relevance": 10,
+      "note": "Foundational framework for nonlinear large deviation"
+    },
+    {
+      "paper": "https://zbmath.org/6993379",
+      "title": "Gaussian-width gradient complexity, reverse log-Sobolev inequalities and nonlinear large deviations",
+      "relevance": 10,
+    },
+    {
+      "paper": "https://zbmath.org/5982453",
+      "title": "The large deviation principle for the Erdős-Rényi random graph",
+      "relevance": 10,
+    },
+    {
+      "paper": "https://zbmath.org/7192278",
+      "title": "Upper tails for edge eigenvalues of random graphs",
+      "relevance": 9,
+    },
+    {
+      "paper": "https://zbmath.org/6868380",
+      "title": "Decomposition of mean-field Gibbs distributions into product measures",
+      "relevance": 8,
+    },
+    {
+      "paper": "https://zbmath.org/3843800",
+      "title": "Diameters of random bipartite graphs",
+      "relevance": 7,
+    },
+    {
+      "paper": "https://zbmath.org/5776082",
+      "title": "Uniform convergence of Vapnik-Chervonenkis classes under ergodic sampling",
+      "relevance": 6,
+    },
+    {
+      "paper": "https://zbmath.org/4098397",
+      "title": "Equivalence of functional limit theorems for stationary point processes and their Palm distributions",
+      "relevance": 5,
+    },
+    {
+      "paper": "https://zbmath.org/5565209",
+      "title": "Asymptotic value distribution of additive functions defined on the symmetric group",
+      "relevance": 4,
+    },
+    {
+      "paper": "https://zbmath.org/802356",
+      "title": "A generalization of Sauer's lemma",
+      "relevance": 3,
+    }
+  ]
+}
+
+{
+  "query_title": {
+    "paper": "https://zbmath.org/7189529",
+    "title": "Moments of continuous-state branching processes with or without immigration"
+  },
+  "candidates": [
+    {
+      "paper": "https://zbmath.org/6637275",
+      "title": "Moment formulas for multitype continuous state and continuous time branching process with immigration",
+      "relevance": 10,
+      "note": "Direct extension"
+    },
+    {
+      "paper": "https://zbmath.org/6675905",
+      "title": "Distributions of jumps in a continuous-state branching process with immigration",
+      "relevance": 10,
+      "note": "Directly studies continuous-state branching processes"
+    },
+    {
+      "paper": "https://zbmath.org/3383360",
+      "title": "Branching processes with immigration and related limit theorems",
+      "relevance": 9,
+      "note": "Studies branching processes."
+    },
+    {
+      "paper": "https://zbmath.org/5819419",
+      "title": "Measure-valued branching Markov processes",
+      "relevance": 9,
+    },
+    {
+      "paper": "https://zbmath.org/5043277",
+      "title": "Skew convolution semigroups and affine Markov processes",
+      "relevance": 9,
+    },
+    {
+      "paper": "https://zbmath.org/5676165",
+      "title": "Stochastic equations of non-negative processes with jumps",
+      "relevance": 8,
+    },
+    {
+      "paper": "https://zbmath.org/6032945",
+      "title": "Stochastic equations, flows and measure-valued processes",
+      "relevance": 8,
+    },
+    {
+      "paper": "https://zbmath.org/2138918",
+      "title": "On sequential estimation for branching processes with immigration.",
+      "relevance": 6,
+      "note": "Statistical inference for branching processes"
+    },
+    {
+      "paper": "https://zbmath.org/2157661",
+      "title": "Indeterminate moment problems related to birth and death processes with quartic rates",
+      "relevance": 5,
+    },
+    {
+      "paper": "https://zbmath.org/5710798",
+      "title": "Itô's stochastic calculus: its surprising power for applications",
+      "relevance": 3,
+    }
+  ]
+}
+
+{
+  "query_title": {
+    "paper": "https://zbmath.org/7191865",
+    "title": "A new algorithm design technique for hard problems"
+  },
+  "candidates": [
+    {
+      "paper": "https://zbmath.org/1418967",
+      "title": "Theory of computational complexity",
+      "relevance": 10,
+      "note": "Foundational complexity theory, underpinning algorithm design techniques for hard problems."
+    },
+    {
+      "paper": "https://zbmath.org/5081744",
+      "title": "Average-case complexity",
+      "relevance": 10,
+    },
+    {
+      "paper": "https://zbmath.org/3947622",
+      "title": "Average case complete problems",
+      "relevance": 9,
+    },
+    {
+      "paper": "https://zbmath.org/5990603",
+      "title": "Inapproximability of edge-disjoint paths and low congestion routing on undirected graphs",
+      "relevance": 9,
+    },
+    {
+      "paper": "https://zbmath.org/3555465",
+      "title": "On isomorphisms and density of NP and other complete sets",
+      "relevance": 8,
+    },
+    {
+      "paper": "https://zbmath.org/5047257",
+      "title": "Lambek calculus is NP-complete",
+      "relevance": 7,
+    },
+    {
+      "paper": "https://zbmath.org/4166917",
+      "title": "Rigid E-unification: NP-completeness and applications to equational matings",
+      "relevance": 7,
+    },
+    {
+      "paper": "https://zbmath.org/1635436",
+      "title": "Reconstructing polyatomic structures from discrete X-rays: NP-completeness proof for three atoms",
+      "relevance": 6,
+    },
+    {
+      "paper": "https://zbmath.org/780891",
+      "title": "The Berlekamp-Massey algorithm and linear recurring sequences over a factorial domain",
+      "relevance": 6,
+    },
+    {
+      "paper": "https://zbmath.org/2184055",
+      "title": "Generating bicliques of a graph in lexicographic order",
+      "relevance": 5,
+    }
+  ]
+}
+
+{
+  "query_title": {
+    "paper": "https://zbmath.org/7155403",
+    "title": "Approximating the smallest 2-vertex connected spanning subgraph of a directed graph"
+  },
+  "candidates": [
+    {
+      "paper": "https://zbmath.org/437534",
+      "title": "Improved approximation algorithms for biconnected subgraphs via better lower bounding techniques",
+      "relevance": 10,
+      "note": "Directly addresses approximation algorithms for biconnected (2-vertex-connected) subgraphs."
+    },
+    {
+      "paper": "https://zbmath.org/5485526",
+      "title": "An \\(o(\\log^2 k)\\)-approximation algorithm for the \\(k\\)-vertex connected spanning subgraph problem",
+      "relevance": 10,
+    },
+    {
+      "paper": "https://zbmath.org/5530908",
+      "title": "A linear time \\(\\frac{5}{3}\\)-approximation for the minimum strongly-connected spanning subgraph problem",
+      "relevance": 9,
+    },
+    {
+      "paper": "https://zbmath.org/811665",
+      "title": "Approximating the minimum equivalent digraph",
+      "relevance": 9,
+    },
+    {
+      "paper": "https://zbmath.org/5780485",
+      "title": "Testing 2-vertex connectivity and computing pairs of vertex-disjoint \\(s\\)-\\(t\\) paths in digraphs",
+      "relevance": 9,
+      "note": "Direct foundation for 2-vertex connectivity."
+    },
+    {
+      "paper": "https://zbmath.org/7104625",
+      "title": "Computing 2-connected components and maximal 2-connected subgraphs in directed graphs: an experimental study",
+      "relevance": 8,
+    },
+    {
+      "paper": "https://zbmath.org/5990603",
+      "title": "Inapproximability of edge-disjoint paths and low congestion routing on undirected graphs",
+      "relevance": 7,
+    },
+    {
+      "paper": "https://zbmath.org/4089293",
+      "title": "Lower bounds on two-terminal network reliability",
+      "relevance": 6,
+    },
+    {
+      "paper": "https://zbmath.org/5565299",
+      "title": "Combinatorial algorithms for data migration to minimize average completion time",
+      "relevance": 3,
+    },
+    {
+      "paper": "https://zbmath.org/3943047",
+      "title": "A lower bound to the complexity of Euclidean and rectilinear matching algorithms",
+      "relevance": 2,
+    }
+  ]
+}
+
