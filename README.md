@@ -19,6 +19,7 @@ precursor-retrieval/
 ├── data/                  # Evaluation set (query and candidate pool) and other datasets
 ├── output/                # Shared experiment outputs, evaluation logs, significance test etc.
 ├── src/                   # Main source code
+├── annotation/            # Human and LLM annotation results
 ├── run_all_zs.sh          # Zero-shot experiment runner
 ├── run_all_ltr.sh         # Learning-to-rank experiment runner
 ├── requirements.txt
