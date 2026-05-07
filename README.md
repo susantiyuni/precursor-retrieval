@@ -41,8 +41,6 @@ pip install -r requirements.txt
 Some dependencies (e.g., PyTorch, ColBERT) may require additional system setup or GPU support. Please install them according to your supported hardware and environment.
 
 ## Running the Experiments
-For all the experiments in the following, the results (e.g., ranked candidate files per query, experiment logs) will be saved in the specified output directory ``out_dir``.
-
 ### Zero-Shot Variants
 Run all zero-shot variants of SchemaPathRank:
 ```
@@ -66,13 +64,12 @@ python src/run_baselines.py \
     --out_dir runs_bl01 \
     --inputf data/candidate-pool.jsonl
 ```
+For all the experiments above, the results (e.g., ranked candidate files per query, experiment logs) will be saved in the specified output directory ``out_dir``. For reference, baseline experiment results are available in [`output/run-baseline-01`](./output/run-baseline-01). 
 
 ## Evaluation Metrics
 To compute evaluation metrics:
 1. Update the output filenames (`METHOD_FILES`) in [`metrics.py`](./src/metrics.py)
-2. Specify the desired `out_dir` (the output directory containing experiment results)
-3. Run:
-
+2. Specify the desired `out_dir` (the output directory containing experiment results), then run:
 ```bash
 python src/metrics.py --out_dir runs_bl01
 ```
