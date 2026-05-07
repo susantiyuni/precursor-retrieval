@@ -109,7 +109,7 @@ def schemapathrank(query, pool, kw_idf, top_k, mode="all", TEMP_MODEL="decay", T
     q_emb = u.paper_embedding(query, mode="graph")
     query_refs = set(query.get("references", []))
     ranked = []
-    q_trace_emb = u.trace_embedding(query, mode=TRACE_MODE)
+    q_trace_emb = u.trace_embedding_zs(query, mode=TRACE_MODE)
     for c in pool:
         paper_id = c["paper"]
         c_emb = u.paper_embedding(c, mode="graph")
@@ -122,7 +122,7 @@ def schemapathrank(query, pool, kw_idf, top_k, mode="all", TEMP_MODEL="decay", T
         bc_score = len(query_refs & set(c.get("references", [])))
         bc_score /= max(1, len(query_refs))  # normalize
         # trace cross interaction
-        c_trace_emb = u.trace_embedding(c, mode=TRACE_MODE)
+        c_trace_emb = u.trace_embedding_zs(c, mode=TRACE_MODE)
         trace_len = len(c.get("traces", []))
         gate = np.log1p(trace_len) / (1 + np.log1p(trace_len))  # in (0,1)
         trace_cross = 0.5 * (
