@@ -24,7 +24,6 @@ u.set_seed(SEED)
 parser = argparse.ArgumentParser()
 parser.add_argument("--out_dir", default="run-bl01/", help="Output directory")
 parser.add_argument("--inputf", default="data/candidate-pool.jsonl", help="input file")
-parser.add_argument("--temp", default="gaussian", help="Output directory")
 args = parser.parse_args()
 
 OUT_DIR = Path(args.out_dir) 
@@ -34,25 +33,6 @@ DATA_PATH = Path(args.inputf)
 
 TOP_K = 50
 YEAR_GAP = 10 
-TEMP_MODEL = args.temp
-# TEMP_MODEL = "gamma" #gaussian, laplace, decay, beta, gamma, lognormal
-
-TEMP_MODES = {
-    "decay",          
-    "beta",      # sim + metadata
-    "gamma",      # sim + citation signals
-    "gaussian",  
-    "lognormal",
-    "laplace",         
-}
-
-EMBEDDING_MODES = {
-    "text",         
-    "metadata",   
-    "graph",     
-    "hybrid",    
-    "all"       
-}
 
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 log_path = OUT_DIR / f"run_{timestamp}.log"
@@ -67,15 +47,11 @@ config = {
     "DATA_PATH": str(DATA_PATH),
     "TOP_K": TOP_K,
     "YEAR_GAP": YEAR_GAP,
-    "TEMP_MODEL": TEMP_MODEL,
-    # "WEIGHTS": WEIGHTS,
     "OUT_DIR": str(OUT_DIR)}
 
 logging.info("CONFIG:\n%s", json.dumps(config, indent=2))
 logger = logging.getLogger(__name__)
 logger.info("## START! ##")
-
-assert TEMP_MODEL in TEMP_MODES
 
 # ================= LOAD DATA =================
 entries = []
@@ -102,7 +78,7 @@ def citation_rank(query, pool, top_k):
         for i, (pid, cite_score, bc_score, _) in enumerate(scored[:top_k])]
     return topk_output
 
-# ONLY citation graph structure
+# citation graph structure
 def build_local_graph(query, pool):
     G = nx.Graph()
     def add_paper(p):
@@ -195,10 +171,10 @@ def output_path(name):
     return OUT_DIR / f"run_{name}.jsonl"
 
 RANKERS = {
-    # "citation": lambda q, p, k, _, G: citation_rank(q, p, k),
-    # "ppr": lambda q, p, k, _, G: ppr_rank(q, p, k, G), 
-    # "bm25": lambda q, p, k, _, G: bm25_rank(q, p, k, mode="text"),
-    # "dualenc": lambda q, p, k, _, G: dual_encoder_rank(q, p, k),
+    "citation": lambda q, p, k, _, G: citation_rank(q, p, k),
+    "ppr": lambda q, p, k, _, G: ppr_rank(q, p, k, G), 
+    "bm25": lambda q, p, k, _, G: bm25_rank(q, p, k, mode="text"),
+    "dualenc": lambda q, p, k, _, G: dual_encoder_rank(q, p, k),
     "colbert": lambda q, p, k, _, G: colbert_rank(q, p, k),
 }
 
