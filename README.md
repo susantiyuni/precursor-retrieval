@@ -2,7 +2,7 @@
 
 We introduce *historically-grounded* **precursor retrieval**, a novel scholarly information retrieval task aimed at identifying influential prior scientific work beyond explicit citations.
 
-This repository contains the [`source code`](./src) and [`dataset`](./data) for:
+This repository contains the resources for:
 
 - Reproducing the proposed __SchemaPathRank__, a _scholarly lineage-aware_ precursor retrieval framework over heterogeneous knowledge graphs (details in our paper).
 - Running all baseline methods from the paper
