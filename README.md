@@ -76,7 +76,7 @@ python src/metrics.py --out_dir runs_bl01
 This generates detailed metric scores (e.g., nDCG, Recall, MAP) and saves the evaluation reports in the output folder, with filenames starting with `eval_`. For reference, our evaluation outputs are available in [`output`](./output/). 
 
 ## Significance Testing
-We perform _paired t-tests_ to measure statistical significance between SchemaPathRank and baseline methods.
+We perform paired t-tests to assess the statistical significance of observed performance gains of SchemaPathRank over baselines:
 ```
 python src/paired_test.py
 ```
