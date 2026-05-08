@@ -5,7 +5,7 @@ We introduce *historically-grounded* **precursor retrieval**, a novel scholarly 
 This repository contains the resources for:
 
 - Reproducing the proposed __SchemaPathRank__, a _scholarly lineage-aware_ precursor retrieval framework over heterogeneous knowledge graphs (details in our paper).
-- Running all baseline methods from the paper
+- Running all experiments including all baselines and ablation studies in the paper
 - Computing evaluation metrics reported in the paper, including significance testing result
 - (Optionally) generating custom query–candidate pools using the constructed zbMATH knowledge graph
 
