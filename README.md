@@ -46,7 +46,7 @@ Run all zero-shot variants of SchemaPathRank:
 ```
 ./run_all_zs.sh 
 ```
-This script executes the zero-shot experiments described in the paper. 
+This script executes the zero-shot experiments and ablations as in the paper. 
 See [run_all_zs.sh](./run_all_zs.sh ) for configuration details.
 
 ### Learning-to-Rank (LTR) Variants
