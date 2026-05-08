@@ -83,7 +83,7 @@ python src/paired_test.py
 For reference, we share our significance test results: [`significance_test`](./output/significance_test.log). 
 
 ## Knowledge Graph Setting and Installation
-**The constructed zbMATH Open RDF knowledge graph will be made available on Zenodo upon acceptance or after the anonymity period.**
+**The constructed zbMATH Open RDF knowledge graph will be made available on Zenodo upon acceptance or after the anonymity period.**  
 To generate your own query–candidate pools, you must set up the RDF triple store for the zbMATH Open KG yourself.
 Please refer to the complete installation and setup guide here:
 
@@ -108,4 +108,4 @@ We provide human annotation guidelines and results for assessing precursor relev
 }
 ```
 ## Contact
-For questions or collaborations, please open an issue or contact anon@anonymous.org
+For questions, please open an issue or contact anon@anonymous.org
