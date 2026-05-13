@@ -10,6 +10,20 @@ This repository contains the resources for:
 - (Optionally) generating custom query–candidate pools using the constructed zbMATH knowledge graph
 
 ---
+## Contents
+
+- [Repository Structure](#repository-structure)
+- [Installation](#installation)
+- [Running the Experiments](#running-the-experiments)
+  - [Zero-Shot Variants](#zero-shot-variants)
+  - [Learning-to-Rank (LTR) Variants](#learning-to-rank-ltr-variants)
+  - [Baselines](#baselines)
+- [Evaluation Metrics](#evaluation-metrics)
+- [Significance Testing](#significance-testing)
+- [Knowledge Graph Setting and Installation](#knowledge-graph-setting-and-installation)
+- [Human Validation – LLM Judgment](#human-validation--llm-judgment)
+- [Citation](#citation)
+- [Contact](#contact)
 
 ## Repository Structure
 
