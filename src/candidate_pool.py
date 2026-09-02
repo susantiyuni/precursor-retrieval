@@ -2,11 +2,10 @@ import json
 from pathlib import Path
 from SPARQLWrapper import SPARQLWrapper, JSON
 from string import Template
-
+from config import ENDPOINT_URL
 
 # ---------------- CONFIG ----------------
-endpoint_url = "http://localhost:8890/sparql"
-sparql = SPARQLWrapper(endpoint_url)
+sparql = SPARQLWrapper(ENDPOINT_URL)
 sparql.setReturnFormat(JSON)
 
 # ---------------- LOAD QUERY PAPERS ----------------
