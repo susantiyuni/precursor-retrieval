@@ -2,7 +2,7 @@
 
 ## Task Overview
 
-For each query paper and its associated candidate papers in [``subset-random.jsonl``](./subset-random.jsonl), you will evaluate how strongly each candidate serves as a _precursor_ to the query paper.
+For each query paper and its associated candidate papers in [``subset-evaluation.jsonl``](./subset-evaluation.jsonl), you will evaluate how strongly each candidate serves as a _precursor_ to the query paper.
 
 A *precursor* is a paper that introduces ideas, methods, definitions, or results that are later directly used, extended, or refined in the query paper. The key question is:
 
@@ -42,13 +42,13 @@ Assign a score from **1 to 10**, where higher values indicate stronger precursor
 ## Instructions
 
 - Focus on **directional influence**: precursor → query paper  
-- Maintain consistency across all annotations  
-- You are allowed to consult search engines or LLMs, but **do NOT directly ask an LLM to assign the relevance score for you.**
-  - The LLM may be used for background understanding only  
-  - Final scoring must be based on your own judgment  
-  - **You are fully responsible for the final annotation decision ** 
+- Maintain consistency across all annotations   
 - Save your annotation results in the same format after adding the relevance score (see example below).
 - You may optionally add a note explaining your judgment.
+- You are allowed to consult search engines or LLMs, but **DO NOT directly ask an LLM to assign the relevance score for you.**
+  - The LLM may be used for background understanding ONLY  
+  - Final scoring must be based on your own judgment  
+  - **You are fully responsible for the final annotation decision**
 
 ## Annotation Example
 ```json
