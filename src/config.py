@@ -1,0 +1,1 @@
+ENDPOINT_URL = "http://localhost:8890/sparql"
