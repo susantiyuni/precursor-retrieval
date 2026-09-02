@@ -4,10 +4,10 @@ We introduce *historically-grounded* **precursor retrieval**, a novel scholarly 
 
 This repository contains the resources for:
 
-- Reproducing the proposed __SchemaPathRank__, a _scholarly lineage-aware_ precursor retrieval framework over heterogeneous knowledge graphs (details in our paper).
+- Reproducing the proposed __SchemaPathRank__, a _scholarly lineage-aware_ precursor retrieval framework over heterogeneous knowledge graphs.
 - Running all experiments including all baselines and ablation studies in the paper
-- Computing evaluation metrics reported in the paper, including significance testing result
-- (Optionally) generating custom query–candidate pools using the constructed zbMATH knowledge graph
+- Computing evaluation metrics reported in the paper
+- (Optionally) generating custom query–candidate pools using the constructed knowledge graph
 
 ---
 ## Contents
@@ -19,8 +19,7 @@ This repository contains the resources for:
   - [Learning-to-Rank (LTR) Variants](#learning-to-rank-ltr-variants)
   - [Baselines](#baselines)
 - [Evaluation Metrics](#evaluation-metrics)
-- [Significance Testing](#significance-testing)
-- [Knowledge Graph Setting and Installation](#knowledge-graph-setting-and-installation)
+- [Knowledge Graph Dataset](#knowledge-graph-dataset)
 - [Human Validation – LLM Judgment](#human-validation--llm-judgment)
 - [Citation](#citation)
 - [Contact](#contact)
@@ -29,7 +28,7 @@ This repository contains the resources for:
 
 ```text
 precursor-retrieval/
-├── data/                  # Evaluation set (query and candidate pool) and other datasets
+├── data/                  # Evaluation set (query and candidate pool), KG, and other related data
 ├── output/                # Shared experiment outputs, evaluation logs, significance test etc.
 ├── src/                   # Main source code
 ├── annotation/            # Human and LLM annotation results
@@ -89,24 +88,26 @@ python src/metrics.py --out_dir runs_bl01
 ```
 This generates detailed metric scores (e.g., nDCG, Recall, MAP) and saves the evaluation reports in the output folder, with filenames starting with `eval_`. For reference, our evaluation outputs are available in [`output`](./output/). 
 
-## Significance Testing
+#### Significance Testing
 We perform paired t-tests to assess the statistical significance of observed performance gains of SchemaPathRank over baselines:
 ```
 python src/paired_test.py
 ```
 For reference, we share our significance test results: [`significance_test`](./output/significance_test.log). 
 
-## Knowledge Graph Setting and Installation
-**The constructed zbMATH Open RDF knowledge graph will be made available on Zenodo upon acceptance or after the anonymity period.**  
-To generate your own query–candidate pools, you must set up the RDF triple store for the zbMATH Open KG yourself.
-Please refer to the complete installation and setup guide here:
+## Knowledge Graph Dataset
 
-_(to be updated after anonymous period concludes)_
+A sample of the knowledge graph dataset is provided here: [sample-200.ttl](./data/sample-200.tll). **The full knowledge graph dataset will be made available on Zenodo upon acceptance of the paper.** To generate your own query–candidate pools, set up the KG in an RDF triple store (e.g., Apache Jena or Virtuoso) with a SPARQL endpoint. Please refer the documentation of your chosen triple store for setup instructions.
 
-This includes:
-- Downloading zbMATH Open KG data via OAI-PMH.
-- Setting up the RDF triple store (with Virtuoso or Apache Fuseki)
-- Configuring the SPARQL endpoint
+After setting up the RDF triple store, make sure that the SPARQL endpoint URL is correctly configured in [`config.py`](./src/config.py) according to your triple-store setup. Then run:
+```
+python src/query_papers.py
+```
+This script generates the query papers (example: [query-papers.json](./data/query-papers.jsonl)). Once the query papers have been generated, run:
+```
+python src/candidate_pool.py
+```
+This script generates the corresponding candidate paper pools (example: [candidate-pool.jsonl](./data/candidate-pool.jsonl)).
 
 ## Human Validation – LLM Judgment
 
