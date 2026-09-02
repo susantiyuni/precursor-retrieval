@@ -1,9 +1,9 @@
 import json
 from pathlib import Path
 from SPARQLWrapper import SPARQLWrapper, JSON
+from config import ENDPOINT_URL
 
 # ---------------- CONFIG ----------------
-ENDPOINT_URL = "http://localhost:8890/sparql"
 INPUT_JSONL = Path("candidate-pool-no-cited.jsonl")
 OUTPUT_JSONL = Path("candidate-pool.jsonl")
 
