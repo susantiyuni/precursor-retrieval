@@ -1,9 +1,11 @@
 from SPARQLWrapper import SPARQLWrapper, JSON
 import json
 from pathlib import Path
+from config import ENDPOINT_URL
 
-# ---------------- CONFIG ----------------
-endpoint_url = "http://localhost:8890/sparql"
+# # ---------------- SPARQL SETUP ----------------
+sparql = SPARQLWrapper(ENDPOINT_URL)
+sparql.setReturnFormat(JSON)
 
 msc_prefixes = {
     "03": "Mathematical Logic",
@@ -17,10 +19,6 @@ msc_prefixes = {
 YEAR_MIN = 2020
 YEAR_MAX = 2025
 LIMIT_PER_MSC = 5  # papers to sample per MSC
-
-# ---------------- SPARQL SETUP ----------------
-sparql = SPARQLWrapper(endpoint_url)
-sparql.setReturnFormat(JSON)
 
 all_papers = []
 
