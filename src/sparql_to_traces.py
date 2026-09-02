@@ -5,10 +5,10 @@ from string import Template
 from functools import lru_cache
 import math
 import numpy as np
+from config import ENDPOINT_URL
 
 # ---------------- CONFIG ----------------
-endpoint_url = "http://localhost:8890/sparql"
-sparql = SPARQLWrapper(endpoint_url)
+sparql = SPARQLWrapper(ENDPOINT_URL)
 sparql.setReturnFormat(JSON)
 
 INPUT_FILE = Path("data/candidate-pool.jsonl")
